@@ -43,7 +43,7 @@ function RegisterView() {
       title="Register"
     >
       <Container maxWidth="sm">
-        <Box
+        {/* <Box
           mb={5}
           display="flex"
           alignItems="center"
@@ -58,7 +58,7 @@ function RegisterView() {
           >
             Back to home
           </Button>
-        </Box>
+        </Box> */}
         <Card>
           <CardContent>
             <Typography

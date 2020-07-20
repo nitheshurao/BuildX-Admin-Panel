@@ -28,8 +28,8 @@ function LoginForm({ className, onSubmitSuccess, ...rest }) {
         password: 'admin'
       }}
       validationSchema={Yup.object().shape({
-        email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-        password: Yup.string().max(255).required('Password is required')
+        email: Yup.string().email('Must be a valid email').max(100).required('Email is required'),
+        password: Yup.string().max(100).required('Password is required')
       })}
       onSubmit={async (values, {
         setErrors,

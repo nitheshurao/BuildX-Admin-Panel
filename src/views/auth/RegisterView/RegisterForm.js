@@ -31,14 +31,14 @@ function RegisterForm({ className, onSubmitSuccess, ...rest }) {
         lastName: '',
         email: '',
         password: '',
-        policy: false
+        // policy: false
       }}
       validationSchema={Yup.object().shape({
         firstName: Yup.string().max(255).required('First name is required'),
         lastName: Yup.string().max(255).required('Last name is required'),
         email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
         password: Yup.string().min(7).max(255).required('Password is required'),
-        policy: Yup.boolean().oneOf([true], 'This field must be checked')
+        // policy: Yup.boolean().oneOf([true], 'This field must be checked')
       })}
       onSubmit={async (values, {
         setErrors,
@@ -121,7 +121,7 @@ function RegisterForm({ className, onSubmitSuccess, ...rest }) {
             value={values.password}
             variant="outlined"
           />
-          <Box
+          {/* <Box
             alignItems="center"
             display="flex"
             mt={2}
@@ -146,12 +146,12 @@ function RegisterForm({ className, onSubmitSuccess, ...rest }) {
                 Terms and Conditions
               </Link>
             </Typography>
-          </Box>
-          {Boolean(touched.policy && errors.policy) && (
+          </Box> */}
+          {/* {Boolean(touched.policy && errors.policy) && (
             <FormHelperText error>
               {errors.policy}
             </FormHelperText>
-          )}
+          )} */}
           <Box mt={2}>
             <Button
               color="secondary"

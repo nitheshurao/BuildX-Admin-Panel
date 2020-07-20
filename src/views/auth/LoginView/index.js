@@ -87,7 +87,7 @@ function LoginView() {
       title="Login"
     >
       <Container maxWidth="md">
-        <Box
+        {/* <Box
           mb={8}
           display="flex"
           alignItems="center"
@@ -101,8 +101,8 @@ function LoginView() {
             className={classes.backButton}
           >
             Back to home
-          </Button>
-        </Box>
+          </Button> 
+        </Box> */}
         <Card className={classes.card}>
           <CardContent className={classes.content}>
             <Avatar className={classes.icon}>
@@ -120,7 +120,7 @@ function LoginView() {
             >
               Sign in on the internal platform
             </Typography>
-            <Box mt={2}>
+            {/* <Box mt={2}>
               <Alert
                 severity="info"
               >
@@ -134,7 +134,7 @@ function LoginView() {
                   <b>admin</b>
                 </div>
               </Alert>
-            </Box>
+            </Box> */}
             <Box mt={3}>
               <LoginForm onSubmitSuccess={handleSubmitSuccess} />
             </Box>
@@ -148,9 +148,9 @@ function LoginView() {
               color="textSecondary"
             >
               Create new account
-            </Link>
+            </Link> 
           </CardContent>
-          <CardMedia
+          {/* <CardMedia
             className={classes.media}
             image="/static/images/auth.png"
             title="Cover"
@@ -186,7 +186,7 @@ function LoginView() {
                 </Typography>
               </Box>
             </Box>
-          </CardMedia>
+          </CardMedia> */}
         </Card>
       </Container>
     </Page>
