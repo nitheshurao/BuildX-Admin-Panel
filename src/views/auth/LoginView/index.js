@@ -141,14 +141,14 @@ function LoginView() {
             <Box my={2}>
               <Divider />
             </Box>
-            <Link
+            {/* <Link
               component={RouterLink}
               to="/register"
               variant="body2"
               color="textSecondary"
             >
               Create new account
-            </Link> 
+            </Link>  */}
           </CardContent>
           {/* <CardMedia
             className={classes.media}
