@@ -62,7 +62,7 @@ function LatestProjects({ className, ...rest }) {
       .get('/api/reports/latest-projects')
       .then((response) => {
         if (isMountedRef.current) {
-          setProjects(response.data.projects);
+          // setProjects(response.data.projects);
         }
       });
   }, [isMountedRef]);

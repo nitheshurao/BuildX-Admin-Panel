@@ -35,35 +35,35 @@ function TaskItem({ task, className, ...rest }) {
     }
   }
 
-  return (
-    <ListItem
-      className={clsx(
-        classes.root,
-        { [classes.critical]: critical },
-        className
-      )}
-      {...rest}
-    >
-      <ListItemText
-        className={classes.listItemText}
-        primary={task.title}
-        primaryTypographyProps={{ variant: 'h6', noWrap: true }}
-        secondary={deadline}
-      />
-      <StackAvatars
-        avatars={task.members}
-        limit={3}
-      />
-      <Tooltip title="View task">
-        <IconButton
-          className={classes.viewButton}
-          edge="end"
-        >
-          <OpenInNewIcon fontSize="small" />
-        </IconButton>
-      </Tooltip>
-    </ListItem>
-  );
+  // return (
+  //  // <ListItem
+  //     // className={clsx(
+  //     //   classes.root,
+  //     //   { [classes.critical]: critical },
+  //     //   className
+  //     // )}
+  //     // {...rest}
+  //   //>
+  //     {/* <ListItemText
+  //       className={classes.listItemText}
+  //       primary={task.title}
+  //       primaryTypographyProps={{ variant: 'h6', noWrap: true }}
+  //       secondary={deadline}
+  //     /> */}
+  //     {/* <StackAvatars
+  //       avatars={task.members}
+  //       limit={3}
+  //     />
+  //     <Tooltip title="View task">
+  //       <IconButton
+  //         className={classes.viewButton}
+  //         edge="end"
+  //       >
+  //         <OpenInNewIcon fontSize="small" />
+  //       </IconButton>
+  //     </Tooltip> */}
+  // //  </ListItem>
+  // );
 }
 
 TaskItem.propTypes = {

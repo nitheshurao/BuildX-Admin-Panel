@@ -112,7 +112,7 @@ function RealTime({ className, ...rest }) {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <CardHeader
+      {/* <CardHeader
         action={(
           <Typography
             color="inherit"
@@ -130,12 +130,12 @@ function RealTime({ className, ...rest }) {
         subheaderTypographyProps={{ color: 'textSecondary', variant: 'body2' }}
         title="Active users"
         titleTypographyProps={{ color: 'textPrimary' }}
-      />
-      <Chart
+      /> /*/}
+      {/* <Chart
         data={data}
         labels={labels}
-      />
-      <List>
+      /> */}
+      {/* <List>
         {pages.map((page) => (
           <ListItem
             classes={{ divider: classes.itemDivider }}
@@ -151,8 +151,8 @@ function RealTime({ className, ...rest }) {
             </Typography>
           </ListItem>
         ))}
-      </List>
-      <Box
+      </List> */}
+      {/* <Box
         p={2}
         display="flex"
         justifyContent="flex-end"
@@ -165,7 +165,7 @@ function RealTime({ className, ...rest }) {
           See all
           <NavigateNextIcon className={classes.navigateNextIcon} />
         </Button>
-      </Box>
+      </Box> */}
     </Card>
   );
 }

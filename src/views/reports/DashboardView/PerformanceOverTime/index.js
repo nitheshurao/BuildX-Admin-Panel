@@ -55,12 +55,12 @@ function PerformanceOverTime({ className, ...rest }) {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <CardHeader
+      {/* <CardHeader
         action={<GenericMoreButton />}
         title="Performance Over Time"
-      />
+      /> */}
       <Divider />
-      <CardContent>
+      {/* <CardContent>
         <PerfectScrollbar>
           <Box
             height={375}
@@ -73,7 +73,7 @@ function PerformanceOverTime({ className, ...rest }) {
             />
           </Box>
         </PerfectScrollbar>
-      </CardContent>
+      </CardContent> */}
     </Card>
   );
 }

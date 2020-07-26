@@ -61,14 +61,14 @@ function DashboardView() {
             sm={6}
             xs={12}
           >
-            <NewProjects />
+            {/* <NewProjects />
           </Grid>
           <Grid
             item
             lg={3}
             sm={6}
             xs={12}
-          >
+          > */}
             <SystemHealth />
           </Grid>
           <Grid
@@ -77,13 +77,13 @@ function DashboardView() {
             sm={6}
             xs={12}
           >
-            <RoiPerCustomer />
+            {/* <RoiPerCustomer />
           </Grid>
           <Grid
             item
             lg={3}
             xs={12}
-          >
+          > */}
             <RealTime />
           </Grid>
           <Grid

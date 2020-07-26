@@ -61,18 +61,18 @@ function EarningsSegmentation({ className, ...rest }) {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <CardHeader
+      {/* <CardHeader
         action={<GenericMoreButton />}
         title="Earnings Segmentation"
-      />
+      /> */}
       <Divider />
-      <Box
+      {/* <Box
         p={3}
         position="relative"
         minHeight={320}
       >
         <Chart data={earnings} />
-      </Box>
+      </Box> */}
       <Divider />
       <Box display="flex">
         {earnings.labels.map((label, i) => (

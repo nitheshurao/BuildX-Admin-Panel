@@ -33,7 +33,7 @@ function TeamTasks({ className, ...rest }) {
       .get('/api/reports/tasks')
       .then((response) => {
         if (isMountedRef.current) {
-          setTasks(response.data.tasks);
+        //  setTasks(response.data.tasks);
         }
       });
   }, [isMountedRef]);
