@@ -472,7 +472,7 @@ function NavBar({ openMobile, onMobileClose, }) {
           ))}
         </Box>
         <Divider />
-        <Box p={2}>
+        {/* <Box p={2}>
           <Box
             p={2}
             borderRadius="borderRadius"
@@ -493,7 +493,7 @@ function NavBar({ openMobile, onMobileClose, }) {
               Check our docs
             </Link>
           </Box>
-        </Box>
+        </Box> */}
       </PerfectScrollbar>
     </Box>
   );
