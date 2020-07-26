@@ -44,7 +44,7 @@ function Settings() {
   });
 
   const handleOpen = () => {
-    setOpen(true);
+  //  setOpen(true);
   };
 
   const handleClose = () => {

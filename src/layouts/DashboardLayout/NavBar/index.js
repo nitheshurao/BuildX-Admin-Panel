@@ -69,16 +69,21 @@ const navConfig = [
         href: '/app/management/customers',
         items: [
           {
-            title: 'List Customers',
-            href: '/app/management/customers'
+            title: 'Add Customers',
+            // href: '/app/management/customers'
+            href: '/app/reports/dashboard',
           },
           {
             title: 'View Customer',
-            href: '/app/management/customers/1'
+            // href: '/app/management/customers/1'
+            href: '/app/reports/dashboard',
+
           },
           {
             title: 'Edit Customer',
-            href: '/app/management/customers/1/edit'
+            // href: '/app/management/customers/1/edit'
+            href: '/app/reports/dashboard',
+
           }
         ]
       },
@@ -89,42 +94,53 @@ const navConfig = [
         items: [
           {
             title: 'List Products',
-            href: '/app/management/products'
+            href: '/app/reports/dashboard',
+            // href: '/app/management/products'
           },
           {
             title: 'Create Product',
-            href: '/app/management/products/create'
+            href: '/app/reports/dashboard',
+            // href: '/app/management/products/create'
           }
         ]
       },
       {
         title: 'Orders',
         icon: FolderIcon,
-        href: '/app/management/orders',
+        // href: '/app/management/orders',
+        href: '/app/reports/dashboard',
+
         items: [
           {
             title: 'List Orders',
-            href: '/app/management/orders'
-          },
-          {
-            title: 'View Order',
-            href: '/app/management/orders/1'
-          }
+            href: '/app/reports/dashboard',
+          }//,
+          // {
+          //   title: 'View Order',
+          //   // href: '/app/management/orders/1'
+          //   href: '/app/reports/dashboard',
+
+          // }
         ]
       },
       {
         title: 'Invoices',
         icon: ReceiptIcon,
-        href: '/app/management/invoices',
+        href: '/app/reports/dashboard',
+        //href: '/app/management/invoices',
         items: [
           {
             title: 'List Invoices',
-            href: '/app/management/invoices'
-          },
-          {
-            title: 'View Invoice',
-            href: '/app/management/invoices/1'
-          }
+            // href: '/app/management/invoices
+            href: '/app/reports/dashboard',
+
+          }//,
+          // {
+          //   title: 'View Invoice',
+          //   // href: '/app/management/invoices/1'
+          //   href: '/app/reports/dashboard',
+
+          // }
         ]
       }
     ]

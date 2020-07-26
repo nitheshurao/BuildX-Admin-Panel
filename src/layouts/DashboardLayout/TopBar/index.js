@@ -53,7 +53,7 @@ function TopBar({
           <IconButton
             className={classes.menuButton}
             color="inherit"
-            onClick={onMobileNavOpen}
+          //  onClick={onMobileNavOpen}
           >
             <SvgIcon fontSize="small">
               <MenuIcon />
@@ -69,8 +69,8 @@ function TopBar({
           ml={2}
           flexGrow={1}
         />
-        <Search />
-        <Contacts />
+        {/* <Search />
+        <Contacts /> */}
         <Notifications />
         <Settings />
         <Box ml={2}>

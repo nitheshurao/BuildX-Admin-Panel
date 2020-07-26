@@ -55,7 +55,7 @@ function Notifications() {
   const [isOpen, setOpen] = useState(false);
 
   const handleOpen = () => {
-    setOpen(true);
+ //   setOpen(true);
   };
 
   const handleClose = () => {
