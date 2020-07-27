@@ -28,8 +28,8 @@ function AccountView() {
   const [currentTab, setCurrentTab] = useState('general');
   const tabs = [
     { value: 'general', label: 'General' },
-    { value: 'subscription', label: 'Subscription' },
-    { value: 'notifications', label: 'Notifications' },
+    // { value: 'subscription', label: 'Subscription' },
+    // { value: 'notifications', label: 'Notifications' },
     { value: 'security', label: 'Security' }
   ];
 

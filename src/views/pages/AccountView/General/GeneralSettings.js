@@ -21,7 +21,7 @@ import {
 } from '@material-ui/core';
 import { updateProfile } from 'src/actions/accountActions';
 
-const stateOptions = ['Alabama', 'New York', 'San Francisco'];
+const stateOptions = ['Karnataka'];
 
 const useStyles = makeStyles(() => ({
   root: {}
