@@ -77,7 +77,7 @@ function Header({ className, ...rest }) {
         >
           All Products
         </Typography>
-        <Box mt={2}>
+        {/* <Box mt={2}>
           <Button className={classes.action}>
             <SvgIcon
               fontSize="small"
@@ -96,9 +96,9 @@ function Header({ className, ...rest }) {
             </SvgIcon>
             Export
           </Button>
-        </Box>
+        </Box> */}
       </Grid>
-      <Grid item>
+      {/* <Grid item>
         <Button
           color="secondary"
           variant="contained"
@@ -114,7 +114,7 @@ function Header({ className, ...rest }) {
           </SvgIcon>
           New Product
         </Button>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }

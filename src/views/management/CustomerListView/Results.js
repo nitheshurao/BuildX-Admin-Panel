@@ -38,19 +38,19 @@ const tabs = [
   {
     value: 'all',
     label: 'All'
-  },
-  {
-    value: 'acceptsMarketing',
-    label: 'Accepts Marketing'
-  },
-  {
-    value: 'isProspect',
-    label: 'Prospect'
-  },
-  {
-    value: 'isReturning',
-    label: 'Returning'
-  }
+  }//,
+  // {
+  //   value: 'acceptsMarketing',
+  //   label: 'Accepts Marketing'
+  // },
+  // {
+  //   value: 'isProspect',
+  //   label: 'Prospect'
+  // },
+  // {
+  //   value: 'isReturning',
+  //   label: 'Returning'
+  // }
 ];
 
 const sortOptions = [

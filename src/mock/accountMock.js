@@ -9,7 +9,7 @@ const db = {
   user: {
     id: '5e86809283e28b96d2d38537',
     avatar: '/static/images/avatars/avatar_6.png',
-    bio: 'Admin',
+    bio: 'bio',
     canHire: false,
     country: 'USA',
     email: 'admin@buildx.in',
@@ -17,7 +17,7 @@ const db = {
     password: 'admin',
     firstName: 'Admin',
     isPublic: true,
-    lastName: 'admin',
+    lastName: 'buidx',
     phone: '+91 9998887771',
     role: 'admin',
     state: 'Karnataka',

@@ -75,9 +75,9 @@ function Header({ className, ...rest }) {
           variant="h3"
           color="textPrimary"
         >
-          All Customers
+          All Users
         </Typography>
-        <Box mt={2}>
+        {/* <Box mt={2}>
           <Button className={classes.action}>
             <SvgIcon
               fontSize="small"
@@ -96,9 +96,9 @@ function Header({ className, ...rest }) {
             </SvgIcon>
             Export
           </Button>
-        </Box>
+        </Box> */}
       </Grid>
-      <Grid item>
+      {/* <Grid item>
         <Button
           color="secondary"
           variant="contained"
@@ -112,7 +112,7 @@ function Header({ className, ...rest }) {
           </SvgIcon>
           New Customer
         </Button>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }

@@ -64,27 +64,26 @@ const navConfig = [
     subheader: 'Management',
     items: [
       {
-        title: 'Customers',
+        title: 'Users',
         icon: UsersIcon,
         href: '/app/management/customers',
         items: [
           {
-            title: 'Add Customers',
-            // href: '/app/management/customers'
-            href: '/app/reports/dashboard',
+            title: 'Add Users',
+             href: '/app/management/createcustomers'
           },
           {
-            title: 'View Customer',
-            // href: '/app/management/customers/1'
-            href: '/app/reports/dashboard',
+            title: 'View Users',
+           href: '/app/management/customers'
+           // href: '/app/reports/dashboard',
 
-          },
-          {
-            title: 'Edit Customer',
-            // href: '/app/management/customers/1/edit'
-            href: '/app/reports/dashboard',
+          }//,
+          // {
+          //   title: 'Edit Customer',
+          // href: '/app/management/customers/1/edit'
+          // //  href: '/app/reports/dashboard',
 
-          }
+          // }
         ]
       },
       {
@@ -94,21 +93,21 @@ const navConfig = [
         items: [
           {
             title: 'List Products',
-            href: '/app/reports/dashboard',
-            // href: '/app/management/products'
+            //href: '/app/reports/dashboard',
+             href: '/app/management/products'
           },
           {
             title: 'Create Product',
-            href: '/app/reports/dashboard',
-            // href: '/app/management/products/create'
+           // href: '/app/reports/dashboard',
+            href: '/app/management/products/create'
           }
         ]
       },
       {
         title: 'Orders',
         icon: FolderIcon,
-        // href: '/app/management/orders',
-        href: '/app/reports/dashboard',
+         href: '/app/management/orders',
+        //href: '/app/reports/dashboard',
 
         items: [
           {
@@ -123,26 +122,26 @@ const navConfig = [
           // }
         ]
       },
-      {
-        title: 'Invoices',
-        icon: ReceiptIcon,
-        href: '/app/reports/dashboard',
-        //href: '/app/management/invoices',
-        items: [
-          {
-            title: 'List Invoices',
-            // href: '/app/management/invoices
-            href: '/app/reports/dashboard',
+      // {
+      //   title: 'Invoices',
+      //   icon: ReceiptIcon,
+      //   href: '/app/reports/dashboard',
+      //   //href: '/app/management/invoices',
+      //   items: [
+      //     {
+      //       title: 'List Invoices',
+      //       // href: '/app/management/invoices
+      //       href: '/app/reports/dashboard',
 
-          }//,
-          // {
-          //   title: 'View Invoice',
-          //   // href: '/app/management/invoices/1'
-          //   href: '/app/reports/dashboard',
+      //     }//,
+      //     // {
+      //     //   title: 'View Invoice',
+      //     //   // href: '/app/management/invoices/1'
+      //     //   href: '/app/reports/dashboard',
 
-          // }
-        ]
-      }
+      //     // }
+      //   ]
+      // }
     ]
   },
   // {

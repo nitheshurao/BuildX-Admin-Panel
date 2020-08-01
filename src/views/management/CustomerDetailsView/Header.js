@@ -57,7 +57,7 @@ function Header({ className, customer, ...rest }) {
             variant="body1"
             color="textPrimary"
           >
-            Customers
+            Users
           </Typography>
         </Breadcrumbs>
         <Typography

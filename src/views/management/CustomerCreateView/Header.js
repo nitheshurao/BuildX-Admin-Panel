@@ -53,7 +53,7 @@ function Header({ className, ...rest }) {
         variant="h3"
         color="textPrimary"
       >
-        Create new customer
+        Create New User
       </Typography>
     </div>
   );

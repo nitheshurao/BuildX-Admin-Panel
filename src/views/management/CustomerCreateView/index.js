@@ -19,7 +19,7 @@ function CustomerCreateView() {
   return (
     <Page
       className={classes.root}
-      title="Customer Create"
+      title="User Create"
     >
       <Container maxWidth={false}>
         <Header />
