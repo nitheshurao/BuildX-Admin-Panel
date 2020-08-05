@@ -95,6 +95,27 @@ function Routes() {
                     path="/app/management/customers/:id/edit"
                     component={lazy(() => import('src/views/management/CustomerEditView'))}
                   />
+                   <Route
+                    exact
+                    path="/app/management/Categories"
+                    component={lazy(() => import('src/views/management/CategoriesListView'))}
+                  /> 
+                  <Route
+                  exact
+                  path="/app/management/CategoriesEditView"
+                  component={lazy(() => import('src/views/management/CategoriesEditView'))}
+                  />
+                   <Route
+                  exact
+                  path="/app/management/CategoriesListView"
+                  component={lazy(() => import('src/views/management/CategoriesListView'))}
+                  />
+                   <Route
+                  exact
+                  path="/app/management/SubCategories"
+                  component={lazy(() => import('src/views/management/SubCategories'))}
+                  />
+                   
                   <Route
                     exact
                     path="/app/management/products"

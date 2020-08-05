@@ -106,21 +106,21 @@ const navConfig = [
       {
         title: 'Categories',
         icon: FolderIcon,
-         href: '/app/management/orders',
+            href: '/app/management/CategoriesListView',
         //href: '/app/reports/dashboard',
 
         items: [
           {
             title: 'List Categories',
-            href: '/app/reports/dashboard',
+            href: '/app/management/CategoriesListView',
           },
           {
             title: 'Add New Categories',
-            href: '/app/reports/dashboard',
+            href: '/app/management/CategoriesEditView',
           },
           {
-            title: 'Add  New Subcategories',
-            href: '/app/reports/dashboard',
+            title: 'Subcategories',
+            href: '/app/management/SubCategories',
           }
   
         ]
