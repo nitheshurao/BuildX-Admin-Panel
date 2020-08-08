@@ -68,7 +68,7 @@ function Header({ className, ...rest }) {
             variant="body1"
             color="textPrimary"
           >
-            Products
+            products
           </Typography>
         </Breadcrumbs>
         <Typography

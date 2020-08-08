@@ -68,14 +68,14 @@ function Header({ className, ...rest }) {
             variant="body1"
             color="textPrimary"
           >
-            Categories
+            category
           </Typography>
         </Breadcrumbs>
         <Typography
           variant="h3"
           color="textPrimary"
         >
-          All Products
+          All Category
         </Typography>
         {/* <Box mt={2}>
           <Button className={classes.action}>

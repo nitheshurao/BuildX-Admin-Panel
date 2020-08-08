@@ -23,26 +23,26 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function CategoriesListView() {
+function CategoryListView() {
   const classes = useStyles();
   const isMountedRef = useIsMountedRef();
-  const [products, setProducts] = useState(null);
+  const [category, setCategory] = useState(null);
 
-  const getProducts = useCallback(() => {
+  const getCategory = useCallback(() => {
     axios
-      .get('/api/management/products')
+      .get('app/management/CategoriesListView')
       .then((response) => {
         if (isMountedRef.current) {
-          setProducts(response.data.products);
+          setCategory(response.data.category);
         }
       });
   }, [isMountedRef]);
 
   useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+    getCategory();
+  }, [getCategory]);
 
-  if (!products) {
+  if (!category) {
     return null;
   }
 
@@ -53,9 +53,9 @@ function CategoriesListView() {
     >
       <Container maxWidth={false}>
         <Header />
-        {products && (
+        {category&& (
           <Box mt={3}>
-            <Results products={products} />
+            <Results products={category} />
           </Box>
         )}
       </Container>
@@ -63,4 +63,4 @@ function CategoriesListView() {
   );
 }
 
-export default CategoriesListView;
+export default CategoryListView;

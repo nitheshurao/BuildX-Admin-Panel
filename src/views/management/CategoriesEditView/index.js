@@ -30,7 +30,7 @@ function CategoriesEditView() {
 
   const getProducts = useCallback(() => {
     axios
-      .get('/api/management/products')
+      .get('/api/management/CategoriesEditView')
       .then((response) => {
         if (isMountedRef.current) {
           setProducts(response.data.products);
