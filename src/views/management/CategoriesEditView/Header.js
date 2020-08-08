@@ -3,33 +3,17 @@ import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
-  Box,
   Breadcrumbs,
   Button,
   Grid,
   Link,
-  SvgIcon,
   Typography,
   makeStyles
 } from '@material-ui/core';
-import {
-  PlusCircle as PlusCircleIcon,
-  Download as DownloadIcon,
-  Upload as UploadIcon
-} from 'react-feather';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
-const useStyles = makeStyles((theme) => ({
-  root: {},
-  action: {
-    marginBottom: theme.spacing(1),
-    '& + &': {
-      marginLeft: theme.spacing(1)
-    }
-  },
-  actionIcon: {
-    marginRight: theme.spacing(1)
-  }
+const useStyles = makeStyles(() => ({
+  root: {}
 }));
 
 function Header({ className, ...rest }) {
@@ -37,10 +21,10 @@ function Header({ className, ...rest }) {
 
   return (
     <Grid
-      container
-      spacing={3}
-      justify="space-between"
       className={clsx(classes.root, className)}
+      container
+      justify="space-between"
+      spacing={3}
       {...rest}
     >
       <Grid item>
@@ -68,53 +52,24 @@ function Header({ className, ...rest }) {
             variant="body1"
             color="textPrimary"
           >
-            Categories
+           Category
           </Typography>
         </Breadcrumbs>
         <Typography
           variant="h3"
           color="textPrimary"
         >
-          All Products
+          Create a new Category
         </Typography>
-        {/* <Box mt={2}>
-          <Button className={classes.action}>
-            <SvgIcon
-              fontSize="small"
-              className={classes.actionIcon}
-            >
-              <UploadIcon />
-            </SvgIcon>
-            Import
-          </Button>
-          <Button className={classes.action}>
-            <SvgIcon
-              fontSize="small"
-              className={classes.actionIcon}
-            >
-              <DownloadIcon />
-            </SvgIcon>
-            Export
-          </Button>
-        </Box> */}
       </Grid>
-      {/* <Grid item>
+      <Grid item>
         <Button
-          color="secondary"
-          variant="contained"
-          className={classes.action}
           component={RouterLink}
-          to="/app/management/products/create"
+          to="/app/management/products"
         >
-          <SvgIcon
-            fontSize="small"
-            className={classes.actionIcon}
-          >
-            <PlusCircleIcon />
-          </SvgIcon>
-          New Product
+          Cancel
         </Button>
-      </Grid> */}
+      </Grid>
     </Grid>
   );
 }

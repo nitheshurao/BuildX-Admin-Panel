@@ -1,18 +1,8 @@
-import React, {
-  useState,
-  useEffect,
-  useCallback
-} from 'react';
-import {
-  Box,
-  Container,
-  makeStyles
-} from '@material-ui/core';
-import axios from 'src/utils/axios';
+import React from 'react';
+import { Container, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
 import Header from './Header';
-import Results from './Results';
+import CategoryCreateForm from './CategoryCreateForm';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,44 +13,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function CategoriesEditView() {
+function CategoryCreateView() {
   const classes = useStyles();
-  const isMountedRef = useIsMountedRef();
-  const [products, setProducts] = useState(null);
-
-  const getProducts = useCallback(() => {
-    axios
-      .get('/api/management/CategoriesEditView')
-      .then((response) => {
-        if (isMountedRef.current) {
-          setProducts(response.data.products);
-        }
-      });
-  }, [isMountedRef]);
-
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
-
-  if (!products) {
-    return null;
-  }
 
   return (
     <Page
       className={classes.root}
-      title="Product List"
+      title="Product Create"
     >
-      <Container maxWidth={false}>
+      <Container maxWidth="lg">
         <Header />
-        {products && (
-          <Box mt={3}>
-            <Results products={products} />
-          </Box>
-        )}
+        <CategoryCreateForm />
       </Container>
     </Page>
   );
 }
 
-export default CategoriesEditView ;
+export default CategoryCreateView;

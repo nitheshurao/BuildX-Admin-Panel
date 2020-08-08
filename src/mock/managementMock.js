@@ -537,7 +537,7 @@ mock.onGet('app/management/CategoriesListView').reply(200, {
     },
     {
       id: uuidv4(),
-      name: 'Kate hLeopard Dress',
+      name: 'Kate Leopard Dress',
       image: '',
       isAvailable: false,
       isShippable: true,
@@ -607,7 +607,7 @@ mock.onGet('app/management/CategoriesListView').reply(200, {
   ]
 });
 //////
-mock.onGet('/api/management/orders').reply(200, {
+mock.onGet('/api/management1/orders').reply(200, {
   orders: [
     {
       id: uuidv4(),
