@@ -180,7 +180,7 @@ function Results({ className, category, ...rest }) {
                 
                 <TableCell />
                 <TableCell>
-                  Name
+                  Category
                 </TableCell>
               
                 <TableCell>
