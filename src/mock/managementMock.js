@@ -392,6 +392,34 @@ mock.onGet('/api/management/customers/1/logs').reply(200, {
   ]
 });
 
+
+mock.onGet('/api/management/CategoryList').reply(200, {
+  category: [
+    {
+      id: uuidv4(),
+      name: 'Dress',
+      
+      
+      attributes: ['Cotton'],
+    },
+    {
+      id: uuidv4(),
+      name: 'eee',
+      
+      
+      attributes: ['Cotton'],
+    },
+    {
+      id: uuidv4(),
+      name: 'Ec',
+      
+      category: 'dress',
+      attributes: ['Cotton'],
+    },
+  ]
+});
+
+
 mock.onGet('/api/management/products').reply(200, {
   products: [
     {
