@@ -397,24 +397,18 @@ mock.onGet('/api/management/CategoryList').reply(200, {
   category: [
     {
       id: uuidv4(),
-      name: 'Dress',
-      
-      
-      attributes: ['Cotton'],
+      name: 'A',
+      attributes: ['CategoryA'],
     },
     {
       id: uuidv4(),
-      name: 'eee',
-      
-      
-      attributes: ['Cotton'],
+      name: 'B',
+      attributes: ['CategoryB'],
     },
     {
       id: uuidv4(),
-      name: 'Ec',
-      
-      category: 'dress',
-      attributes: ['Cotton'],
+      name: 'C',
+      attributes: ['CategoryC'],
     },
   ]
 });

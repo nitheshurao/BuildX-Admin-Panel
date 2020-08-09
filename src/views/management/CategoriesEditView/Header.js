@@ -75,7 +75,7 @@ function Header({ className, ...rest }) {
           variant="h3"
           color="textPrimary"
         >
-          All Products
+          All Categories
         </Typography>
         {/* <Box mt={2}>
           <Button className={classes.action}>

@@ -11,7 +11,7 @@ const db = {
     avatar: '/static/images/avatars/avatar_6.png',
     bio: 'bio',
     canHire: false,
-    country: 'USA',
+    country: 'India',
     email: 'admin@buildx.in',
     username: 'admin',
     password: 'admin',
