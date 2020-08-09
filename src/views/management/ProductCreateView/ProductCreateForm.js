@@ -57,6 +57,7 @@ function ProductCreateForm({ className, ...rest }) {
     <Formik
       initialValues={{
         category: '',
+        subcategory: '',
         description: '',
         images: [],
         includesTaxes: false,
@@ -69,6 +70,7 @@ function ProductCreateForm({ className, ...rest }) {
       }}
       validationSchema={Yup.object().shape({
         category: Yup.string().max(255),
+        subcategory: Yup.string().max(255),
         description: Yup.string().max(5000),
         images: Yup.array(),
         includesTaxes: Yup.bool().required(),
@@ -225,6 +227,20 @@ function ProductCreateForm({ className, ...rest }) {
                         label="Product is taxable"
                       />
                     </Box>
+                    <Grid item xs={12} md={6}>
+                        <TextField
+                          error={Boolean(touched.salePrice && errors.salePrice)}
+                          fullWidth
+                          helperText={touched.salePrice && errors.salePrice}
+                          label="GST %"
+                          name="gstpercentage"
+                          type="number"
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          value={values.salePrice}
+                          variant="outlined"
+                        />
+                      </Grid>
                     <Box mt={2}>
                       <FormControlLabel
                         control={(
@@ -270,6 +286,27 @@ function ProductCreateForm({ className, ...rest }) {
                       </option>
                     ))}
                   </TextField>
+                  <Box mt={2}>
+                  <TextField
+                    fullWidth
+                    label="Subcategory"
+                    name="subcategory"
+                    onChange={handleChange}
+                    select
+                    SelectProps={{ native: true }}
+                    value={values.category}
+                    variant="outlined"
+                  >
+                    {categories.map((category) => (
+                      <option
+                        key={category.id}
+                        value={category.id}
+                      >
+                        {category.name}
+                      </option>
+                    ))}
+                  </TextField>
+                  </Box>
                   <Box mt={2}>
                     <TextField
                       error={Boolean(touched.productCode && errors.productCode)}

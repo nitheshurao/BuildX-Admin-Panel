@@ -345,6 +345,102 @@ function Results({ className, products, ...rest }) {
         
         </Box>
       </Box>
+      <Card>
+      <PerfectScrollbar>
+        <Box minWidth={1200}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                
+                <TableCell />
+                <TableCell>
+                  Subategory
+                </TableCell>
+              
+                <TableCell>
+                  Details
+                </TableCell>
+            
+                <TableCell align="right">
+                  Actions
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {paginatedProducts.map((category) => {
+                const isProductSelected = selectedProducts.includes(category.id);
+
+                return (
+                  <TableRow
+                    hover
+                    key={category.id}
+                    selected={isProductSelected}
+                  >
+                   
+                   
+                    <TableCell className={classes.imageCell}>
+                      {category.image ? (
+                        <img
+                          alt="Product"
+                          src={category.image}
+                          className={classes.image}
+                        />
+                      ) : (
+                        <Box
+                          p={2}
+                          bgcolor="background.dark"
+                        >
+                          <SvgIcon>
+                            <ImageIcon />
+                          </SvgIcon>
+                        </Box>
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      <Link
+                        variant="subtitle2"
+                        color="textPrimary"
+                        component={RouterLink}
+                        underline="none"
+                        to="#"
+                      >
+                        {category.name}
+                      </Link>
+                    </TableCell>
+                 
+                    <TableCell>
+                      {category.attributes.map((attr) => attr)}
+                    </TableCell>
+                   
+                    <TableCell align="right">
+                      <IconButton>
+                        <SvgIcon fontSize="small">
+                          <EditIcon />
+                        </SvgIcon>
+                      </IconButton>
+                      <IconButton>
+                        <SvgIcon fontSize="small">
+                          <ArrowRightIcon />
+                        </SvgIcon>
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+          <TablePagination
+            component="div"
+            count={filteredProducts.length}
+            onChangePage={handlePageChange}
+            onChangeRowsPerPage={handleLimitChange}
+            page={page}
+            rowsPerPage={limit}
+            rowsPerPageOptions={[5, 10, 25]}
+          />
+        </Box>
+      </PerfectScrollbar>
+      </Card>
       {enableBulkOperations && (
         <div className={classes.bulkOperations}>
           <div className={classes.bulkActions}>
