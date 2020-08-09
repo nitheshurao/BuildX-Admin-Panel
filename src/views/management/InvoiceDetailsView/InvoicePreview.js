@@ -81,7 +81,7 @@ function InvoicePreview({ invoice, className, ...rest }) {
                   Level 2, C, 442456
                   {' '}
                   <br />
-                  San Francisco, CA, USA
+                  San Francisco, CA, India
                 </Typography>
               </Grid>
               <Grid item>
@@ -103,7 +103,7 @@ function InvoicePreview({ invoice, className, ...rest }) {
                   variant="body1"
                   color="textPrimary"
                 >
-                  Email: accounts@devias.io
+                  Email: accounts@buildX.in
                   {' '}
                   <br />
                   Tel: (+40) 652 3456 23

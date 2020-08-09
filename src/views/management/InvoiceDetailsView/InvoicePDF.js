@@ -127,7 +127,7 @@ function InvoicePDF({ invoice }) {
               Level 2, C, 442456
             </Text>
             <Text style={styles.body1}>
-              San Francisco, CA, USA
+              San Francisco, CA, India
             </Text>
           </View>
           <View>
@@ -140,7 +140,7 @@ function InvoicePDF({ invoice }) {
           </View>
           <View>
             <Text style={styles.body1}>
-              Email: accounts@devias.io
+              Email: accounts@buildX.in
             </Text>
             <Text style={styles.body1}>
               Tel: (+40) 652 3456 23
