@@ -77,6 +77,7 @@ function Header({ className, ...rest }) {
         >
           All Categories
         </Typography>
+        
         {/* <Box mt={2}>
           <Button className={classes.action}>
             <SvgIcon

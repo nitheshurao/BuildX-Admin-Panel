@@ -107,8 +107,13 @@ function Routes() {
                   />
                    <Route
                   exact
-                  path="/app/management/CategoriesListView"
-                  component={lazy(() => import('src/views/management/CategoriesListView'))}
+                  path="/app/management/CategoryCreateView"
+                  component={lazy(() => import('src/views/management/CategoryCreateView'))}
+                  />
+                     <Route
+                  exact
+                  path="/app/management/SubCategoryCreateView"
+                  component={lazy(() => import('src/views/management/SubCategoryCreateView'))}
                   />
                    <Route
                   exact

@@ -116,11 +116,15 @@ const navConfig = [
           },
           {
             title: 'Add New Categories',
-            href: '/app/management/CategoriesEditView',
+            href: '/app/management/CategoryCreateView',
           },
           {
             title: 'Subcategories',
             href: '/app/management/SubCategories',
+          },
+          {
+            title: 'Add New SubCategories',
+            href: '/app/management/SubCategoryCreateView',
           }
   
         ]
@@ -134,14 +138,13 @@ const navConfig = [
         items: [
           {
             title: 'List Orders',
-            href: '/app/reports/dashboard',
-          }//,
-          // {
-          //   title: 'View Order',
-          //   // href: '/app/management/orders/1'
-          //   href: '/app/reports/dashboard',
+            href: '/app/management/orders',
+          },
+           {
+             title: 'View Order',
+              href: '/app/management/orders/1'
 
-          // }
+           }
         ]
       },
       // {

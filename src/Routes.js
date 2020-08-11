@@ -102,8 +102,13 @@ const routesConfig = [
       },
       {
         exact: true,
-        path: '/app/management/CategoriesEditView',
-        component: lazy(() => import('src/views/management/CategoriesEditView'))
+        path: '/app/management/CategoryCreateView',
+        component: lazy(() => import('src/views/management/CategoryCreateView'))
+      },
+      {
+        exact: true,
+        path: '/app/management/SubCategoryCreateView',
+        component: lazy(() => import('src/views/management/SubCategoryCreateView'))
       },
       {
         exact: true,
