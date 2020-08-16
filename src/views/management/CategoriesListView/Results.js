@@ -132,7 +132,19 @@ function Results({ className, category, ...rest }) {
   
   
   
+  const handleSelectAllProducts = (event) => {
+    setSelectedProducts(event.target.checked
+      ? category.map((product) => product.id)
+      : []);
+  };
 
+  const handleSelectOneProduct = (event, productId) => {
+    if (!selectedProducts.includes(productId)) {
+      setSelectedProducts((prevSelected) => [...prevSelected, productId]);
+    } else {
+      setSelectedProducts((prevSelected) => prevSelected.filter((id) => id !== productId));
+    }
+  };
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
@@ -145,7 +157,9 @@ function Results({ className, category, ...rest }) {
   const filteredProducts = applyFilters(category, query);
   const paginatedProducts = applyPagination(filteredProducts, page, limit);
   const enableBulkOperations = selectedProducts.length > 0;
- 
+  const selectedSomeProducts = selectedProducts.length > 0 && selectedProducts.length < category.length;
+  const selectedAllProducts = selectedProducts.length === category.length;
+
 
   return (
     <Card
@@ -163,12 +177,7 @@ function Results({ className, category, ...rest }) {
             >
               Delete
             </Button>
-            <Button
-              variant="outlined"
-              className={classes.bulkAction}
-            >
-              Edit
-            </Button>
+           
           </div>
         </div>
       )}
@@ -177,7 +186,13 @@ function Results({ className, category, ...rest }) {
           <Table>
             <TableHead>
               <TableRow>
-                
+              <TableCell padding="checkbox">
+                <Checkbox
+                    checked={selectedAllProducts}
+                  indeterminate={selectedSomeProducts}
+                  onChange={handleSelectAllProducts}
+                  />
+                </TableCell>
                 <TableCell />
                 <TableCell>
                   Category
@@ -202,7 +217,13 @@ function Results({ className, category, ...rest }) {
                     key={category.id}
                     selected={isProductSelected}
                   >
-                   
+                   <TableCell padding="checkbox">
+                      <Checkbox
+                        checked={isProductSelected}
+                        onChange={(event) => handleSelectOneProduct(event, category.id)}
+                        value={isProductSelected}
+                      />
+                    </TableCell>
                    
                     <TableCell className={classes.imageCell}>
                       {category.image ? (

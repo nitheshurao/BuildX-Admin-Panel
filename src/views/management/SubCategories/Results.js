@@ -346,11 +346,36 @@ function Results({ className, products, ...rest }) {
         </Box>
       </Box>
       <Card>
+      {enableBulkOperations && (
+        <div className={classes.bulkOperations}>
+          <div className={classes.bulkActions}>
+            <Checkbox
+              checked={selectedAllProducts}
+              indeterminate={selectedSomeProducts}
+              onChange={handleSelectAllProducts}
+            />
+            <Button
+              variant="outlined"
+              className={classes.bulkAction}
+            >
+              Delete
+            </Button>
+            
+          </div>
+        </div>
+      )}
       <PerfectScrollbar>
         <Box minWidth={1200}>
           <Table>
             <TableHead>
               <TableRow>
+              <TableCell padding="checkbox">
+                  <Checkbox
+                    checked={selectedAllProducts}
+                    indeterminate={selectedSomeProducts}
+                    onChange={handleSelectAllProducts}
+                  />
+                </TableCell>
                 
                 <TableCell />
                 <TableCell>
@@ -376,7 +401,13 @@ function Results({ className, products, ...rest }) {
                     key={category.id}
                     selected={isProductSelected}
                   >
-                   
+                   <TableCell padding="checkbox">
+                      <Checkbox
+                        checked={isProductSelected}
+                        onChange={(event) => handleSelectOneProduct(event, category.id)}
+                        value={isProductSelected}
+                      />
+                    </TableCell>
                    
                     <TableCell className={classes.imageCell}>
                       {category.image ? (

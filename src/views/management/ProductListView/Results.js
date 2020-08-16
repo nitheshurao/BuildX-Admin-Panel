@@ -440,12 +440,7 @@ function Results({ className, products, ...rest }) {
             >
               Delete
             </Button>
-            <Button
-              variant="outlined"
-              className={classes.bulkAction}
-            >
-              Edit
-            </Button>
+            
           </div>
         </div>
       )}
