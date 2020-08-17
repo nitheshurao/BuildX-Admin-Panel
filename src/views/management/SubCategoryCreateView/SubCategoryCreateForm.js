@@ -257,7 +257,11 @@ function Results({ className, products, ...rest }) {
             container
             spacing={3}
           >
-            
+            <Grid
+              item
+              xs={12}
+              lg={8}
+            >
               <Card>
                 <CardContent>
                 <TextField
@@ -280,7 +284,10 @@ function Results({ className, products, ...rest }) {
             ))}
           </TextField>
           
-        
+          <Box
+                    mt={3}
+                    mb={1}
+                  >
                   <TextField
                     error={Boolean(touched.name && errors.name)}
                     fullWidth
@@ -292,7 +299,7 @@ function Results({ className, products, ...rest }) {
                     value={values.name}
                     variant="outlined"
                   />
-                   
+                    </Box>
                   <Box
                     mt={3}
                     mb={1}
@@ -334,7 +341,7 @@ function Results({ className, products, ...rest }) {
            
             </Grid>
            
-     
+          </Grid>
           {errors.submit && (
             <Box mt={3}>
               <FormHelperText error>
