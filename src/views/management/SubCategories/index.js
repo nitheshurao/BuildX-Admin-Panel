@@ -8,7 +8,7 @@ import {
   Container,
   makeStyles
 } from '@material-ui/core';
-import axios from 'src/utils/axios';
+import axios from 'axios';
 import Page from 'src/components/Page';
 import useIsMountedRef from 'src/hooks/useIsMountedRef';
 import Header from './Header';
@@ -30,12 +30,18 @@ function SubCategories() {
 
   const getProducts = useCallback(() => {
     axios
-      .get('/api/management/products')
+      .get('http://15.207.7.54:8080/sub-category/fetch-by-filter')
       .then((response) => {
+        console.log('----------response-----------')
+        console.log(response)
         if (isMountedRef.current) {
-          setProducts(response.data.products);
+          setProducts(response.data.data.category_items);
         }
-      });
+      })
+      .catch(err => {
+        console.log('----------err-----------')
+        console.log(err)
+      })
   }, [isMountedRef]);
 
   useEffect(() => {

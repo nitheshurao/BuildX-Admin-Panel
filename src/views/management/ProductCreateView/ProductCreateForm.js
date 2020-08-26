@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -88,12 +89,18 @@ function ProductCreateForm({ className, ...rest }) {
       }) => {
         try {
           // Do api call
+          axios
+    .post('http://15.207.7.54:8080/products/register')
+    .then((response) => {
+      console.log('...response')
+      
+    })
           setStatus({ success: true });
           setSubmitting(false);
           enqueueSnackbar('Product Created', {
             variant: 'success'
           });
-          history.push('/app/products');
+          history.push('http://15.207.7.54:8080/products/register');
         } catch (err) {
           setErrors({ submit: err.message });
           setStatus({ success: false });

@@ -1,20 +1,12 @@
-import React, {
-  useState,
-  useEffect,
-  useCallback
-} from 'react';
-import {
-  Box,
-  Container,
-  makeStyles
-} from '@material-ui/core';
-import axios from 'src/utils/axios';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Box, Container, makeStyles } from '@material-ui/core';
+import instance from 'src/utils/axios';
 import Page from 'src/components/Page';
 import useIsMountedRef from 'src/hooks/useIsMountedRef';
 import Header from './Header';
 import Results from './Results';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     minHeight: '100%',
@@ -26,36 +18,40 @@ const useStyles = makeStyles((theme) => ({
 function ProductListView() {
   const classes = useStyles();
   const isMountedRef = useIsMountedRef();
-  const [category, setCategory] = useState(null);
+  const [categories, setcategories] = useState(null);
 
-  const getCategory = useCallback(() => {
-    axios
-      .get('/api/management/CategoryList')
-      .then((response) => {
+  const getcategories = useCallback(() => {
+    instance
+      .get('fetch-by-filter')
+      .then(response => {
+        console.log('----------response-----------');
+        // console.log(response.data.categories)
+        console.log(response.data.data.categories);
         if (isMountedRef.current) {
-          setCategory(response.data.category);
+          setcategories(response.data.data.categories);
         }
+      })
+      .catch(err => {
+        console.log('----------err-----------');
+        console.log(err);
       });
   }, [isMountedRef]);
 
   useEffect(() => {
-    getCategory();
-  }, [getCategory]);
+    getcategories();
+  }, [getcategories]);
 
-  if (!category) {
+  if (!categories) {
     return null;
   }
 
   return (
-    <Page
-      className={classes.root}
-      title="Product List"
-    >
+    <Page className={classes.root} title="category List">
       <Container maxWidth={false}>
         <Header />
-        {category && (
+        {categories && (
           <Box mt={3}>
-            <Results category={category} />
+            <Results categories={categories} />
           </Box>
         )}
       </Container>

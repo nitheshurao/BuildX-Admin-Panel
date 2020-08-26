@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import * as Yup from 'yup';
+import axios from 'axios';
 import { Formik } from 'formik';
 import { useSnackbar } from 'notistack';
 import {
@@ -24,20 +25,7 @@ import {
 import QuillEditor from 'src/components/QuillEditor';
 import FilesDropzone from 'src/components/FilesDropzone';
 
-const categories = [
-  {
-    id: 'shirts',
-    name: 'Shirts'
-  },
-  {
-    id: 'phones',
-    name: 'Phones'
-  },
-  {
-    id: 'cars',
-    name: 'Cars'
-  }
-];
+
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -76,24 +64,36 @@ function ProductCreateForm({ className, ...rest }) {
         includesTaxes: Yup.bool().required(),
         isTaxable: Yup.bool().required(),
         name: Yup.string().max(255).required(),
-        price: Yup.number().min(0).required(),
-        productCode: Yup.string().max(255),
-        productSku: Yup.string().max(255),
-        salePrice: Yup.number().min(0)
+       
       })}
-      onSubmit={async (values, {
+      onSubmit={async (values ={
+        name:this.name,
+        
+
+
+      } , {
         setErrors,
         setStatus,
-        setSubmitting
+        setSubmitting = () => {
+          history.push('/app/management/CategoryCreateView');
+        },
       }) => {
         try {
+          console.log('...try...')
+          axios
+          .post('http://15.207.7.54:8080/category/register')
+            .then((res) => {console.log(' ...res');
+        console.log(res.data)  } )
           // Do api call
           setStatus({ success: true });
           setSubmitting(false);
           enqueueSnackbar('Product Created', {
             variant: 'success'
           });
-          history.push('/app/products');
+          history.push('http://15.207.7.54:8080/products/register')
+          .then((res) => {
+console.log(' ...res');
+              console.log(res.data) } )
         } catch (err) {
           setErrors({ submit: err.message });
           setStatus({ success: false });
@@ -105,7 +105,7 @@ function ProductCreateForm({ className, ...rest }) {
         errors,
         handleBlur,
         handleChange,
-        handleSubmit,
+        handleSubmit ,
         isSubmitting,
         setFieldValue,
         touched,
@@ -179,60 +179,7 @@ function ProductCreateForm({ className, ...rest }) {
               </Box>
            
             </Grid>
-            <Grid
-              item
-              xs={12}
-              lg={4}
-            >
-              <Card>
-                <CardHeader title="Organize" />
-                <Divider />
-                <CardContent>
-                  <TextField
-                    fullWidth
-                    label="Category"
-                    name="category"
-                    onChange={handleChange}
-                    select
-                    SelectProps={{ native: true }}
-                    value={values.category}
-                    variant="outlined"
-                  >
-                    {categories.map((category) => (
-                      <option
-                        key={category.id}
-                        value={category.id}
-                      >
-                        {category.name}
-                      </option>
-                    ))}
-                  </TextField>
-                  <Box mt={2}>
-                  <TextField
-                    fullWidth
-                    label="Subcategory"
-                    name="subcategory"
-                    onChange={handleChange}
-                    select
-                    SelectProps={{ native: true }}
-                    value={values.category}
-                    variant="outlined"
-                  >
-                    {categories.map((category) => (
-                      <option
-                        key={category.id}
-                        value={category.id}
-                      >
-                        {category.name}
-                      </option>
-                    ))}
-                  </TextField>
-                  </Box>
-                
-                 
-                </CardContent>
-              </Card>
-            </Grid>
+            
           </Grid>
           {errors.submit && (
             <Box mt={3}>

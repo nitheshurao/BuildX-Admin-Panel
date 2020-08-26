@@ -8,7 +8,7 @@ import {
   Container,
   makeStyles
 } from '@material-ui/core';
-import axios from 'src/utils/axios';
+import axios from 'axios';
 import Page from 'src/components/Page';
 import useIsMountedRef from 'src/hooks/useIsMountedRef';
 import Header from './Header';
@@ -30,13 +30,21 @@ function ProductListView() {
 
   const getProducts = useCallback(() => {
     axios
-      .get('/api/management/products')
-      .then((response) => {
-        if (isMountedRef.current) {
-          setProducts(response.data.products);
+      .get(' http://15.207.7.54:8080/category/fetch-by-filter')
+    .then((response) => {
+      // console.log(response.data.category_items)
+      console.log('----------response-----------')
+     // console.log(response.data.categories)
+        console.log(response)
+      if (isMountedRef.current) {
+          setProducts(response.data.data.category_items);
         }
-      });
-  }, [isMountedRef]);
+      }).catch(err => {
+        console.log('----------err-----------')
+        console.log(err)
+    })
+}, [isMountedRef]);
+
 
   useEffect(() => {
     getProducts();
@@ -55,7 +63,7 @@ function ProductListView() {
         <Header />
         {products && (
           <Box mt={3}>
-            <Results products={products} />
+            <Results category_items={products} />
           </Box>
         )}
       </Container>

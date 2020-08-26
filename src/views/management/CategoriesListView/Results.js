@@ -31,8 +31,6 @@ import {
 } from 'react-feather';
 import Label from 'src/components/Label';
 
-
-
 const avalabilityOptions = [
   {
     id: 'all',
@@ -48,39 +46,13 @@ const avalabilityOptions = [
   }
 ];
 
-const sortOptions = [
-  {
-    value: 'updatedAt|desc',
-    label: 'Last update (newest first)'
-  },
-  {
-    value: 'updatedAt|asc',
-    label: 'Last update (oldest first)'
-  },
-  {
-    value: 'createdAt|desc',
-    label: 'Creation date (newest first)'
-  },
-  {
-    value: 'createdAt|asc',
-    label: 'Creation date (oldest first)'
-  }
-];
-
-
-
-
-
-function applyFilters(category, query ) {
-  return category.filter((category) => {
+function applyFilters(categories, query) {
+  return categories.filter(categories => {
     let matches = true;
 
-    if (query && !category.name.toLowerCase().includes(query.toLowerCase())) {
+    if (query && !categories.name.toLowerCase().includes(query.toLowerCase())) {
       matches = false;
     }
-
-    
-
 
     return matches;
   });
@@ -90,7 +62,7 @@ function applyPagination(customers, page, limit) {
   return customers.slice(page * limit, page * limit + limit);
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {},
   bulkOperations: {
     position: 'relative'
@@ -123,61 +95,52 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Results({ className, category, ...rest }) {
+function Results({ className, categories, ...rest }) {
   const classes = useStyles();
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(10);
   const [query, setQuery] = useState('');
-  
-  
-  
-  const handleSelectAllProducts = (event) => {
-    setSelectedProducts(event.target.checked
-      ? category.map((product) => product.id)
-      : []);
+
+  const handleSelectAllProducts = event => {
+    setSelectedProducts(
+      event.target.checked ? categories.map(product => product.id) : []
+    );
   };
 
   const handleSelectOneProduct = (event, productId) => {
     if (!selectedProducts.includes(productId)) {
-      setSelectedProducts((prevSelected) => [...prevSelected, productId]);
+      setSelectedProducts(prevSelected => [...prevSelected, productId]);
     } else {
-      setSelectedProducts((prevSelected) => prevSelected.filter((id) => id !== productId));
+      setSelectedProducts(prevSelected =>
+        prevSelected.filter(id => id !== productId)
+      );
     }
   };
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
 
-  const handleLimitChange = (event) => {
+  const handleLimitChange = event => {
     setLimit(event.target.value);
   };
 
   // Usually query is done on backend with indexing solutions
-  const filteredProducts = applyFilters(category, query);
+  const filteredProducts = applyFilters(categories, query);
   const paginatedProducts = applyPagination(filteredProducts, page, limit);
   const enableBulkOperations = selectedProducts.length > 0;
-  const selectedSomeProducts = selectedProducts.length > 0 && selectedProducts.length < category.length;
-  const selectedAllProducts = selectedProducts.length === category.length;
-
+  const selectedSomeProducts =
+    selectedProducts.length > 0 && selectedProducts.length < categories.length;
+  const selectedAllProducts = selectedProducts.length === categories.length;
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
-      
+    <Card className={clsx(classes.root, className)} {...rest}>
       {enableBulkOperations && (
         <div className={classes.bulkOperations}>
           <div className={classes.bulkActions}>
-           
-            <Button
-              variant="outlined"
-              className={classes.bulkAction}
-            >
+            <Button variant="outlined" className={classes.bulkAction}>
               Delete
             </Button>
-           
           </div>
         </div>
       )}
@@ -186,57 +149,52 @@ function Results({ className, category, ...rest }) {
           <Table>
             <TableHead>
               <TableRow>
-              <TableCell padding="checkbox">
-                <Checkbox
+                <TableCell padding="checkbox">
+                  <Checkbox
                     checked={selectedAllProducts}
-                  indeterminate={selectedSomeProducts}
-                  onChange={handleSelectAllProducts}
+                    indeterminate={selectedSomeProducts}
+                    onChange={handleSelectAllProducts}
                   />
                 </TableCell>
                 <TableCell />
-                <TableCell>
-                  Category
-                </TableCell>
-              
-                <TableCell>
-                  Details
-                </TableCell>
-            
-                <TableCell align="right">
-                  Actions
-                </TableCell>
+                <TableCell>Category</TableCell>
+
+                <TableCell>Details</TableCell>
+
+                <TableCell align="right">Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {paginatedProducts.map((category) => {
-                const isProductSelected = selectedProducts.includes(category.id);
+              {paginatedProducts.map(categories => {
+                const isProductSelected = selectedProducts.includes(
+                  categories.id
+                );
 
                 return (
                   <TableRow
                     hover
-                    key={category.id}
+                    key={categories.id}
                     selected={isProductSelected}
                   >
-                   <TableCell padding="checkbox">
+                    <TableCell padding="checkbox">
                       <Checkbox
                         checked={isProductSelected}
-                        onChange={(event) => handleSelectOneProduct(event, category.id)}
+                        onChange={event =>
+                          handleSelectOneProduct(event, categories.id)
+                        }
                         value={isProductSelected}
                       />
                     </TableCell>
-                   
+
                     <TableCell className={classes.imageCell}>
-                      {category.image ? (
+                      {categories.image ? (
                         <img
                           alt="Product"
-                          src={category.image}
+                          src={categories.image}
                           className={classes.image}
                         />
                       ) : (
-                        <Box
-                          p={2}
-                          bgcolor="background.dark"
-                        >
+                        <Box p={2} bgcolor="background.dark">
                           <SvgIcon>
                             <ImageIcon />
                           </SvgIcon>
@@ -251,14 +209,11 @@ function Results({ className, category, ...rest }) {
                         underline="none"
                         to="#"
                       >
-                        {category.name}
+                        {categories.name}
                       </Link>
                     </TableCell>
-                 
-                    <TableCell>
-                      {category.attributes.map((attr) => attr)}
-                    </TableCell>
-                   
+                    <TableCell>{categories.description}</TableCell>
+
                     <TableCell align="right">
                       <IconButton>
                         <SvgIcon fontSize="small">

@@ -577,7 +577,7 @@ Results.propTypes = {
 };
 
 Results.defaultProps = {
-  products: []
+  category_items: []
 };
 
 export default Results;
