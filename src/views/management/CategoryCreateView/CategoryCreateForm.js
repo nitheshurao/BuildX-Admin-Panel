@@ -80,7 +80,7 @@ function ProductCreateForm({ className, ...rest }) {
           console.log('...try...')
           axios
           .post('http://15.207.7.54:8080/category/register')
-            .then((res) => {console.log(' ...res');
+          .then((res) => {console.log(' ...res');
         console.log(res.data)  } )
           // Do api call
           setStatus({ success: true });
@@ -89,8 +89,7 @@ function ProductCreateForm({ className, ...rest }) {
             variant: 'success'
           });
         
-          history.push('/app/management/CategoryCreateView');
-       
+          history.push('/app/management/CategoryCreateView')
           .then((res) => {
 console.log(' ...res');
               console.log(res.data) } )
