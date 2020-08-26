@@ -74,9 +74,7 @@ function ProductCreateForm({ className, ...rest }) {
       } , {
         setErrors,
         setStatus,
-        setSubmitting = () => {
-          history.push('/app/management/CategoryCreateView');
-        },
+        setSubmitting 
       }) => {
         try {
           console.log('...try...')
@@ -90,7 +88,9 @@ function ProductCreateForm({ className, ...rest }) {
           enqueueSnackbar('Product Created', {
             variant: 'success'
           });
-          history.push('http://15.207.7.54:8080/products/register')
+        
+          history.push('/app/management/CategoryCreateView');
+       
           .then((res) => {
 console.log(' ...res');
               console.log(res.data) } )
