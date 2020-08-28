@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { Formik } from 'formik';
 import { useSnackbar } from 'notistack';
+import { createCategory } from 'src/actions/categoryActions';
 import {
   Box,
   Button,
@@ -69,25 +70,15 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
       onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
         try {
           console.log('...try...');
-          await dispatch((values.name, values.description));
+          await dispatch(createCategory(values.name, values.description));
           onSubmitSuccess();
-          console.log('...try...');
           
-          axios.post('http://15.207.7.54:8080/category/register').then(res => {
-            console.log(' ...res');
-            console.log(res.data);
-          });
-          // Do api call
-          setStatus({ success: true });
-          setSubmitting(false);
-          enqueueSnackbar('Product Created', {
-            variant: 'success'
-          });
+         
 
-          history.push(' http://15.207.7.54:8080/sub-category/register').then(res => {
-            console.log(' ...res');
-            console.log(res.data);
-          });
+          // history.push(' http://15.207.7.54:8080/sub-category/register').then(res => {
+          //   console.log(' ...res');
+          //   console.log(res.data);
+          // });
         } catch (err) {
           setErrors({ submit: err.message });
           setStatus({ success: false });
