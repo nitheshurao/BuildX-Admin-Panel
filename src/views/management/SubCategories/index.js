@@ -33,9 +33,9 @@ function SubCategories() {
       .get('http://15.207.7.54:8080/sub-category/fetch-by-filter')
       .then((response) => {
         console.log('----------response-----------')
-        console.log(response)
+        console.log(response.data.data.subCategory)
         if (isMountedRef.current) {
-          setProducts(response.data.data.category_items);
+          setProducts(response.data.data.subCategory);
         }
       })
       .catch(err => {

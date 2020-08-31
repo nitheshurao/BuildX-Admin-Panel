@@ -439,9 +439,7 @@ function Results({ className, products, ...rest }) {
                       </Link>
                     </TableCell>
                  
-                    <TableCell>
-                      {category.attributes.map((attr) => attr)}
-                    </TableCell>
+                    
                    
                     <TableCell align="right">
                       <IconButton>
