@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Box, Container, makeStyles } from '@material-ui/core';
-import instance from 'src/utils/axios';
+import axios from 'axios';
 import Page from 'src/components/Page';
 import useIsMountedRef from 'src/hooks/useIsMountedRef';
 import Header from './Header';
@@ -21,8 +21,8 @@ function ProductListView() {
   const [categories, setcategories] = useState(null);
 
   const getcategories = useCallback(() => {
-    instance
-      .get('fetch-by-filter')
+    axios
+      .get(' http://15.207.7.54:8080/category/fetch-by-filter')
       .then(response => {
         console.log('----------response-----------');
         // console.log(response.data.categories)
