@@ -17,6 +17,16 @@ import {
 } from '@material-ui/core';
 import wait from 'src/utils/wait';
 
+const UserOptions = [
+  {
+    id: 'Application',
+    name: 'Application'
+  },
+  {
+    id: 'Portail',
+    name: 'Portail'
+  }
+];
 const useStyles = makeStyles(() => ({
   root: {}
 }));
@@ -90,7 +100,30 @@ function CustomerCreateForm({
               <Grid
                 container
                 spacing={3}
-              >
+                
+              >    <Grid
+              item
+              xs={12}
+              lg={8}
+            >  <TextField
+              className={classes.categoryField}
+              label="Category"
+              name="category"
+            //  onChange={handleCategoryChange}
+              select
+              SelectProps={{ native: true }}
+           //   value={filters.category || 'all'}
+              variant="outlined"
+            >
+              {UserOptions.map((UserOptions) => (
+                <option
+                  key={UserOptions.id}
+                  value={UserOptions.id}
+                >
+                  {UserOptions.name}
+                </option>
+              ))}
+            </TextField></Grid> 
                 <Grid
                   item
                   md={6}
@@ -114,7 +147,7 @@ function CustomerCreateForm({
                   item
                   md={6}
                   xs={12}
-                >
+                >   
                   <TextField
                     error={Boolean(touched.fullName && errors.fullName)}
                     fullWidth

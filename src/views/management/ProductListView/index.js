@@ -32,10 +32,10 @@ function ProductListView() {
     axios
       .get(' http://15.207.7.54:8080/products/fetch-by-filter')
     .then((response) => {
-      // console.log(response.data.category_items)
+       
       console.log('----------response-----------')
-     // console.log(response.data.categories)
-        console.log(response.data.products)
+     
+        console.log(response.data.data.products)
       if (isMountedRef.current) {
           setProducts(response.data.data.products);
         }
@@ -63,7 +63,7 @@ function ProductListView() {
         <Header />
         {products && (
           <Box mt={3}>
-            <Results category_items={products} />
+            <Results products={products} />
           </Box>
         )}
       </Container>
