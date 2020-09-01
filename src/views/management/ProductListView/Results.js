@@ -114,32 +114,32 @@ function getInventoryLabel(inventoryType) {
 }
 
 function applyFilters(products, query, filters) {
-  return products.filter((product) => {
+  return products.filter((products) => {
     let matches = true;
 
-    if (query && !product.name.toLowerCase().includes(query.toLowerCase())) {
+    if (query && !products.name.toLowerCase().includes(query.toLowerCase())) {
       matches = false;
     }
 
-    if (filters.category && product.category !== filters.category) {
+    if (filters.category && products.category !== filters.category) {
       matches = false;
     }
 
     if (filters.availability) {
-      if (filters.availability === 'available' && !product.isAvailable) {
+      if (filters.availability === 'available' && !products.isAvailable) {
         matches = false;
       }
 
-      if (filters.availability === 'unavailable' && product.isAvailable) {
+      if (filters.availability === 'unavailable' && products.isAvailable) {
         matches = false;
       }
     }
 
-    if (filters.inStock && !['in_stock', 'limited'].includes(product.inventoryType)) {
+    if (filters.inStock && !['in_stock', 'limited'].includes(products.inventoryType)) {
       matches = false;
     }
 
-    if (filters.isShippable && !product.isShippable) {
+    if (filters.isShippable && !products.isShippable) {
       matches = false;
     }
 
@@ -304,7 +304,7 @@ function Results({ className, products, ...rest }) {
   };
 
   // Usually query is done on backend with indexing solutions
-  const filteredProducts = applyFilters(products, query, filters);
+  const filteredProducts = applyFilters(products, query);
   const paginatedProducts = applyPagination(filteredProducts, page, limit);
   const enableBulkOperations = selectedProducts.length > 0;
   const selectedSomeProducts = selectedProducts.length > 0 && selectedProducts.length < products.length;
@@ -479,7 +479,7 @@ function Results({ className, products, ...rest }) {
             </TableHead>
             <TableBody>
               {paginatedProducts.map((product) => {
-                const isProductSelected = selectedProducts.includes(product.id);
+                const isProductSelected = selectedProducts.includes(products.id);
 
                 return (
                   <TableRow
