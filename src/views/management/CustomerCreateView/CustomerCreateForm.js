@@ -16,15 +16,16 @@ import {
   makeStyles
 } from '@material-ui/core';
 import wait from 'src/utils/wait';
+import { registerUser } from 'src/actions/userActions';
 
 const UserOptions = [
   {
     id: 'Application',
-    name: 'Application'
+    name: 'Application User'
   },
   {
-    id: 'Portail',
-    name: 'Portail'
+    id: 'Portal',
+    name: 'Portal User'
   }
 ];
 const useStyles = makeStyles(() => ({
@@ -62,7 +63,19 @@ function CustomerCreateForm({
         setSubmitting
       }) => {
         try {
+
           // Make API request
+          try {
+            await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
+            onSubmitSuccess();
+          } catch (error) {
+            const message = (error.response && error.response.data.message) || 'Something went wrong';
+  
+            setStatus({ success: false });
+            setErrors({ submit: message });
+            setSubmitting(false);
+          }
+
           await wait(500);
           resetForm();
           setStatus({ success: true });
@@ -107,8 +120,8 @@ function CustomerCreateForm({
               lg={8}
             >  <TextField
               className={classes.categoryField}
-              label="Category"
-              name="category"
+              label="User Type:"
+              name="UserOptions"
             //  onChange={handleCategoryChange}
               select
               SelectProps={{ native: true }}
@@ -248,7 +261,7 @@ function CustomerCreateForm({
                   />
                 </Grid>
                 <Grid item />
-               <Grid
+               {/* <Grid
                   item
                   md={6}
                   xs={12}
@@ -275,7 +288,7 @@ function CustomerCreateForm({
                     onChange={handleChange}
                     value={values.verified}
                   />
-                </Grid>
+                </Grid> */}
                 {/* <Grid
                   item
                   md={6}
