@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+
 import { useSnackbar } from 'notistack';
 import {
   Box,
@@ -17,6 +19,7 @@ import {
 } from '@material-ui/core';
 import wait from 'src/utils/wait';
 import { registerUser } from 'src/actions/userActions';
+const dispatch = useDispatch();
 
 const UserOptions = [
   {
@@ -67,7 +70,7 @@ function CustomerCreateForm({
           // Make API request
           try {
             await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
-            onSubmitSuccess();
+           // onSubmitSuccess();
           } catch (error) {
             const message = (error.response && error.response.data.message) || 'Something went wrong';
   
