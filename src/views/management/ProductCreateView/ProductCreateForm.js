@@ -25,20 +25,20 @@ import {
 import QuillEditor from 'src/components/QuillEditor';
 import FilesDropzone from 'src/components/FilesDropzone';
 
-const categories = [
-  {
-    id: 'shirts',
-    name: 'Shirts'
-  },
-  {
-    id: 'phones',
-    name: 'Phones'
-  },
-  {
-    id: 'cars',
-    name: 'Cars'
-  }
-];
+// const categories = [
+//   {
+//     id: 'shirts',
+//     name: 'Shirts'
+//   },
+//   {
+//     id: 'phones',
+//     name: 'Phones'
+//   },
+//   {
+//     id: 'cars',
+//     name: 'Cars'
+//   }
+// ];
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -265,7 +265,7 @@ function ProductCreateForm({ className, ...rest }) {
                 </Card>
               </Box>
             </Grid>
-            <Grid
+            {/* <Grid
               item
               xs={12}
               lg={4}
@@ -341,8 +341,8 @@ function ProductCreateForm({ className, ...rest }) {
                     />
                   </Box>
                 </CardContent>
-              </Card>
-            </Grid>
+              </Card> */}
+            {/* </Grid> */}
           </Grid>
           {errors.submit && (
             <Box mt={3}>

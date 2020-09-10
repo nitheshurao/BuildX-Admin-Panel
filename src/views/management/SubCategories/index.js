@@ -26,16 +26,17 @@ const useStyles = makeStyles((theme) => ({
 function SubCategories() {
   const classes = useStyles();
   const isMountedRef = useIsMountedRef();
-  const [products, setProducts] = useState(null);
+  const [subCategory, setsubCategory] = useState(null);
 
-  const getProducts = useCallback(() => {
+  const getsubCategory = useCallback(() => {
     axios
       .get('http://15.207.7.54:8080/sub-category/fetch-by-filter')
       .then((response) => {
         console.log('----------response-----------')
+        console.log(response)
         console.log(response.data.data.subCategory)
         if (isMountedRef.current) {
-          setProducts(response.data.data.subCategory);
+          setsubCategory(response.data.data.subCategory);
         }
       })
       .catch(err => {
@@ -43,11 +44,11 @@ function SubCategories() {
         console.log(err);
       })
   }, [isMountedRef]);
-   useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+  useEffect(() => {
+    getsubCategory();
+  }, [getsubCategory]);
 
-  if (!products) {
+  if (!subCategory) {
     return null;
   }
 
@@ -61,9 +62,11 @@ function SubCategories() {
     >
       <Container maxWidth={false}>
         <Header />
-        {products && (
+        {subCategory && (
           <Box mt={3}>
-            <Results products={products}  />
+            <Results products={subCategory} />
+
+
           </Box>
         )}
       </Container>

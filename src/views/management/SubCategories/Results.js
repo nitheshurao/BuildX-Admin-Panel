@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState , useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -36,60 +36,38 @@ import { reducer } from 'redux-form';
 import useIsMountedRef from 'src/hooks/useIsMountedRef'
 import { DELETE_CARD } from 'src/actions/kanbanActions';
 
-const isMountedRef = useIsMountedRef();
-
-const [categories, setcategories] = useState(null);
-const getcategories = useCallback(() => {
-  axios
-    .get(' http://15.207.7.54:8080/category/fetch-by-filter')
-    .then(response => {
-      console.log('----------response-----------');
-      // console.log(response.data.categories)
-      console.log(response.data.data.categories);
-      if (isMountedRef.current) {
-        setcategories(response.data.data.categories);
-      }
-    })
-    .catch(err => {
-      console.log('----------err-----------');
-      console.log(err);
-    });
-}, [isMountedRef]);
-//
-useEffect(() => {
-  getcategories();
-}, [getcategories]);
 
 
-//
-function categoryOptions(categories){
-  return[{id: categories.id,
-    name:categories.name}]
-}
-
+// function categoryOptions(categories) {
+//   return [{
+//     id: categories.id,
+//     name: categories.name
+//   }]
+// }
+ 
 // const categoryOptions = 
-//  [
-//   {
-//     id: 'all',
-//     name: 'All'
-//   },
-//   {
-//     id: 'dress',
-//     name: 'Dress'
-//   },
-//   {
-//     id: 'jewelry',
-//     name: 'Jewelry'
-//   },
-//   {
-//     id: 'blouse',
-//     name: 'Blouse'
-//   },
-//   {
-//     id: 'beauty',
-//     name: 'Beauty'
-//   }
-// ];
+//   [
+//     {
+//       id: 'all',
+//       name: 'All'
+//     },
+//     {
+//       id: '40fd0bb1-1625-4620-af04-c493d22868af',
+//       name: '40fd0bb1-1625-4620-af04-c493d22868af'
+//     },
+//     {
+//       id: 'jewelry',
+//       name: 'Jewelry'
+//     },
+//     {
+//       id: 'blouse',
+//       name: 'Blouse'
+//     },
+//     {
+//       id: 'beauty',
+//       name: 'Beauty'
+//     }
+//   ];
 
 const avalabilityOptions = [
   {
@@ -247,13 +225,61 @@ function Results({ className, products, ...rest }) {
     inStock: null,
     isShippable: null
   });
+  //
+
+const isMountedRef = useIsMountedRef();
+
+
+  const [categories, setcategories] = useState([]);
+ const getcategories = useCallback(() => {
+  axios
+    .get(' http://15.207.7.54:8080/category/fetch-by-filter')
+    .then(response => {
+      console.log('----------response---------- crty-');
+      // console.log(response.data.categories)
+      console.log(response.data.data.categories);
+      if (isMountedRef.current) {
+        let frmtedctgory = response.data.data.categories.map(item => {return ({
+          value:item.id,
+          label: item.name
+        })})
+        console.log(frmtedctgory);
+        setcategories([...frmtedctgory]) ;
+      }
+    })
+
+    .catch(err => {
+      console.log('----------err-------cry----');
+      console.log(err );
+    });
+}, [isMountedRef]);
+
+
+useEffect(() => {
+  getcategories();
+}, [getcategories]);
+
+  //
+
+
+
+//  const deletecategory =(e)=>  {
+// 	e.preventDefault();
+// 	axios.delete('http://dummy.restapiexample.com/api/v1/delete/{this.state.id}')
+// 	.then(res => console.log(res.data));
+// }
 
   const handleQueryChange = (event) => {
     event.persist();
     setQuery(event.target.value);
   };
+const deletecategory= (event) => {
+  console.log( event.target.value)
 
-  const handleCategoryChange = (event) => {
+}
+  const handleCategoryChange = (event) => { 
+    ///
+    console.log(event.target.value)
     event.persist();
 
     let value = null;
@@ -342,29 +368,29 @@ function Results({ className, products, ...rest }) {
   // const deletecategory =(event, categories)=> {
   //   this.setState(
   //   {categories: this.filter(categories =>categories.id !== id)});
-     
+
   // }
 
-//   function deletecategory(categories){
-//     return{
-//       type :DELETE_C ,
-//     }
-//   }
-//   const deletecategor =( state=categories,action) => {
-//     switch(action.type){
-//       case DELETE_C:
-//       return{
-// ...state,
+  //   function deletecategory(categories){
+  //     return{
+  //       type :DELETE_C ,
+  //     }
+  //   }
+  //   const deletecategor =( state=categories,action) => {
+  //     switch(action.type){
+  //       case DELETE_C:
+  //       return{
+  // ...state,
 
 
-//       }
-//       default: return state
-//     }
-//   }
+  //       }
+  //       default: return state
+  //     }
+  //   }
 
 
- const store = createStore(reducer);
-//}
+  const store = createStore(reducer);
+  //}
   // Usually query is done on backend with indexing solutions
   const filteredProducts = applyFilters(products, query, filters);
   const paginatedProducts = applyPagination(filteredProducts, page, limit);
@@ -378,7 +404,7 @@ function Results({ className, products, ...rest }) {
       {...rest}
     >
       <Box p={2}>
-      
+
         <Box
           mt={3}
           display="flex"
@@ -387,155 +413,156 @@ function Results({ className, products, ...rest }) {
           <TextField
             className={classes.categoryField}
             label="Category"
+
             name="category"
-            onChange={handleCategoryChange}
+            onChange={(e) => handleCategoryChange(e)}
             select
             SelectProps={{ native: true }}
             value={filters.category || 'all'}
             variant="outlined"
           >
-            {categoryOptions.map((categoryOption) => (
+            {categories.map((categoryOption) => (
               <option
-                key={categoryOption.id}
-                value={categoryOption.id}
+                key={categoryOption.value}
+                value={categoryOption.value}
               >
-                {categoryOption.name}
+                {categoryOption.label}
               </option>
             ))}
           </TextField>
-        
-        
         </Box>
       </Box>
       <Card>
-      {enableBulkOperations && (
-        <div className={classes.bulkOperations}>
-          <div className={classes.bulkActions}>
-            <Checkbox
-              checked={selectedAllProducts}
-              indeterminate={selectedSomeProducts}
-              onChange={handleSelectAllProducts}
-            />
-            <Button
-              variant="outlined"
-              className={classes.bulkAction}
-              // onClick={(event) => deletecategory(event,category.id)}
-            
-            >
-              Delete
+        {enableBulkOperations && (
+          <div className={classes.bulkOperations}>
+            <div className={classes.bulkActions}>
+              <Checkbox
+                checked={selectedAllProducts}
+                indeterminate={selectedSomeProducts}
+                onChange={handleSelectAllProducts}
+              />
+              <Button
+                variant="outlined"
+                className={classes.bulkAction}
+              onClick={(e) => deletecategory(e)}
+
+              >categories.map((selectedSomeProducts) => (
+                
+              ))
+                Delete
             </Button>
-            
+
+            </div>
           </div>
-        </div>
-      )}
-      <PerfectScrollbar>
-        <Box minWidth={1200}>
-          <Table>
-            <TableHead>
-              <TableRow>
-              <TableCell padding="checkbox">
-                  <Checkbox
-                    checked={selectedAllProducts}
-                    indeterminate={selectedSomeProducts}
-                    onChange={handleSelectAllProducts}
-                  />
+        )}
+        <PerfectScrollbar>
+          <Box minWidth={1200}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell padding="checkbox">
+                    <Checkbox
+                      checked={selectedAllProducts}
+                      indeterminate={selectedSomeProducts}
+                      onChange={handleSelectAllProducts}
+                    />
+                  </TableCell>
+
+                  <TableCell />
+                  <TableCell>
+                    Subategory
                 </TableCell>
-                
-                <TableCell />
-                <TableCell>
-                  Subategory
+
+                  <TableCell>
+                    Details
                 </TableCell>
-              
-                <TableCell>
-                  Details
+
+                  <TableCell align="right">
+                    Actions
                 </TableCell>
-            
-                <TableCell align="right">
-                  Actions
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {paginatedProducts.map((category) => {
-                const isProductSelected = selectedProducts.includes
-                
-                
-                (category.id);
-           
-                return (
-                  <TableRow
-                    hover
-                    key={category.id}
-                    selected={isProductSelected}
-                  >
-                   <TableCell padding="checkbox">
-                      <Checkbox
-                        checked={isProductSelected}
-                        onChange={(event) => handleSelectOneProduct(event, category.id)}
-                        value={isProductSelected}
-                      />
-                    </TableCell>
-                   
-                    <TableCell className={classes.imageCell}>
-                      {category.image ? (
-                        <img
-                          alt="Product"
-                          src={category.image}
-                          className={classes.image}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {paginatedProducts.map((category) => {
+                  const isProductSelected = selectedProducts.includes
+
+
+                    (category.id);
+
+                  return (
+                    <TableRow
+                      hover
+                      key={category.id}
+                      selected={isProductSelected}
+                    >
+                      <TableCell padding="checkbox">
+                        <Checkbox
+                          checked={isProductSelected}
+                          onChange={(event) => handleSelectOneProduct(event, category.id)}
+                          value={isProductSelected}
                         />
-                      ) : (
-                        <Box
-                          p={2}
-                          bgcolor="background.dark"
+                      </TableCell>
+
+                      <TableCell className={classes.imageCell}>
+                        {category.image ? (
+                          <img
+                            alt="Product"
+                            src={category.image}
+                            className={classes.image}
+                          />
+                        ) : (
+                            <Box
+                              p={2}
+                              bgcolor="background.dark"
+                            >
+                              <SvgIcon>
+                                <ImageIcon />
+                              </SvgIcon>
+                            </Box>
+                          )}
+                      </TableCell>
+                      <TableCell>
+                        <Link
+                          variant="subtitle2"
+                          color="textPrimary"
+                          component={RouterLink}
+                          underline="none"
+                          to="#"
                         >
-                          <SvgIcon>
-                            <ImageIcon />
+                          {category.name}
+                        </Link>
+                      </TableCell>
+
+
+
+                      <TableCell align="right">
+                        <IconButton>
+                          <SvgIcon fontSize="small">
+                            <EditIcon />
                           </SvgIcon>
-                        </Box>
-                      )}
-                    </TableCell>
-                    <TableCell>
-                      <Link
-                        variant="subtitle2"
-                        color="textPrimary"
-                        component={RouterLink}
-                        underline="none"
-                        to="#"
-                      >
-                        {category.name}
-                      </Link>
-                    </TableCell>
-                 
-                    
-                   
-                    <TableCell align="right">
-                      <IconButton>
-                        <SvgIcon fontSize="small">
-                          <EditIcon />
-                        </SvgIcon>
-                      </IconButton>
-                      <IconButton>
-                        <SvgIcon fontSize="small">
-                          <ArrowRightIcon />
-                        </SvgIcon>
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-          <TablePagination
-            component="div"
-            count={filteredProducts.length}
-            onChangePage={handlePageChange}
-            onChangeRowsPerPage={handleLimitChange}
-            page={page}
-            rowsPerPage={limit}
-            rowsPerPageOptions={[5, 10, 25]}
-          />
-        </Box>
-      </PerfectScrollbar>
+                        </IconButton>
+                        <IconButton>
+                          <SvgIcon fontSize="small">
+                            <ArrowRightIcon />
+                          </SvgIcon>
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+            <TablePagination
+              component="div"
+              count={filteredProducts.length}
+              onChangePage={handlePageChange}
+              onChangeRowsPerPage={handleLimitChange}
+              page={page}
+              rowsPerPage={limit}
+              rowsPerPageOptions={[5, 10, 25]}
+            />
+          </Box>
+        </PerfectScrollbar>
       </Card>
       {enableBulkOperations && (
         <div className={classes.bulkOperations}>
@@ -560,7 +587,7 @@ function Results({ className, products, ...rest }) {
           </div>
         </div>
       )}
-        </Card>
+    </Card>
   );
 }
 
