@@ -63,7 +63,7 @@ function ProductListView() {
         <Header />
         {products && (
           <Box mt={3}>
-            <Results products={products} />
+            <Results Products={products} />
           </Box>
         )}
       </Container>

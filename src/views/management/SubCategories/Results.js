@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useState , useEffect, useCallback } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Box,
@@ -30,29 +31,65 @@ import {
   Search as SearchIcon
 } from 'react-feather';
 import Label from 'src/components/Label';
+import { createStore } from 'redux';
+import { reducer } from 'redux-form';
+import useIsMountedRef from 'src/hooks/useIsMountedRef'
+import { DELETE_CARD } from 'src/actions/kanbanActions';
 
-const categoryOptions = [
-  {
-    id: 'all',
-    name: 'All'
-  },
-  {
-    id: 'dress',
-    name: 'Dress'
-  },
-  {
-    id: 'jewelry',
-    name: 'Jewelry'
-  },
-  {
-    id: 'blouse',
-    name: 'Blouse'
-  },
-  {
-    id: 'beauty',
-    name: 'Beauty'
-  }
-];
+const isMountedRef = useIsMountedRef();
+
+const [categories, setcategories] = useState(null);
+const getcategories = useCallback(() => {
+  axios
+    .get(' http://15.207.7.54:8080/category/fetch-by-filter')
+    .then(response => {
+      console.log('----------response-----------');
+      // console.log(response.data.categories)
+      console.log(response.data.data.categories);
+      if (isMountedRef.current) {
+        setcategories(response.data.data.categories);
+      }
+    })
+    .catch(err => {
+      console.log('----------err-----------');
+      console.log(err);
+    });
+}, [isMountedRef]);
+//
+useEffect(() => {
+  getcategories();
+}, [getcategories]);
+
+
+//
+function categoryOptions(categories){
+  return[{id: categories.id,
+    name:categories.name}]
+}
+
+// const categoryOptions = 
+//  [
+//   {
+//     id: 'all',
+//     name: 'All'
+//   },
+//   {
+//     id: 'dress',
+//     name: 'Dress'
+//   },
+//   {
+//     id: 'jewelry',
+//     name: 'Jewelry'
+//   },
+//   {
+//     id: 'blouse',
+//     name: 'Blouse'
+//   },
+//   {
+//     id: 'beauty',
+//     name: 'Beauty'
+//   }
+// ];
 
 const avalabilityOptions = [
   {
@@ -302,7 +339,32 @@ function Results({ className, products, ...rest }) {
   const handleLimitChange = (event) => {
     setLimit(event.target.value);
   };
+  // const deletecategory =(event, categories)=> {
+  //   this.setState(
+  //   {categories: this.filter(categories =>categories.id !== id)});
+     
+  // }
 
+//   function deletecategory(categories){
+//     return{
+//       type :DELETE_C ,
+//     }
+//   }
+//   const deletecategor =( state=categories,action) => {
+//     switch(action.type){
+//       case DELETE_C:
+//       return{
+// ...state,
+
+
+//       }
+//       default: return state
+//     }
+//   }
+
+
+ const store = createStore(reducer);
+//}
   // Usually query is done on backend with indexing solutions
   const filteredProducts = applyFilters(products, query, filters);
   const paginatedProducts = applyPagination(filteredProducts, page, limit);
@@ -357,6 +419,8 @@ function Results({ className, products, ...rest }) {
             <Button
               variant="outlined"
               className={classes.bulkAction}
+              // onClick={(event) => deletecategory(event,category.id)}
+            
             >
               Delete
             </Button>
@@ -393,8 +457,11 @@ function Results({ className, products, ...rest }) {
             </TableHead>
             <TableBody>
               {paginatedProducts.map((category) => {
-                const isProductSelected = selectedProducts.includes(category.id);
-
+                const isProductSelected = selectedProducts.includes
+                
+                
+                (category.id);
+           
                 return (
                   <TableRow
                     hover

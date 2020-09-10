@@ -40,17 +40,19 @@ function SubCategories() {
       })
       .catch(err => {
         console.log('----------err-----------')
-        console.log(err)
+        console.log(err);
       })
   }, [isMountedRef]);
-
-  useEffect(() => {
+   useEffect(() => {
     getProducts();
   }, [getProducts]);
 
   if (!products) {
     return null;
   }
+
+  //
+
 
   return (
     <Page
@@ -61,7 +63,7 @@ function SubCategories() {
         <Header />
         {products && (
           <Box mt={3}>
-            <Results products={products} />
+            <Results products={products}  />
           </Box>
         )}
       </Container>

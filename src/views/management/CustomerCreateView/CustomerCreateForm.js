@@ -17,6 +17,7 @@ import {
 } from '@material-ui/core';
 import wait from 'src/utils/wait';
 import { registerUser } from 'src/actions/userActions';
+import axiosDev from 'src/utils/dist/axios.dev';
 
 const UserOptions = [
   {
@@ -40,6 +41,8 @@ function CustomerCreateForm({
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
 
+  //delete 
+ 
   return (
     <Formik
       initialValues={{
@@ -60,14 +63,15 @@ function CustomerCreateForm({
         resetForm,
         setErrors,
         setStatus,
-        setSubmitting
+        setSubmitting,
+        
       }) => {
         try {
 
           // Make API request
           try {
-            await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
-            onSubmitSuccess();
+       //     await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
+      //      onSubmitSuccess();
           } catch (error) {
             const message = (error.response && error.response.data.message) || 'Something went wrong';
   
@@ -327,7 +331,7 @@ function CustomerCreateForm({
                 </Button>
               </Box>
             </CardContent>
-          </Card>
+</Card>
         </form>
       )}
     </Formik>

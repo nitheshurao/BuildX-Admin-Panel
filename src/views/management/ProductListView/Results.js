@@ -30,6 +30,7 @@ import {
   Search as SearchIcon
 } from 'react-feather';
 import Label from 'src/components/Label';
+import { isDeleteExpression } from 'typescript';
 
 const categoryOptions = [
   {
@@ -113,48 +114,48 @@ function getInventoryLabel(inventoryType) {
   );
 }
 
-function applyFilters(products, query, filters) {
-  return products.filter((products) => {
-    let matches = true;
+// function applyFilters(products, query, filters) {
+//   return products.filter((products) => {
+//     let matches = true;
 
-    if (query && !products.name.toLowerCase().includes(query.toLowerCase())) {
-      matches = false;
-    }
+//     if (query && !products.name.toLowerCase().includes(query.toLowerCase())) {
+//       matches = false;
+//     }
 
-    if (filters.category && products.category !== filters.category) {
-      matches = false;
-    }
+//     if (filters.category && products.category !== filters.category) {
+//       matches = false;
+//     }
 
-    if (filters.availability) {
-      if (filters.availability === 'available' && !products.isAvailable) {
-        matches = false;
-      }
+//     if (filters.availability) {
+//       if (filters.availability === 'available' && !products.isAvailable) {
+//         matches = false;
+//       }
 
-      if (filters.availability === 'unavailable' && products.isAvailable) {
-        matches = false;
-      }
-    }
+//       if (filters.availability === 'unavailable' && products.isAvailable) {
+//         matches = false;
+//       }
+//     }
 
-    if (filters.inStock && !['in_stock', 'limited'].includes(products.inventoryType)) {
-      matches = false;
-    }
+//     if (filters.inStock && !['in_stock', 'limited'].includes(products.inventoryType)) {
+//       matches = false;
+//     }
 
-    if (filters.isShippable && !products.isShippable) {
-      matches = false;
-    }
+//     if (filters.isShippable && !products.isShippable) {
+//       matches = false;
+//     }
 
-    return matches;
-  });
-}
+//     return matches;
+//   });
+// }
 
-function applyPagination(customers, page, limit) {
-  return customers.slice(page * limit, page * limit + limit);
-}
+function applyPagination(products, page, limit) {
+   return products.slice(page * limit, page * limit + limit);
+ }
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   bulkOperations: {
-    position: 'relative'
+    position :'relative'
   },
   bulkActions: {
     paddingLeft: 4,
@@ -304,8 +305,8 @@ function Results({ className, products, ...rest }) {
   };
 
   // Usually query is done on backend with indexing solutions
-  const filteredProducts = applyFilters(products, query);
-  const paginatedProducts = applyPagination(filteredProducts, page, limit);
+ // const filteredProducts = applyFilters(products, query);
+  const paginatedProducts = applyPagination( page, limit);
   const enableBulkOperations = selectedProducts.length > 0;
   const selectedSomeProducts = selectedProducts.length > 0 && selectedProducts.length < products.length;
   const selectedAllProducts = selectedProducts.length === products.length;
@@ -437,6 +438,8 @@ function Results({ className, products, ...rest }) {
             <Button
               variant="outlined"
               className={classes.bulkAction}
+              type="delete"
+           
             >
               Delete
             </Button>
@@ -556,15 +559,15 @@ function Results({ className, products, ...rest }) {
               })}
             </TableBody>
           </Table>
-          <TablePagination
+          {/* <TablePagination
             component="div"
-            count={filteredProducts.length}
+            // count={filteredProducts.length}
             onChangePage={handlePageChange}
             onChangeRowsPerPage={handleLimitChange}
             page={page}
             rowsPerPage={limit}
             rowsPerPageOptions={[5, 10, 25]}
-          />
+          /> */}
         </Box>
       </PerfectScrollbar>
     </Card>
