@@ -95,32 +95,43 @@ function Routes() {
                     path="/app/management/customers/:id/edit"
                     component={lazy(() => import('src/views/management/CustomerEditView'))}
                   />
-                   <Route
+                  <Route
                     exact
                     path="/app/management/Categories"
                     component={lazy(() => import('src/views/management/CategoriesListView'))}
-                  /> 
+                  />
+                  ///////////
+
+<Route
+
+                    exact
+                    path='/app/management/CustomerEditView'
+                    component={lazy(() => import('src/views/management/CustomerEditView'))}
+                  />
+
+                  ///////////
+
                   <Route
-                  exact
-                  path="/app/management/CategoriesEditView"
-                  component={lazy(() => import('src/views/management/CategoriesEditView'))}
+                    exact
+                    path="/app/management/CategoriesEditView"
+                    component={lazy(() => import('src/views/management/CategoriesEditView'))}
                   />
-                   <Route
-                  exact
-                  path="/app/management/CategoryCreateView"
-                  component={lazy(() => import('src/views/management/CategoryCreateView'))}
+                  <Route
+                    exact
+                    path="/app/management/CategoryCreateView"
+                    component={lazy(() => import('src/views/management/CategoryCreateView'))}
                   />
-                     <Route
-                  exact
-                  path="/app/management/SubCategoryCreateView"
-                  component={lazy(() => import('src/views/management/SubCategoryCreateView'))}
+                  <Route
+                    exact
+                    path="/app/management/SubCategoryCreateView"
+                    component={lazy(() => import('src/views/management/SubCategoryCreateView'))}
                   />
-                   <Route
-                  exact
-                  path="/app/management/SubCategories"
-                  component={lazy(() => import('src/views/management/SubCategories'))}
+                  <Route
+                    exact
+                    path="/app/management/SubCategories"
+                    component={lazy(() => import('src/views/management/SubCategories'))}
                   />
-                   
+
                   <Route
                     exact
                     path="/app/management/products"

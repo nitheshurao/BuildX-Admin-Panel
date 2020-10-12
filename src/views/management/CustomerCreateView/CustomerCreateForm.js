@@ -20,9 +20,9 @@ import {
 import wait from 'src/utils/wait';
 import { registerUser } from 'src/actions/userActions';
 // <<<<<<< HEAD
-import axiosDev from 'src/utils/dist/axios.dev';
+//import axiosDev from 'src/utils/dist/axios.dev';
 // =======
-const dispatch = useDispatch();
+//const dispatch = useDispatch();
 // >>>>>>> 36b9f4862fa64f7833f1ae5c03f93e6265ffce38
 
 const UserOptions = [
@@ -80,7 +80,7 @@ function CustomerCreateForm({
        //     await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
       //      onSubmitSuccess();
 // =======
-            await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
+            // await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
            // onSubmitSuccess();
 // >>>>>>> 36b9f4862fa64f7833f1ae5c03f93e6265ffce38
           } catch (error) {
