@@ -106,7 +106,7 @@ come aboard and help us build succesful businesses through software.
       `,
       author: {
         id: '5e887b7602bdbc4dbb234b27',
-        name: 'Anje Keizer',
+        name: 'rithesh',
         avatar: '/static/images/avatars/avatar_5.png'
       },
       type: 'Full-Time',
@@ -131,12 +131,12 @@ come aboard and help us build succesful businesses through software.
       `,
       author: {
         id: '5e887d0b3d090c1b8f162003',
-        name: 'Emilee Simchenko',
+        name: 'redhan',
         avatar: '/static/images/avatars/avatar_9.png'
       },
       type: 'Full-Time',
-      location: 'Europe',
-      technology: 'Angular',
+      location: 'indian',
+      technology: 'react',
       isLiked: false,
       likes: 12,
       rating: 4.5,
@@ -148,7 +148,7 @@ come aboard and help us build succesful businesses through software.
     },
     {
       id: '5e8dcf105a6732b3ed82cf7a',
-      title: 'Ten80 Web Design',
+      title: 'design',
       media: '/static/images/projects/project_3.png',
       description: `
 We're looking for experienced Developers and Product Designers to
@@ -156,12 +156,12 @@ come aboard and help us build succesful businesses through software.
       `,
       author: {
         id: '5e88792be2d4cfb4bf0971d9',
-        name: 'Elliott Stone',
+        name: 'rithesh',
         avatar: '/static/images/avatars/avatar_10.png'
       },
       type: 'Full-Time',
-      location: 'Europe',
-      technology: 'Ember JS',
+      location: 'indian',
+      technology: 'js',
       isLiked: true,
       likes: 18,
       rating: 4.7,
@@ -185,7 +185,7 @@ come aboard and help us build succesful businesses through software.
         avatar: '/static/images/avatars/avatar_11.png'
       },
       type: 'Full-Time',
-      location: 'Europe',
+      location: 'india',
       technology: 'Java Spring',
       isLiked: false,
       likes: 1,
@@ -206,11 +206,11 @@ come aboard and help us build succesful businesses through software.
       `,
       author: {
         id: '5e887ac47eed253091be10cb',
-        name: 'Cao Yu',
+        name: 'redhan',
         avatar: '/static/images/avatars/avatar_3.png'
       },
       type: 'Full-Time',
-      location: 'Europe',
+      location: 'indan',
       technology: 'Django',
       isLiked: false,
       likes: 7,
@@ -223,7 +223,7 @@ come aboard and help us build succesful businesses through software.
     },
     {
       id: '5e8dcf4250d77c954b04902e',
-      title: 'Kalli UI Kit',
+      title: '',
       media: '',
       description: `
 We're looking for experienced Developers and Product Designers to
@@ -259,7 +259,7 @@ mock.onGet('/api/projects/projects/1').reply(200, {
     title: 'Develop a PDF Export App',
     author: {
       id: '5e887d0b3d090c1b8f162003',
-      name: 'Emilee Simchenko',
+      name: 'shetty',
       avatar: '/static/images/avatars/avatar_9.png',
       bio: 'We build beautiful functional themes for web professionals'
     },
@@ -273,7 +273,7 @@ There's not many screens we need designed, but there will be modals and various 
 The project has been created in Sketch so let me know if there are any problems opening this project and I'll try to convert into a usable file.
     `,
     price: '12,500',
-    currency: 'USD',
+    currency: 'rs',
     tags: ['React JS'],
     members: [
       {
@@ -284,13 +284,13 @@ The project has been created in Sketch so let me know if there are any problems 
       },
       {
         id: '5e887ac47eed253091be10cb',
-        name: 'Cao Yu',
+        name: 'rithesh',
         avatar: '/static/images/avatars/avatar_3.png',
         bio: 'UX Designer'
       },
       {
         id: '5e887b7602bdbc4dbb234b27',
-        name: 'Anje Keizer',
+        name: 'rithesh',
         avatar: '/static/images/avatars/avatar_5.png',
         bio: 'Copyright'
       }
@@ -331,7 +331,7 @@ The project has been created in Sketch so let me know if there are any problems 
       },
       {
         id: '5e8dd0893a6725f2bb603617',
-        subject: 'Adrian Stefan',
+        subject: 'redahn',
         type: 'join_team',
         description: 'joined team as a Front-End Developer',
         createdAt: moment()

@@ -138,14 +138,14 @@ Kind regards,
 Ekaterina Tankova
       `,
       from: {
-        name: 'Ekaterina Tankova',
-        email: 'ekaterina.tankova@buildX.in',
+        name: 'rithesh',
+        email: 'rithu@gmail.com',
         avatar: '/static/images/avatars/avatar_2.png'
       },
       to: [
         {
-          name: 'Katarina Smith',
-          email: 'katarina.smith@buildX.in',
+          name: 'redan',
+          email: 'redh@gmail.com',
           avatar: null
         }
       ],
@@ -165,14 +165,14 @@ Ekaterina Tankova
 Hey, nice projects! I really liked the one in react. What's your quote on kinda similar project?
       `,
       from: {
-        name: 'Adam Denisov',
-        email: 'adam.denisov@buildX.in',
+        name: 'redhan',
+        email: 'redhn@gmail.com',
         avatar: '/static/images/avatars/avatar_7.png'
       },
       to: [
         {
-          name: 'Katarina Smith',
-          email: 'katarina.smith@buildX.in',
+          name: 'shety',
+          email: 'shetty@gmail.com',
           avatar: null
         }
       ],
@@ -219,14 +219,14 @@ Dear Shen, Your flight is coming up soon. Please don’t forget to check in for 
 My market leading client has another fantastic opportunity for an experienced Software Developer to join them on a heavily remote basis
       `,
       from: {
-        name: 'Cao Yu',
-        email: 'cao.yu@buildX.in',
+        name: 'rithesh',
+        email: 'rithesh@gmail.com',
         avatar: '/static/images/avatars/avatar_3.png'
       },
       to: [
         {
-          name: 'Katarina Smith',
-          email: 'katarina.smith@buildX.in',
+          name: 'nithesh',
+          email: 'nithesh@gmail.com',
           avatar: null
         }
       ],

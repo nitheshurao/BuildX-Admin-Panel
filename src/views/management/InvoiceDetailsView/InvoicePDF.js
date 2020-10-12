@@ -83,11 +83,11 @@ const styles = StyleSheet.create({
   },
   tableCell1: {
     padding: 6,
-    width: `${COL1_WIDTH}%`
+    width: `₹{COL1_WIDTH}%`
   },
   tableCellN: {
     padding: 6,
-    width: `${COLN_WIDTH}%`
+    width: `₹{COLN_WIDTH}%`
   },
   alignRight: {
     textAlign: 'right'
@@ -140,10 +140,10 @@ function InvoicePDF({ invoice }) {
           </View>
           <View>
             <Text style={styles.body1}>
-              Email: accounts@buildX.in
+              Email: rithesh@gmail.com
             </Text>
             <Text style={styles.body1}>
-              Tel: (+40) 652 3456 23
+              Tel: (+91)9956277189
             </Text>
           </View>
         </View>
@@ -178,16 +178,16 @@ function InvoicePDF({ invoice }) {
             Billed to
           </Text>
           <Text style={styles.body1}>
-            Tracey Herman
+          redhn
           </Text>
           <Text style={styles.body1}>
-            Countdown Grey Lynn
+            prakashnagr
           </Text>
           <Text style={styles.body1}>
             6934656584231
           </Text>
           <Text style={styles.body1}>
-            271 Richmond Rd, Grey Lynn, Auckland 1022, New Zealand
+          bangalor ,india
           </Text>
         </View>
         <View style={styles.items}>

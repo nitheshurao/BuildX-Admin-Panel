@@ -61,7 +61,7 @@ function Invoices({ customer, className, ...rest }) {
                 variant="body2"
                 color="textSecondary"
               >
-                2 ($50.00)
+                2 (₹50.00)
               </Typography>
             </TableCell>
           </TableRow>
@@ -74,7 +74,7 @@ function Invoices({ customer, className, ...rest }) {
                 variant="body2"
                 color="textSecondary"
               >
-                1 ($5.00)
+                1 (₹5.00)
               </Typography>
             </TableCell>
           </TableRow>
@@ -87,7 +87,7 @@ function Invoices({ customer, className, ...rest }) {
                 variant="body2"
                 color="textSecondary"
               >
-                1 ($12.00)
+                1 (₹12.00)
               </Typography>
             </TableCell>
           </TableRow>
@@ -100,7 +100,7 @@ function Invoices({ customer, className, ...rest }) {
                 variant="body2"
                 color="textSecondary"
               >
-                0 ($0.00)
+                0 (₹0.00)
               </Typography>
             </TableCell>
           </TableRow>
@@ -113,7 +113,7 @@ function Invoices({ customer, className, ...rest }) {
                 variant="body2"
                 color="textSecondary"
               >
-                $1,200.00
+               ₹ 1,200.00
               </Typography>
             </TableCell>
           </TableRow>

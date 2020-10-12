@@ -306,7 +306,7 @@ function Results({ className, customers, ...rest }) {
           ))}
         </TextField>
       </Box>
-      {enableBulkOperations && (
+      {/* {enableBulkOperations && (
         <div className={classes.bulkOperations}>
           <div className={classes.bulkActions}>
             <Checkbox
@@ -325,22 +325,22 @@ function Results({ className, customers, ...rest }) {
               className={classes.bulkAction}
             >
               Edit
-            </Button>
-          </div>
-        </div>
-      )}
+            </Button> */}
+          {/* </div> */}
+        {/* </div> */}
+      {/* )} */}
       <PerfectScrollbar>
         <Box minWidth={700}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox">
+                {/* <TableCell padding="checkbox">
                   <Checkbox
                     checked={selectedAllCustomers}
                     indeterminate={selectedSomeCustomers}
                     onChange={handleSelectAllCustomers}
                   />
-                </TableCell>
+                </TableCell> */}
                 <TableCell>
                   Name
                 </TableCell>
@@ -368,13 +368,13 @@ function Results({ className, customers, ...rest }) {
                     key={customer.id}
                     selected={isCustomerSelected}
                   >
-                    <TableCell padding="checkbox">
+                    {/* <TableCell padding="checkbox">
                       <Checkbox
                         checked={isCustomerSelected}
                         onChange={(event) => handleSelectOneCustomer(event, customer.id)}
                         value={isCustomerSelected}
-                      />
-                    </TableCell>
+                      /> */}
+                    {/* </TableCell> */}
                     <TableCell>
                       <Box
                         display="flex"
