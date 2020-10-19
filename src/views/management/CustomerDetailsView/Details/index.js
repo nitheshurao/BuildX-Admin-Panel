@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import { Grid, makeStyles } from '@material-ui/core';
 import CustomerInfo from './CustomerInfo';
 import Emails from './Emails';
-import Invoices from './Invoices';
-import OtherActions from './OtherActions';
+// import Invoices from './Invoices';
+// import OtherActions from './OtherActions';
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -37,7 +37,16 @@ function Details({ customer, className, ...rest }) {
         xl={3}
         xs={12}
       >
-        <Invoices customer={customer} />
+        {/* <Invoices customer={customer} />
+      </Grid>
+      <Grid
+        item
+        lg={4}
+        md={6}
+        xl={3}
+        xs={12}
+      > */}
+        {/* <Emails /> */}
       </Grid>
       <Grid
         item
@@ -46,16 +55,7 @@ function Details({ customer, className, ...rest }) {
         xl={3}
         xs={12}
       >
-        <Emails />
-      </Grid>
-      <Grid
-        item
-        lg={4}
-        md={6}
-        xl={3}
-        xs={12}
-      >
-        <OtherActions />
+        {/* <OtherActions /> */}
       </Grid>
     </Grid>
   );

@@ -67,7 +67,7 @@ function Header({ order, className, ...rest }) {
           Order Details
         </Typography>
       </Grid>
-      <Grid item>
+      {/* <Grid item>
         <Button
           color="secondary"
           variant="contained"
@@ -80,7 +80,7 @@ function Header({ order, className, ...rest }) {
           </SvgIcon>
           Edit
         </Button>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }

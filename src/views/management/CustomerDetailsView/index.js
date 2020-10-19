@@ -16,8 +16,8 @@ import axios from 'src/utils/axios';
 import useIsMountedRef from 'src/hooks/useIsMountedRef';
 import Header from './Header';
 import Details from './Details';
-import Invoices from './Invoices';
-import Logs from './Logs';
+// import Invoices from './Invoices';
+// import Logs from './Logs';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,8 +35,8 @@ function CustomerDetailsView() {
   const [currentTab, setCurrentTab] = useState('details');
   const tabs = [
     { value: 'details', label: 'Details' },
-    { value: 'invoices', label: 'Invoices' },
-    { value: 'logs', label: 'Logs' }
+    // { value: 'invoices', label: 'Invoices' },
+    // { value: 'logs', label: 'Logs' }
   ];
 
   const handleTabsChange = (event, value) => {
@@ -89,8 +89,8 @@ function CustomerDetailsView() {
         <Divider />
         <Box mt={3}>
           {currentTab === 'details' && <Details customer={customer} />}
-          {currentTab === 'invoices' && <Invoices />}
-          {currentTab === 'logs' && <Logs />}
+          {/* {currentTab === 'invoices' && <Invoices />}
+          {currentTab === 'logs' && <Logs />} */}
         </Box>
       </Container>
     </Page>

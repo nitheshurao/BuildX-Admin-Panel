@@ -263,20 +263,20 @@ useEffect(() => {
 
 
 
-//  const deletecategory =(e)=>  {
-// 	e.preventDefault();
-// 	axios.delete('http://dummy.restapiexample.com/api/v1/delete/{this.state.id}')
-// 	.then(res => console.log(res.data));
-// }
+ const deletecategory =(e)=>  {
+	e.preventDefault();
+	axios.delete('http://15.207.7.54:8080/products/register/delete/{this.state.id}')
+	.then(res => console.log(res.data));
+}
 
   const handleQueryChange = (event) => {
     event.persist();
     setQuery(event.target.value);
   };
-const deletecategory= (event) => {
-  console.log( event.target.value)
+// const deletecategory= (event) => {
+//   console.log( event.target.value)
 
-}
+// }
   const handleCategoryChange = (event) => { 
     ///
     console.log(event.target.value)
@@ -365,7 +365,7 @@ const deletecategory= (event) => {
   const handleLimitChange = (event) => {
     setLimit(event.target.value);
   };
-  // const deletecategory =(event, categories)=> {
+  // const  deletecategory =(event, categories)=> {
   //   this.setState(
   //   {categories: this.filter(categories =>categories.id !== id)});
 
@@ -413,7 +413,7 @@ const deletecategory= (event) => {
           <TextField
             className={classes.categoryField}
             label="Category"
-
+//////
             name="category"
             onChange={(e) => handleCategoryChange(e)}
             select
@@ -444,11 +444,12 @@ const deletecategory= (event) => {
               <Button
                 variant="outlined"
                 className={classes.bulkAction}
-              onClick={(e) => deletecategory(e)}
+              onClick={deletecategory}
 
-              >categories.map((selectedSomeProducts) => (
+              //  categories.map((selectedSomeProducts) => (
                 
-              ))
+              // ))
+              >
                 Delete
             </Button>
 

@@ -31,19 +31,19 @@ function ProductListView() {
   const getProducts = useCallback(() => {
     axios
       .get(' http://15.207.7.54:8080/products/fetch-by-filter')
-    .then((response) => {
-       
-      console.log('----------response-----------')
-     
+      .then((response) => {
+
+        console.log('----------response-----------')
+
         console.log(response.data.data.products)
-      if (isMountedRef.current) {
-          setProducts(response.data.data.products);
+        if (isMountedRef.current) {
+          setProducts(response.data.data.products)
         }
       }).catch(err => {
         console.log('----------err-----------')
         console.log(err)
-    })
-}, [isMountedRef]);
+      })
+  }, [isMountedRef]);
 
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function ProductListView() {
         <Header />
         {products && (
           <Box mt={3}>
-            <Results Products={products} />
+            <Results products={products} />
           </Box>
         )}
       </Container>
