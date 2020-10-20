@@ -46,6 +46,35 @@ const avalabilityOptions = [
   }
 ];
 
+//delet
+//  const reducer=(state,action) => {
+//    switch(action.type){
+//      case "Delete"
+//      break
+//    }
+//    return state;
+//  }
+// const deletesuccess = (id) => {
+//   return {
+//     type: DELETE_SUCCES,
+//     payload: {
+//       id: id,
+//     }
+//   }
+// };
+
+// const Delete = (id) => {
+//   return (dispatch) => {
+//     return axios.Delete(`{url}/${id}`)
+//       .then(() => {
+//         dispatch(deletesuccess(id));
+
+//       }).catch((err) => {
+//         console.log(err)
+//       })
+//   }
+// }
+//
 function applyFilters(categories, query) {
   return categories.filter(categories => {
     let matches = true;
@@ -194,12 +223,12 @@ function Results({ className, categories, ...rest }) {
                           className={classes.image}
                         />
                       ) : (
-                        <Box p={2} bgcolor="background.dark">
-                          <SvgIcon>
-                            <ImageIcon />
-                          </SvgIcon>
-                        </Box>
-                      )}
+                          <Box p={2} bgcolor="background.dark">
+                            <SvgIcon>
+                              <ImageIcon />
+                            </SvgIcon>
+                          </Box>
+                        )}
                     </TableCell>
                     <TableCell>
                       <Link

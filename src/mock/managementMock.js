@@ -198,7 +198,7 @@ mock.onGet('/api/management/customers/1').reply(200, {
   customer: {
     fullName: 'Arjun',
     email: 'arjun@buildX.in',
-    phone: '+9988776655',
+    phone: '+91997283838',
     state: 'Karnataka',
     country: 'India',
     zipCode: '560038',
@@ -207,7 +207,7 @@ mock.onGet('/api/management/customers/1').reply(200, {
     creditCard: '4142 **** **** **** ****',
     autoCC: false,
     verified: true,
-    currency: '$',
+    currency: '₹',
     vat: 19,
     balance: 0
   }
@@ -245,10 +245,10 @@ mock.onGet('/api/management/customers/1/invoices').reply(200, {
       date: moment()
         .toDate()
         .getTime(),
-      description: 'Freelancer Subscription (12/05/2019 - 11/06/2019)',
+      description: 'Freelancer Subscription (12/9/2019 - 11/010/2019)',
       paymentMethod: 'Credit Card',
       value: '5.25',
-      currency: '$',
+      currency: '₹',
       status: 'paid'
     },
     {
@@ -256,10 +256,10 @@ mock.onGet('/api/management/customers/1/invoices').reply(200, {
       date: moment()
         .toDate()
         .getTime(),
-      description: 'Freelancer Subscription (12/05/2019 - 11/06/2019)',
+      description: 'Freelancer Subscription (12/09/2019 - 11/10/2019)',
       paymentMethod: 'Credit Card',
       value: '5.25',
-      currency: '$',
+      currency: '₹',
       status: 'paid'
     }
   ]
@@ -419,7 +419,7 @@ mock.onGet('/api/management/products').reply(200, {
       category: 'dress',
       attributes: ['Cotton'],
       price: 23.99,
-      currency: '$',
+      currency: '₹',
       createdAt: moment()
         .subtract(1, 'days')
         .toDate()
@@ -441,7 +441,7 @@ mock.onGet('/api/management/products').reply(200, {
       category: 'dress',
       attributes: ['Cotton'],
       price: 95.00,
-      currency: '$',
+      currency: '₹',
       createdAt: moment()
         .subtract(3, 'days')
         .toDate()
@@ -464,7 +464,7 @@ mock.onGet('/api/management/products').reply(200, {
       category: 'jewelry',
       attributes: ['Variety of styles'],
       price: 155.00,
-      currency: '$',
+      currency: '₹',
       createdAt: moment()
         .subtract(6, 'days')
         .toDate()
@@ -487,7 +487,7 @@ mock.onGet('/api/management/products').reply(200, {
       category: 'blouse',
       attributes: ['Polyester and Spandex'],
       price: 17.99,
-      currency: '$',
+      currency: '₹',
       createdAt: moment()
         .subtract(12, 'days')
         .toDate()
@@ -510,13 +510,13 @@ mock.onGet('/api/management/orders').reply(200, {
         .toDate()
         .getTime(),
       customer: {
-        name: 'Ekaterina Tankova'
+        name: 'Rithesh'
       },
       payment: {
         ref: 'FAD103',
         method: 'CreditCard',
         total: '500.00',
-        currency: '$',
+        currency: '₹',
         status: 'pending'
       },
       status: 'inactive'
@@ -528,13 +528,13 @@ mock.onGet('/api/management/orders').reply(200, {
         .subtract(23, 'seconds').toDate()
         .getTime(),
       customer: {
-        name: 'Cao Yu'
+        name: 'nithesh'
       },
       payment: {
         ref: 'FAD102',
         method: 'CreditCard',
         total: '500.00',
-        currency: '$',
+        currency: '₹',
         status: 'pending'
       },
       status: 'inactive'
@@ -546,13 +546,13 @@ mock.onGet('/api/management/orders').reply(200, {
         .subtract(51, 'seconds').toDate()
         .getTime(),
       customer: {
-        name: 'Alex Richardson'
+        name: 'redhan'
       },
       payment: {
         ref: 'FAD101',
         method: 'PayPal',
         total: '500.00',
-        currency: '$',
+        currency: '₹',
         status: 'completed'
       },
       status: 'active'
@@ -564,13 +564,13 @@ mock.onGet('/api/management/orders').reply(200, {
         .subtract(55, 'seconds').toDate()
         .getTime(),
       customer: {
-        name: 'Anje Keizer'
+        name: 'prajwal'
       },
       payment: {
         ref: 'FAD100',
         method: 'CreditCard',
         total: '500.00',
-        currency: '$',
+        currency: '₹',
         status: 'pending'
       },
       status: 'inactive'
@@ -582,13 +582,13 @@ mock.onGet('/api/management/orders').reply(200, {
         .subtract(3, 'seconds').toDate()
         .getTime(),
       customer: {
-        name: 'Clarke Gillebert'
+        name: 'rama'
       },
       payment: {
         ref: 'FAD99',
         method: 'PayPal',
         total: '500.00',
-        currency: '$',
+        currency: '₹',
         status: 'completed'
       },
       status: 'active'
@@ -600,13 +600,13 @@ mock.onGet('/api/management/orders').reply(200, {
         .subtract(32, 'seconds').toDate()
         .getTime(),
       customer: {
-        name: 'Adam Denisov'
+        name: 'prathi'
       },
       payment: {
         ref: 'FAD98',
         method: 'PayPal',
         total: '500.00',
-        currency: '$',
+        currency: '₹',
         status: 'completed'
       },
       status: 'active'
@@ -619,92 +619,22 @@ mock.onGet('/api/management/orders').reply(200, {
         .getTime(),
       customer: {
         id: '5e887a1fbefd7938eea9c981',
-        name: 'Miller Edwards',
+        name: 'rithesh',
         avatar: '/static/images/avatars/avatar_8.png'
       },
       payment: {
         ref: 'FAD97',
         method: 'CreditCard',
         total: '500.00',
-        currency: '$',
+        currency: '₹',
         status: 'pending'
       },
       status: 'inactive'
     },
-    {
-      id: uuidv4(),
-      createdAt: moment()
-        .subtract(49, 'minutes')
-        .subtract(4, 'seconds').toDate()
-        .getTime(),
-      customer: {
-        name: 'Emilee Simchenko'
-      },
-      payment: {
-        ref: 'FAD96',
-        method: 'CreditCard',
-        total: '500.00',
-        currency: '$',
-        status: 'completed'
-      },
-      status: 'active'
-    },
-    {
-      id: uuidv4(),
-      createdAt: moment()
-        .subtract(57, 'minutes')
-        .subtract(43, 'seconds').toDate()
-        .getTime(),
-      customer: {
-        name: 'Elliott Stone'
-      },
-      payment: {
-        ref: 'FAD95',
-        method: 'PayPal',
-        total: '500.00',
-        currency: '$',
-        status: 'rejected'
-      },
-      status: 'inactive'
-    },
-    {
-      id: uuidv4(),
-      createdAt: moment()
-        .subtract(59, 'minutes')
-        .subtract(6, 'seconds').toDate()
-        .getTime(),
-      customer: {
-        name: 'Shen Zhi'
-      },
-      payment: {
-        ref: 'FAD94',
-        method: 'CreditCard',
-        total: '500.00',
-        currency: '$',
-        status: 'canceled'
-      },
-      status: 'inactive'
-    },
-    {
-      id: uuidv4(),
-      createdAt: moment()
-        .subtract(1, 'hour')
-        .subtract(15, 'minutes')
-        .subtract(43, 'seconds')
-        .toDate()
-        .getTime(),
-      customer: {
-        name: 'Merrile Burgett'
-      },
-      payment: {
-        ref: 'FAD93',
-        method: 'PayPal',
-        total: '500.00',
-        currency: '$',
-        status: 'canceled'
-      },
-      status: 'inactive'
-    }
+  
+   
+   
+    
   ]
 });
 
@@ -714,13 +644,13 @@ mock.onGet('/api/management/orders/1').reply(200, {
     ref: 'FAD107',
     promoCode: null,
     value: '55.25',
-    currency: '$',
+    currency: '₹',
     status: 'canceled',
     customer: {
-      name: 'Ekaterina Tankova',
-      address: 'Street King William, 42456',
-      city: 'Montgomery',
-      country: 'United States'
+      name: 'rithesh',
+      address: 'bangalore , 42456',
+      city: 'vijayanagr',
+      country: 'India'
     },
     items: [
       {
@@ -730,16 +660,16 @@ mock.onGet('/api/management/orders/1').reply(200, {
         billing: 'monthly',
         status: 'completed',
         value: '50.25',
-        currency: '$'
+        currency: '₹'
       },
       {
         id: uuidv4(),
-        name: 'Freelancer Subscription',
+        name: 'Subscription',
         cuantity: 1,
         billing: 'monthly',
         status: 'completed',
         value: '5.00',
-        currency: '$'
+        currency: '₹'
       }
     ],
     createdAt: moment()
@@ -752,7 +682,7 @@ mock.onGet('/api/management/invoices').reply(200, {
   invoices: [
     {
       id: '28382843',
-      currency: '$',
+      currency: '₹',
       amount: 65.28,
       status: 'paid',
       createdAt: moment()
@@ -760,13 +690,13 @@ mock.onGet('/api/management/invoices').reply(200, {
         .toDate()
         .getTime(),
       customer: {
-        name: 'Ana Henisky',
-        email: 'contact@anahenisky.io'
+        name: 'akshay',
+        email: 'akshay@gmail.com'
       }
     },
     {
       id: '28382845',
-      currency: '$',
+      currency: '₹',
       amount: 253.76,
       status: 'pending',
       createdAt: moment()
@@ -775,13 +705,13 @@ mock.onGet('/api/management/invoices').reply(200, {
         .toDate()
         .getTime(),
       customer: {
-        name: 'Matt Jason',
-        email: 'sales@matt-jason.com'
+        name: 'rithu',
+        email: 'rithu@gmail.com'
       }
     },
     {
       id: '28382345',
-      currency: '$',
+      currency: '₹',
       amount: 781.50,
       status: 'canceled',
       createdAt: moment()
@@ -790,25 +720,12 @@ mock.onGet('/api/management/invoices').reply(200, {
         .toDate()
         .getTime(),
       customer: {
-        name: 'Terry Thomas',
-        email: 'support@terrythomas.io'
+        name: 'redhan',
+        email: 'redhan@gmail.com'
       }
     },
-    {
-      id: '283823653',
-      currency: '$',
-      amount: 96.64,
-      status: 'paid',
-      createdAt: moment()
-        .subtract(15, 'days')
-        .subtract(2, 'hours')
-        .toDate()
-        .getTime(),
-      customer: {
-        name: 'Triv Shopper',
-        email: 'contact@triv-shopper.co.uk'
-      }
-    }
+ 
+    
   ]
 });
 
@@ -824,22 +741,22 @@ mock.onGet('/api/management/invoices/1').reply(200, {
       .getTime(),
     ref: 'DEV-9483',
     customer: {
-      name: 'Tracey Herman',
-      company: 'Countdown Grey Lynn',
+      name: 'rithesh',
+      company: ' 12345',
       taxId: '6934656584231',
-      address: '271 Richmond Rd, Grey Lynn, Auckland 1022, New Zealand'
+      address: 'vijayanagr, india'
     },
     products: [
       {
         id: uuidv4(),
-        desc: 'Freelancer Subscription (12/05/2019 - 11/06/2019)',
+        desc: 'Freelancer Subscription (12/05/2019 - 11/10/2019)',
         value: '55.50'
       }
     ],
     subtotal: '50.00',
     taxes: '5.50',
     total: '55.50',
-    currency: '$',
+    currency: '₹',
     createdAt: moment()
       .toDate()
       .getTime()

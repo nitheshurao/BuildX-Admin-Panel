@@ -125,7 +125,7 @@ function CustomerInfo({ customer, className, ...rest }) {
           </TableRow>
         </TableBody>
       </Table>
-      <Box
+      {/* <Box
         p={1}
         display="flex"
         flexDirection="column"
@@ -139,7 +139,7 @@ function CustomerInfo({ customer, className, ...rest }) {
           <PersonIcon className={classes.actionIcon} />
           Login as Customer
         </Button>
-      </Box>
+      </Box> */}
     </Card>
   );
 }

@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { useHistory } from 'react-router';
-
+import axios from 'axios';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import QuillEditor from 'src/components/QuillEditor';
@@ -27,8 +27,8 @@ import {
   TextField,
   Typography,
   makeStyles
-  
-  
+
+
 } from '@material-ui/core';
 import {
   Image as ImageIcon,
@@ -37,7 +37,7 @@ import {
   Search as SearchIcon
 } from 'react-feather';
 import Label from 'src/components/Label';
-
+import useIsMountedRef from 'src/hooks/useIsMountedRef'
 const categoryOptions = [
   {
     id: 'shirts',
@@ -63,8 +63,8 @@ function applyFilters(products, query) {
       matches = false;
     }
 
-   
-  
+
+
     return matches;
   });
 }
@@ -102,8 +102,8 @@ const useStyles = makeStyles((theme) => ({
       height: 400
     }
   },
-  
-  
+
+
 }));
 
 function Results({ className, products, ...rest }) {
@@ -112,16 +112,51 @@ function Results({ className, products, ...rest }) {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(10);
   const [query, setQuery] = useState('');
-  
+
   const [filters, setFilters] = useState({
     category: null,
-   
+
   });
 
   const handleQueryChange = (event) => {
     event.persist();
     setQuery(event.target.value);
   };
+ ////
+ const isMountedRef = useIsMountedRef();
+
+
+ const [categories, setcategories] = useState([]);
+ const getcategories = useCallback(() => {
+   axios
+     .get(' http://15.207.7.54:8080/category/fetch-by-filter')
+     .then(response => {
+       console.log('----------response---------- crty-');
+       // console.log(response.data.categories)
+       console.log(response.data.data.categories);
+       if (isMountedRef.current) {
+         let frmtedctgory = response.data.data.categories.map(item => {
+           return ({
+             value: item.id,
+             label: item.name
+           })
+         })
+         console.log(frmtedctgory);
+         setcategories([...frmtedctgory]);
+       }
+     })
+
+     .catch(err => {
+       console.log('----------err-------cry----');
+       console.log(err);
+     });
+ }, [isMountedRef]);
+
+
+ useEffect(() => {
+   getcategories();
+ }, [getcategories]);
+ ////
 
   const handleCategoryChange = (event) => {
     event.persist();
@@ -138,10 +173,9 @@ function Results({ className, products, ...rest }) {
     }));
   };
 
-  
-  
 
-  
+ 
+
 
 
   const handleSelectAllProducts = (event) => {
@@ -172,7 +206,7 @@ function Results({ className, products, ...rest }) {
   const enableBulkOperations = selectedProducts.length > 0;
   const selectedSomeProducts = selectedProducts.length > 0 && selectedProducts.length < products.length;
   const selectedAllProducts = selectedProducts.length === products.length;
-  
+
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
   return (
@@ -234,141 +268,141 @@ function Results({ className, products, ...rest }) {
         touched,
         values
       }) => (
-        <form
-          onSubmit={handleSubmit}
-          className={clsx(classes.root, className)}
-          {...rest}
-        >
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
-      <Box p={2}>
-        <Box
-          display="flex"
-          alignItems="center"
-        >
-          
-          
-        </Box>
-       
-         
-          <Grid
-            container
-            spacing={3}
+          <form
+            onSubmit={handleSubmit}
+            className={clsx(classes.root, className)}
+            {...rest}
           >
-            <Grid
-              item
-              xs={12}
-              lg={8}
+            <Card
+              className={clsx(classes.root, className)}
+              {...rest}
             >
-              <Card>
-                <CardContent>
-                <TextField
-            className={classes.categoryField}
-            label="Category"
-            name="category"
-            onChange={handleCategoryChange}
-            select
-            SelectProps={{ native: true }}
-            value={filters.category || 'all'}
-            variant="outlined"
-          >
-            {categoryOptions.map((categoryOption) => (
-              <option
-                key={categoryOption.id}
-                value={categoryOption.id}
-              >
-                {categoryOption.name}
-              </option>
-            ))}
-          </TextField>
-          
-          <Box
-                    mt={3}
-                    mb={1}
-                  >
-                  <TextField
-                    error={Boolean(touched.name && errors.name)}
-                    fullWidth
-                    helperText={touched.name && errors.name}
-                    label="category Name"
-                    name="name"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.name}
-                    variant="outlined"
-                  />
-                    </Box>
-                  <Box
-                    mt={3}
-                    mb={1}
-                  >
+              <Box p={2}>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                >
 
-                    
-                    <Typography
-                      variant="subtitle2"
-                      color="textSecondary"
-                    >
-                      Description
+
+                </Box>
+
+
+                <Grid
+                  container
+                  spacing={3}
+                >
+                  <Grid
+                    item
+                    xs={12}
+                    lg={8}
+                  >
+                    <Card>
+                      <CardContent>
+                        <TextField
+                          className={classes.categoryField}
+                          label="Category"
+                          name="category"
+                          onChange={(e) => handleCategoryChange(e)}
+                          select
+                          SelectProps={{ native: true }}
+                          value={filters.category || 'all'}
+                          variant="outlined"
+                        >
+                          {categories.map((categoryOption) => (
+                            <option
+                              key={categoryOption.value}
+                              value={categoryOption.value}
+                            >
+                              {categoryOption.label}
+                            </option>
+                          ))}
+                        </TextField>
+
+                        <Box
+                          mt={3}
+                          mb={1}
+                        >
+                          <TextField
+                            error={Boolean(touched.name && errors.name)}
+                            fullWidth
+                            helperText={touched.name && errors.name}
+                            label="sub category Name"
+                            name="name"
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                            value={values.name}
+                            variant="outlined"
+                          />
+                        </Box>
+                        <Box
+                          mt={3}
+                          mb={1}
+                        >
+
+
+                          <Typography
+                            variant="subtitle2"
+                            color="textSecondary"
+                          >
+                            Description
                     </Typography>
-                  </Box>
-                  <Paper variant="outlined">
-                    <QuillEditor
-                      className={classes.editor}
-                      value={values.description}
-                      onChange={(value) => setFieldValue('description', value)}
-                    />
-                  </Paper>
-                  {(touched.description && errors.description) && (
-                    <Box mt={2}>
-                      <FormHelperText error>
-                        {errors.description}
-                      </FormHelperText>
+                        </Box>
+                        <Paper variant="outlined">
+                          <QuillEditor
+                            className={classes.editor}
+                            value={values.description}
+                            onChange={(value) => setFieldValue('description', value)}
+                          />
+                        </Paper>
+                        {(touched.description && errors.description) && (
+                          <Box mt={2}>
+                            <FormHelperText error>
+                              {errors.description}
+                            </FormHelperText>
+                          </Box>
+                        )}
+                      </CardContent>
+                    </Card>
+                    <Box mt={3}>
+                      <Card>
+                        <CardHeader title="Upload Images" />
+                        <Divider />
+                        <CardContent>
+                          <FilesDropzone />
+                        </CardContent>
+                      </Card>
                     </Box>
-                  )}
-                </CardContent>
-              </Card>
-              <Box mt={3}>
-                <Card>
-                  <CardHeader title="Upload Images" />
-                  <Divider />
-                  <CardContent>
-                    <FilesDropzone />
-                  </CardContent>
-                </Card>
-              </Box>
-           
-            </Grid>
-           
-          </Grid>
-          {errors.submit && (
-            <Box mt={3}>
-              <FormHelperText error>
-                {errors.submit}
-              </FormHelperText>
-            </Box>
-          )}
-          <Box mt={2}>
-            <Button
-              color="secondary"
-              variant="contained"
-              type="submit"
-              disabled={isSubmitting}
-            >
-              Create Category
-            </Button>
-          </Box>
-        
 
-    
-   
-        </Box>
-    
-     
-     
-    </Card>
-    </form>)}
+                  </Grid>
+
+                </Grid>
+                {errors.submit && (
+                  <Box mt={3}>
+                    <FormHelperText error>
+                      {errors.submit}
+                    </FormHelperText>
+                  </Box>
+                )}
+                <Box mt={2}>
+                  <Button
+                    color="secondary"
+                    variant="contained"
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    Create Category
+            </Button>
+                </Box>
+
+
+
+
+              </Box>
+
+
+
+            </Card>
+          </form>)}
     </Formik>
   );
 }

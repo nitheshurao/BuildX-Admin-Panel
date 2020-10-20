@@ -44,7 +44,7 @@ function InvoicePreview({ invoice, className, ...rest }) {
                 variant="h5"
                 color="textPrimary"
               >
-                www.devias.io
+                www.
               </Typography>
             </Grid>
             <Grid item>
@@ -75,7 +75,7 @@ function InvoicePreview({ invoice, className, ...rest }) {
                   variant="body1"
                   color="textPrimary"
                 >
-                  Street King William, 123
+                  jpnagar, banaglor
                   {' '}
                   <br />
                   Level 2, C, 442456
@@ -103,10 +103,10 @@ function InvoicePreview({ invoice, className, ...rest }) {
                   variant="body1"
                   color="textPrimary"
                 >
-                  Email: accounts@buildX.in
+                  Email: accounts@gmail.com
                   {' '}
                   <br />
-                  Tel: (+40) 652 3456 23
+                  Tel: (+91) 652 3456 23
                 </Typography>
               </Grid>
             </Grid>

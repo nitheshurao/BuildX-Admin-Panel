@@ -74,7 +74,7 @@ function Overview({ className, ...rest }) {
               variant="h3"
               color="textPrimary"
             >
-              $
+              ₹
               {overview.income}
             </Typography>
             <Label
@@ -105,7 +105,7 @@ function Overview({ className, ...rest }) {
               variant="h3"
               color="textPrimary"
             >
-              $
+             ₹ 
               {overview.expanses}
             </Typography>
             <Label

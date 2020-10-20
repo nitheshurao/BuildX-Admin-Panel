@@ -99,7 +99,7 @@ function Results({ className, orders, ...rest }) {
       </Typography>
       <Card>
         <CardHeader
-          action={<GenericMoreButton />}
+          // action={<GenericMoreButton />}
           title="Orders"
         />
         <Divider />
@@ -108,13 +108,13 @@ function Results({ className, orders, ...rest }) {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell padding="checkbox">
+                  {/* <TableCell padding="checkbox">
                     <Checkbox
                       checked={selectedAllOrders}
                       indeterminate={selectedSomeOrders}
                       onChange={handleSelectAllOrders}
-                    />
-                  </TableCell>
+                    /> */}
+                  {/* </TableCell> */}
                   <TableCell>
                     Ref
                   </TableCell>
@@ -130,7 +130,7 @@ function Results({ className, orders, ...rest }) {
                   <TableCell>
                     Status
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell >
                     Actions
                   </TableCell>
                 </TableRow>
@@ -144,13 +144,13 @@ function Results({ className, orders, ...rest }) {
                       key={order.id}
                       selected={selectedOrders.indexOf(order.id) !== -1}
                     >
-                      <TableCell padding="checkbox">
+                      {/* <TableCell padding="checkbox">
                         <Checkbox
                           checked={isOrderSelected}
                           onChange={(event) => handleSelectOneOrder(event, order.id)}
                           value={isOrderSelected}
                         />
-                      </TableCell>
+                      </TableCell> */}
                       <TableCell>
                         {order.payment.ref}
                         <Typography
@@ -174,12 +174,12 @@ function Results({ className, orders, ...rest }) {
                           {order.payment.status}
                         </Label>
                       </TableCell>
-                      <TableCell align="right">
-                        <IconButton>
+                      <TableCell >
+                        {/* <IconButton>
                           <SvgIcon fontSize="small">
                             <EditIcon />
                           </SvgIcon>
-                        </IconButton>
+                        </IconButton> */}
                         <IconButton
                           component={RouterLink}
                           to="/app/management/orders/1"

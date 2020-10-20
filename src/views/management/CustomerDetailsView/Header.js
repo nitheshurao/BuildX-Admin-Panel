@@ -67,7 +67,7 @@ function Header({ className, customer, ...rest }) {
           {customer.fullName}
         </Typography>
       </Grid>
-      <Grid item>
+      {/* <Grid item>
         <Button
           color="secondary"
           variant="contained"
@@ -82,7 +82,7 @@ function Header({ className, customer, ...rest }) {
           </SvgIcon>
           Edit
         </Button>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }

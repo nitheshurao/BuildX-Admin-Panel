@@ -30,6 +30,7 @@ import {
   Search as SearchIcon
 } from 'react-feather';
 import Label from 'src/components/Label';
+import { isDeleteExpression } from 'typescript';
 
 const categoryOptions = [
   {
@@ -114,32 +115,32 @@ function getInventoryLabel(inventoryType) {
 }
 
 function applyFilters(products, query, filters) {
-  return products.filter((product) => {
+  return products.filter((products) => {
     let matches = true;
 
-    if (query && !product.name.toLowerCase().includes(query.toLowerCase())) {
+    if (query && !products.name.toLowerCase().includes(query.toLowerCase())) {
       matches = false;
     }
 
-    if (filters.category && product.category !== filters.category) {
-      matches = false;
-    }
+    // if (filters.category && products.category !== filters.category) {
+    //   matches = false;
+    // }
 
     if (filters.availability) {
-      if (filters.availability === 'available' && !product.isAvailable) {
+      if (filters.availability === 'available' && !products.isAvailable) {
         matches = false;
       }
 
-      if (filters.availability === 'unavailable' && product.isAvailable) {
+      if (filters.availability === 'unavailable' && products.isAvailable) {
         matches = false;
       }
     }
 
-    if (filters.inStock && !['in_stock', 'limited'].includes(product.inventoryType)) {
+    if (filters.inStock && !['in_stock', 'limited'].includes(products.inventoryType)) {
       matches = false;
     }
 
-    if (filters.isShippable && !product.isShippable) {
+    if (filters.isShippable && !products.isShippable) {
       matches = false;
     }
 
@@ -147,14 +148,14 @@ function applyFilters(products, query, filters) {
   });
 }
 
-function applyPagination(customers, page, limit) {
-  return customers.slice(page * limit, page * limit + limit);
-}
+function applyPagination(products, page, limit) {
+   return products.slice(page * limit, page * limit + limit);
+ }
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   bulkOperations: {
-    position: 'relative'
+    position :'relative'
   },
   bulkActions: {
     paddingLeft: 4,
@@ -305,7 +306,7 @@ function Results({ className, products, ...rest }) {
 
   // Usually query is done on backend with indexing solutions
   const filteredProducts = applyFilters(products, query, filters);
-  const paginatedProducts = applyPagination(filteredProducts, page, limit);
+  const paginatedProducts = applyPagination(filteredProducts ,page, limit);
   const enableBulkOperations = selectedProducts.length > 0;
   const selectedSomeProducts = selectedProducts.length > 0 && selectedProducts.length < products.length;
   const selectedAllProducts = selectedProducts.length === products.length;
@@ -437,6 +438,8 @@ function Results({ className, products, ...rest }) {
             <Button
               variant="outlined"
               className={classes.bulkAction}
+              type="delete"
+           
             >
               Delete
             </Button>
@@ -479,7 +482,7 @@ function Results({ className, products, ...rest }) {
             </TableHead>
             <TableBody>
               {paginatedProducts.map((product) => {
-                const isProductSelected = selectedProducts.includes(product.id);
+                const isProductSelected = selectedProducts.includes(products.id);
 
                 return (
                   <TableRow
@@ -558,7 +561,7 @@ function Results({ className, products, ...rest }) {
           </Table>
           <TablePagination
             component="div"
-            count={filteredProducts.length}
+            // count={filteredProducts.length}
             onChangePage={handlePageChange}
             onChangeRowsPerPage={handleLimitChange}
             page={page}

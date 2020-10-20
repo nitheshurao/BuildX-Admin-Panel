@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+
 import { useSnackbar } from 'notistack';
 import {
   Box,
@@ -16,7 +18,23 @@ import {
   makeStyles
 } from '@material-ui/core';
 import wait from 'src/utils/wait';
+import { registerUser } from 'src/actions/userActions';
+// <<<<<<< HEAD
+//import axiosDev from 'src/utils/dist/axios.dev';
+// =======
+//const dispatch = useDispatch();
+// >>>>>>> 36b9f4862fa64f7833f1ae5c03f93e6265ffce38
 
+const UserOptions = [
+  {
+    id: 'Application',
+    name: 'Application User'
+  },
+  {
+    id: 'Portal',
+    name: 'Portal User'
+  }
+];
 const useStyles = makeStyles(() => ({
   root: {}
 }));
@@ -29,6 +47,8 @@ function CustomerCreateForm({
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
 
+  //delete 
+ 
   return (
     <Formik
       initialValues={{
@@ -49,10 +69,28 @@ function CustomerCreateForm({
         resetForm,
         setErrors,
         setStatus,
-        setSubmitting
+        setSubmitting,
+        
       }) => {
         try {
+
           // Make API request
+          try {
+// <<<<<<< HEAD
+       //     await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
+      //      onSubmitSuccess();
+// =======
+            // await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
+           // onSubmitSuccess();
+// >>>>>>> 36b9f4862fa64f7833f1ae5c03f93e6265ffce38
+          } catch (error) {
+            const message = (error.response && error.response.data.message) || 'Something went wrong';
+  
+            setStatus({ success: false });
+            setErrors({ submit: message });
+            setSubmitting(false);
+          }
+
           await wait(500);
           resetForm();
           setStatus({ success: true });
@@ -90,7 +128,30 @@ function CustomerCreateForm({
               <Grid
                 container
                 spacing={3}
-              >
+                
+              >    <Grid
+              item
+              xs={12}
+              lg={8}
+            >  <TextField
+              className={classes.categoryField}
+              label="User Type:"
+              name="UserOptions"
+            //  onChange={handleCategoryChange}
+              select
+              SelectProps={{ native: true }}
+           //   value={filters.category || 'all'}
+              variant="outlined"
+            >
+              {UserOptions.map((UserOptions) => (
+                <option
+                  key={UserOptions.id}
+                  value={UserOptions.id}
+                >
+                  {UserOptions.name}
+                </option>
+              ))}
+            </TextField></Grid> 
                 <Grid
                   item
                   md={6}
@@ -114,7 +175,7 @@ function CustomerCreateForm({
                   item
                   md={6}
                   xs={12}
-                >
+                >   
                   <TextField
                     error={Boolean(touched.fullName && errors.fullName)}
                     fullWidth
@@ -215,7 +276,7 @@ function CustomerCreateForm({
                   />
                 </Grid>
                 <Grid item />
-               <Grid
+               {/* <Grid
                   item
                   md={6}
                   xs={12}
@@ -242,7 +303,7 @@ function CustomerCreateForm({
                     onChange={handleChange}
                     value={values.verified}
                   />
-                </Grid>
+                </Grid> */}
                 {/* <Grid
                   item
                   md={6}
@@ -281,7 +342,7 @@ function CustomerCreateForm({
                 </Button>
               </Box>
             </CardContent>
-          </Card>
+</Card>
         </form>
       )}
     </Formik>

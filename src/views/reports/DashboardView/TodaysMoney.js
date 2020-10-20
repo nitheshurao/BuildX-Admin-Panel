@@ -33,7 +33,7 @@ function TodaysMoney({ className, ...rest }) {
   const classes = useStyles();
   const data = {
     value: '24,000',
-    currency: '$',
+    currency: '₹',
     difference: 4
   };
 
