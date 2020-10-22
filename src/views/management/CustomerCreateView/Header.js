@@ -53,7 +53,7 @@ function Header({ className, ...rest }) {
         variant="h3"
         color="textPrimary"
       >
-        Create New User
+        Create New User1
       </Typography>
     </div>
   );

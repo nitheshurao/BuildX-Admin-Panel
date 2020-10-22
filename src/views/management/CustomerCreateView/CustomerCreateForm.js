@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-
+import axios from 'axios';
 import { useSnackbar } from 'notistack';
 import {
   Box,
@@ -42,11 +42,12 @@ const useStyles = makeStyles(() => ({
 function CustomerCreateForm({
   className,
   customer,
+  onSubmitSuccess,
   ...rest
 }) {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
-
+  const dispatch = useDispatch();
   //delete 
  
   return (
@@ -80,8 +81,14 @@ function CustomerCreateForm({
        //     await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
       //      onSubmitSuccess();
 // =======
-            // await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
-           // onSubmitSuccess();
+console.log('....try...')
+            await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
+           onSubmitSuccess();
+           axios.push( 'http://15.207.7.54:8080/users/create-user').then(res => {
+             console.log
+             ('...res');
+             console.log(res.data);
+           });
 // >>>>>>> 36b9f4862fa64f7833f1ae5c03f93e6265ffce38
           } catch (error) {
             const message = (error.response && error.response.data.message) || 'Something went wrong';

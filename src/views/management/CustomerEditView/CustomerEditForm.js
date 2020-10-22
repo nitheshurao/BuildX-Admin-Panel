@@ -247,7 +247,7 @@ function CustomerEditForm({
                     value={values.verified}
                   />
                 </Grid>
-                <Grid
+                {/* <Grid
                   item
                   md={6}
                   xs={12}
@@ -263,16 +263,16 @@ function CustomerEditForm({
                     color="textSecondary"
                   >
                     This will give the user discountedprices for all products
-                  </Typography>
-                  <Switch
+                  </Typography> */}
+                  {/* <Switch
                     checked={values.discountedPrices}
                     color="secondary"
                     edge="start"
                     name="discountedPrices"
                     onChange={handleChange}
                     value={values.discountedPrices}
-                  />
-                </Grid>
+                  /> */}
+                {/* </Grid> */}
               </Grid>
               <Box mt={2}>
                 <Button

@@ -3,7 +3,7 @@ import { Container, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Header from './Header';
 import CategoryCreateForm from './CategoryCreateForm';
-
+import PersonList from './prt'
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -24,6 +24,7 @@ function CategoryCreateView() {
       <Container maxWidth={false}>
         <Header />
         <CategoryCreateForm />
+        <PersonList/>
       </Container>
     </Page>
   );
