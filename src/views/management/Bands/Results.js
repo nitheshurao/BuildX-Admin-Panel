@@ -410,7 +410,7 @@ useEffect(() => {
           display="flex"
           alignItems="center"
         >
-          <TextField
+          {/* <TextField
             className={classes.categoryField}
             label="Category"
 //////
@@ -420,8 +420,8 @@ useEffect(() => {
             SelectProps={{ native: true }}
             value={filters.category || 'all'}
             variant="outlined"
-          >
-            {categories.map((categoryOption) => (
+          > */}
+            {/* {categories.map((categoryOption) => (
               <option
                 key={categoryOption.value}
                 value={categoryOption.value}
@@ -429,7 +429,7 @@ useEffect(() => {
                 {categoryOption.label}
               </option>
             ))}
-          </TextField>
+          </TextField> */}
         </Box>
       </Box>
       <Card>
@@ -461,26 +461,24 @@ useEffect(() => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell padding="checkbox">
+                  {/* <TableCell padding="checkbox">
                     <Checkbox
                       checked={selectedAllProducts}
                       indeterminate={selectedSomeProducts}
                       onChange={handleSelectAllProducts}
                     />
-                  </TableCell>
+                  </TableCell> */}
 
                   <TableCell />
                   <TableCell>
-                    Subategory
+                    Brand
                 </TableCell>
 
-                  <TableCell>
-                    Details
-                </TableCell>
-
+                 
+{/* 
                   <TableCell align="right">
                     Actions
-                </TableCell>
+                </TableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -496,13 +494,13 @@ useEffect(() => {
                       key={category.id}
                       selected={isProductSelected}
                     >
-                      <TableCell padding="checkbox">
+                      {/* <TableCell padding="checkbox">
                         <Checkbox
                           checked={isProductSelected}
                           onChange={(event) => handleSelectOneProduct(event, category.id)}
                           value={isProductSelected}
                         />
-                      </TableCell>
+                      </TableCell> */}
 
                       <TableCell className={classes.imageCell}>
                         {category.image ? (
@@ -537,7 +535,7 @@ useEffect(() => {
 
 
                       <TableCell align="right">
-                        <IconButton>
+                        {/* <IconButton>
                           <SvgIcon fontSize="small">
                             <EditIcon />
                           </SvgIcon>
@@ -546,7 +544,7 @@ useEffect(() => {
                           <SvgIcon fontSize="small">
                             <ArrowRightIcon />
                           </SvgIcon>
-                        </IconButton>
+                        </IconButton> */}
                       </TableCell>
                     </TableRow>
                   );

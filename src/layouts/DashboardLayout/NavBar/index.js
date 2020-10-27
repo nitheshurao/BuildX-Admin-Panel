@@ -119,16 +119,17 @@ const navConfig = [
             href: '/app/management/CategoryCreateView',
           },
           {
-            title: 'Subcategories',
+            title: 'Brand',
             href: '/app/management/SubCategories',
           },
           {
-            title: 'Add New SubCategories',
+            title: 'Add Brand',
             href: '/app/management/SubCategoryCreateView',
           }
   
         ]
       },
+      
       {
         title: 'Orders',
         icon: FolderIcon,

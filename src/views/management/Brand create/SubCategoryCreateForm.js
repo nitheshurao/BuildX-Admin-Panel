@@ -38,20 +38,20 @@ import {
 } from 'react-feather';
 import Label from 'src/components/Label';
 import useIsMountedRef from 'src/hooks/useIsMountedRef'
-const categoryOptions = [
-  {
-    id: 'shirts',
-    name: 'Shirts'
-  },
-  {
-    id: 'phones',
-    name: 'Phones'
-  },
-  {
-    id: 'cars',
-    name: 'Cars'
-  }
-];
+// const categoryOptions = [
+//   {
+//     id: 'shirts',
+//     name: 'Shirts'
+//   },
+//   {
+//     id: 'phones',
+//     name: 'Phones'
+//   },
+//   {
+//     id: 'cars',
+//     name: 'Cars'
+//   }
+// ];
 
 
 
@@ -298,7 +298,7 @@ function Results({ className, products, ...rest }) {
                   >
                     <Card>
                       <CardContent>
-                        <TextField
+                        {/* <TextField
                           className={classes.categoryField}
                           label="Category"
                           name="category"
@@ -316,7 +316,7 @@ function Results({ className, products, ...rest }) {
                               {categoryOption.label}
                             </option>
                           ))}
-                        </TextField>
+                        </TextField> */}
 
                         <Box
                           mt={3}
@@ -326,7 +326,7 @@ function Results({ className, products, ...rest }) {
                             error={Boolean(touched.name && errors.name)}
                             fullWidth
                             helperText={touched.name && errors.name}
-                            label="sub category Name"
+                            label="Brand name"
                             name="name"
                             onBlur={handleBlur}
                             onChange={handleChange}
@@ -334,7 +334,7 @@ function Results({ className, products, ...rest }) {
                             variant="outlined"
                           />
                         </Box>
-                        <Box
+                        {/* <Box
                           mt={3}
                           mb={1}
                         >
@@ -346,8 +346,8 @@ function Results({ className, products, ...rest }) {
                           >
                             Description
                     </Typography>
-                        </Box>
-                        <Paper variant="outlined">
+                        </Box> */}
+                        {/* <Paper variant="outlined">
                           <QuillEditor
                             className={classes.editor}
                             value={values.description}
@@ -359,8 +359,8 @@ function Results({ className, products, ...rest }) {
                             <FormHelperText error>
                               {errors.description}
                             </FormHelperText>
-                          </Box>
-                        )}
+                          </Box> */}
+                        {/* )} */}
                       </CardContent>
                     </Card>
                     <Box mt={3}>
@@ -390,7 +390,8 @@ function Results({ className, products, ...rest }) {
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Create Category
+                    
+                    Add Brand
             </Button>
                 </Box>
 

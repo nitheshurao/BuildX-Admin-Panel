@@ -89,30 +89,30 @@ const sortOptions = [
   }
 ];
 
-function getInventoryLabel(inventoryType) {
-  const map = {
-    in_stock: {
-      text: 'In Stock',
-      color: 'success'
-    },
-    out_of_stock: {
-      text: 'Out of Stock',
-      color: 'error'
-    },
-    limited: {
-      text: 'Limited',
-      color: 'warning'
-    }
-  };
+// function getInventoryLabel(inventoryType) {
+//   const map = {
+//     in_stock: {
+//       text: 'In Stock',
+//       color: 'success'
+//     },
+//     out_of_stock: {
+//       text: 'Out of Stock',
+//       color: 'error'
+//     },
+//     limited: {
+//       text: 'Limited',
+//       color: 'warning'
+//     }
+//   };
 
-  const { text, color } = map[inventoryType];
+//   const { text, color } = map[inventoryType];
 
-  return (
-    <Label color={color}>
-      {text}
-    </Label>
-  );
-}
+//   return (
+//     <Label color={color}>
+//       {text}
+//     </Label>
+//   );
+// }
 
 function applyFilters(products, query, filters) {
   return products.filter((products) => {
@@ -481,27 +481,27 @@ function Results({ className, products, ...rest }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {paginatedProducts.map((product) => {
+              {paginatedProducts.map((products) => {
                 const isProductSelected = selectedProducts.includes(products.id);
 
                 return (
                   <TableRow
                     hover
-                    key={product.id}
+                    key={products.id}
                     selected={isProductSelected}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
                         checked={isProductSelected}
-                        onChange={(event) => handleSelectOneProduct(event, product.id)}
+                        onChange={(event) => handleSelectOneProduct(event, products.id)}
                         value={isProductSelected}
                       />
                     </TableCell>
                     <TableCell className={classes.imageCell}>
-                      {product.image ? (
+                      {products.image ? (
                         <img
                           alt="Product"
-                          src={product.image}
+                          src={products.image}
                           className={classes.image}
                         />
                       ) : (
@@ -523,25 +523,25 @@ function Results({ className, products, ...rest }) {
                         underline="none"
                         to="#"
                       >
-                        {product.name}
+                        {products.name}
                       </Link>
                     </TableCell>
-                    <TableCell>
+                    {/* <TableCell>
                       {getInventoryLabel(product.inventoryType)}
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell>
-                      {product.quantity}
+                      {products.quantity}
                       {' '}
                       in stock
-                      {product.variants > 1 && ` in ${product.variants} variants`}
+                      {products.variants > 1 && ` in ${products.variants} variants`}
                     </TableCell>
-                    <TableCell>
-                      {product.attributes.map((attr) => attr)}
-                    </TableCell>
-                    <TableCell>
-                      {product.currency}
-                      {product.price.toFixed(2)}
-                    </TableCell>
+                    {/* <TableCell>
+                      {products.attributes.map((attr) => attr)}
+                    </TableCell> */}
+                    {/* <TableCell>
+                      {products.price}
+                      {products.price.toFixed(2)}
+                    </TableCell> */}
                     <TableCell align="right">
                       <IconButton>
                         <SvgIcon fontSize="small">

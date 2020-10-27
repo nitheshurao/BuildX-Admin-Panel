@@ -46,14 +46,15 @@ function Header({ className, ...rest }) {
           variant="body1"
           color="textPrimary"
         >
-          Customers
+          Create brand
+          
         </Typography>
       </Breadcrumbs>
       <Typography
         variant="h3"
         color="textPrimary"
       >
-        Create New SubCategory
+        Create New Brand
       </Typography>
     </div>
   );
