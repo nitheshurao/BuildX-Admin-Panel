@@ -1,9 +1,11 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback  } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import useIsMountedRef from 'src/hooks/useIsMountedRef'
 import {
   Box,
   Button,
@@ -303,6 +305,41 @@ function Results({ className, products, ...rest }) {
   const handleLimitChange = (event) => {
     setLimit(event.target.value);
   };
+  ////
+  const isMountedRef = useIsMountedRef();
+
+
+ const [categories, setcategories] = useState([]);
+ const getcategories = useCallback(() => {
+   axios
+     .get(' http://15.207.7.54:8080/category/fetch-by-filter')
+     .then(response => {
+       console.log('----------response---------- crty-');
+       // console.log(response.data.categories)
+       console.log(response.data.data.categories);
+       if (isMountedRef.current) {
+         let frmtedctgory = response.data.data.categories.map(item => {
+           return ({
+             value: item.id,
+             label: item.name
+           })
+         })
+         console.log(frmtedctgory);
+         setcategories([...frmtedctgory]);
+       }
+     })
+
+     .catch(err => {
+       console.log('----------err-------cry----');
+       console.log(err);
+     });
+ }, [isMountedRef]);
+
+
+ useEffect(() => {
+   getcategories();
+ }, [getcategories]);
+  ///
 
   // Usually query is done on backend with indexing solutions
   const filteredProducts = applyFilters(products, query, filters);
@@ -369,18 +406,18 @@ function Results({ className, products, ...rest }) {
             className={classes.categoryField}
             label="Category"
             name="category"
-            onChange={handleCategoryChange}
+            onChange={(e)=> handleCategoryChange(e)}
             select
             SelectProps={{ native: true }}
             value={filters.category || 'all'}
             variant="outlined"
           >
-            {categoryOptions.map((categoryOption) => (
+            {categories.map((categoryOption) => (
               <option
-                key={categoryOption.id}
-                value={categoryOption.id}
+                key={categoryOption.value}
+                value={categoryOption.value}
               >
-                {categoryOption.name}
+                {categoryOption.label}
               </option>
             ))}
           </TextField>
@@ -530,18 +567,24 @@ function Results({ className, products, ...rest }) {
                       {getInventoryLabel(product.inventoryType)}
                     </TableCell> */}
                     <TableCell>
-                      {products.quantity}
+                      {products.available_quantity}
                       {' '}
                       in stock
-                      {products.variants > 1 && ` in ${products.variants} variants`}
+                      {products.available_quantity > 1 && ` in ${products.available_quantity} variants`}
                     </TableCell>
                     {/* <TableCell>
                       {products.attributes.map((attr) => attr)}
                     </TableCell> */}
-                    {/* <TableCell>
-                      {products.price}
-                      {products.price.toFixed(2)}
-                    </TableCell> */}
+                      <TableCell>
+                      {products.description}
+                      
+                      {products.total_amount}
+                    </TableCell>
+                    <TableCell>
+                      {products.prices.final_value}
+                      
+                      {products.total_amount}
+                    </TableCell>
                     <TableCell align="right">
                       <IconButton>
                         <SvgIcon fontSize="small">

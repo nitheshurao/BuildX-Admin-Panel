@@ -89,8 +89,9 @@ function ProductCreateForm({ className, ...rest }) {
       }) => {
         try {
           // Do api call
-          axios
-    .post('http://15.207.7.54:8080/products/register')
+          console.log('------try-------------')
+          axios.post('http://15.207.7.54:8080/products/register')
+
     .then((response) => {
       console.log('...response')
       
@@ -100,7 +101,7 @@ function ProductCreateForm({ className, ...rest }) {
           enqueueSnackbar('Product Created', {
             variant: 'success'
           });
-          history.push('http://15.207.7.54:8080/products/register');
+          //  history.push('  ');
         } catch (err) {
           setErrors({ submit: err.message });
           setStatus({ success: false });
