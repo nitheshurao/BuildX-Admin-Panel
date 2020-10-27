@@ -13,10 +13,16 @@ export default class PersonList extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
+    // let config = {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       'Access-Control-Allow-Origin': '*',
+    //       }
+    //     }
     const user = {
       name: this.state.name
     };
+  
 
     axios.post(`http://15.207.7.54:8080/users/create-user`, { user })
       .then(res => {
