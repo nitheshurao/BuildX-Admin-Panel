@@ -24,7 +24,7 @@ function CategoryCreateView() {
       <Container maxWidth={false}>
         <Header />
         <CategoryCreateForm />
-        <PersonList/>
+        {/* <PersonList/> */}
       </Container>
     </Page>
   );

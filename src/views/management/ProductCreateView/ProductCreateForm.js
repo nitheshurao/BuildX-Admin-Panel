@@ -90,7 +90,7 @@ function ProductCreateForm({ className, ...rest }) {
         try {
           // Do api call
           console.log('------try-------------')
-          axios.post('http://15.207.7.54:8080/products/register')
+          axios.post('http://15.207.7.54:8080/products/register',values.name,values.description,values.images,values.price,values.salePrice)
 
     .then((response) => {
       console.log('...response')

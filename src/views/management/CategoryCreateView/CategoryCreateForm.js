@@ -77,18 +77,25 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
 
 
           console.log('...try...');
-          await dispatch(createCategory(values.name)); 
-           onSubmitSuccess();
+          axios.post('http://15.207.7.54:8080/category/register', values.name, values.description).then((response) => {
+            console.log('.....response ....')
+          })
 
- /////
 
-          history.push('http://15.207.7.54:8080/category/register').then(res => {
-          
-            console.log(' ...res');
-            console.log(res.data);
+          /////setStatus({ success: true });
+          setStatus({ success: true });
+          setSubmitting(false);
+          enqueueSnackbar('Product Created', {
+            variant: 'success'
           });
 
-          
+          // history.push('http://15.207.7.54:8080/category/register').then(res => {
+
+          //   console.log(' ...res');
+          //   console.log(res.data);
+          // });
+
+
         } catch (err) {
           setErrors({ submit: err.message });
           setStatus({ success: false });
@@ -106,76 +113,76 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
         touched,
         values
       }) => (
-        <form
-          onSubmit={handleSubmit}
-          className={clsx(classes.root, className)}
-          {...rest}
-        >
-          <Grid container spacing={3}>
-            <Grid item xs={12} lg={8}>
-              <Card>
-                <CardContent>
-                  <TextField
-                    error={Boolean(touched.name && errors.name)}
-                    fullWidth
-                    helperText={touched.name && errors.name}
-                    label="category Name"
-                    name="name"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.name}
-                    variant="outlined"
-                  />
-
-                  <Box mt={3} mb={1}>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      Description
-                    </Typography>
-                  </Box>
-                  <Paper variant="outlined">
-                    <QuillEditor
-                      className={classes.editor}
-                      value={values.description}
-                      onChange={value => setFieldValue('description', value)}
-                    />
-                  </Paper>
-                  {touched.description && errors.description && (
-                    <Box mt={2}>
-                      <FormHelperText error>
-                        {errors.description}
-                      </FormHelperText>
-                    </Box>
-                  )}
-                </CardContent>
-              </Card>
-              <Box mt={3}>
+          <form
+            onSubmit={handleSubmit}
+            className={clsx(classes.root, className)}
+            {...rest}
+          >
+            <Grid container spacing={3}>
+              <Grid item xs={12} lg={8}>
                 <Card>
-                  <CardHeader title="Upload Images" />
-                  <Divider />
                   <CardContent>
-                    <FilesDropzone />
+                    <TextField
+                      error={Boolean(touched.name && errors.name)}
+                      fullWidth
+                      helperText={touched.name && errors.name}
+                      label="category Name"
+                      name="name"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values.name}
+                      variant="outlined"
+                    />
+
+                    <Box mt={3} mb={1}>
+                      <Typography variant="subtitle2" color="textSecondary">
+                        Description
+                    </Typography>
+                    </Box>
+                    <Paper variant="outlined">
+                      <QuillEditor
+                        className={classes.editor}
+                        value={values.description}
+                        onChange={value => setFieldValue('description', value)}
+                      />
+                    </Paper>
+                    {touched.description && errors.description && (
+                      <Box mt={2}>
+                        <FormHelperText error>
+                          {errors.description}
+                        </FormHelperText>
+                      </Box>
+                    )}
                   </CardContent>
                 </Card>
-              </Box>
+                <Box mt={3}>
+                  <Card>
+                    <CardHeader title="Upload Images" />
+                    <Divider />
+                    <CardContent>
+                      <FilesDropzone />
+                    </CardContent>
+                  </Card>
+                </Box>
+              </Grid>
             </Grid>
-          </Grid>
-          {errors.submit && (
-            <Box mt={3}>
-              <FormHelperText error>{errors.submit}</FormHelperText>
-            </Box>
-          )}
-          <Box mt={2}>
-            <Button
-              color="secondary"
-              variant="contained"
-              type="submit"
-              disabled={isSubmitting}
-            >
-              Create Category
+            {errors.submit && (
+              <Box mt={3}>
+                <FormHelperText error>{errors.submit}</FormHelperText>
+              </Box>
+            )}
+            <Box mt={2}>
+              <Button
+                color="secondary"
+                variant="contained"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                Create Category
             </Button>
-          </Box>
-        </form>
-      )}
+            </Box>
+          </form>
+        )}
     </Formik>
   );
 }
@@ -186,7 +193,7 @@ ProductCreateForm.propTypes = {
 };
 
 ProductCreateForm.defaultProps = {
-  onSubmitSuccess: () => {}
+  onSubmitSuccess: () => { }
 };
 
 export default ProductCreateForm;
