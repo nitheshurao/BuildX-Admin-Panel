@@ -76,31 +76,59 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
         try {
 
 
-          console.log('...try...');
-          axios.post('http://15.207.7.54:8080/category/register', values.name, values.description).then((response) => {
-            console.log('.....response ....')
-          })
+          console.log("inside createCategory ")
+          var category = {
+            name: values.name,
+            description: values.description
+
+          }
+          var category_items = [category]
+          console.log("category_item", category_items)
+          var category_items_data = category_items
+          var config = {
+            method: 'post',
+            url: 'http://15.207.7.54:8080/category/register',
+            headers: {
+              'Content-Type': 'application/json',
 
 
-          /////setStatus({ success: true });
-          setStatus({ success: true });
-          setSubmitting(false);
-          enqueueSnackbar('Product Created', {
-            variant: 'success'
-          });
 
-          // history.push('http://15.207.7.54:8080/category/register').then(res => {
-
-          //   console.log(' ...res');
-          //   console.log(res.data);
-          // });
-
-
-        } catch (err) {
-          setErrors({ submit: err.message });
-          setStatus({ success: false });
-          setSubmitting(false);
+            },
+            body: { category_items: category_items_data }
+          };
+          console.log('------------------------config--------------------')
+          console.log(config)
+          const resp = await axios(config);
+          console.log('-----------------resp------------------')
+          console.log(resp)
+        } catch (error) {
+          console.log('----------------------resp==error---------------------')
+          console.log(error)
+          return error
         }
+
+
+
+
+        //   /////setStatus({ success: true });
+        //   setStatus({ success: true });
+        //   setSubmitting(false);
+        //   enqueueSnackbar('Product Created', {
+        //     variant: 'success'
+        //   });
+
+        //   // history.push('http://15.207.7.54:8080/category/register').then(res => {
+
+        //   //   console.log(' ...res');
+        //   //   console.log(res.data);
+        //   // });
+
+
+        // } catch (err) {
+        //   setErrors({ submit: err.message });
+        //   setStatus({ success: false });
+        //   setSubmitting(false);
+        // }
       }}
     >
       {({
