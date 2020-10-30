@@ -77,24 +77,26 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
 
 
           console.log("inside createCategory ")
-          var category = {
+          /*var category = {
             name: values.name,
             description: values.description
 
           }
           var category_items = [category]
           console.log("category_item", category_items)
-          var category_items_data = category_items
+          var category_items_data = category_items*/
           var config = {
             method: 'post',
             url: 'http://15.207.7.54:8080/category/register',
+            data: {
+              name: values.name,
+              description: values.description
+            },
             headers: {
               'Content-Type': 'application/json',
 
-
-
             },
-            body: { category_items: category_items_data }
+
           };
           console.log('------------------------config--------------------')
           console.log(config)
@@ -117,7 +119,7 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
         //     variant: 'success'
         //   });
 
-        //   // history.push('http://15.207.7.54:8080/category/register').then(res => {
+        //  history.push('http://15.207.7.54:8080/category/register').then(res => 
 
         //   //   console.log(' ...res');
         //   //   console.log(res.data);
