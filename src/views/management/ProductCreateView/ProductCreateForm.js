@@ -362,7 +362,7 @@ function ProductCreateForm({ className, ...rest }) {
                           />
                         </Grid>
                         <Grid item xs={12} md={6}>
-                          <TextField
+                          {/* <TextField
                             error={Boolean(touched.salePrice && errors.salePrice)}
                             fullWidth
                             helperText={touched.salePrice && errors.salePrice}
@@ -373,7 +373,7 @@ function ProductCreateForm({ className, ...rest }) {
                             onChange={handleChange}
                             value={values.salePrice}
                             variant="outlined"
-                          />
+                          /> */}
                         </Grid>
                         <Grid item xs={12} md={6}>
                           <TextField
