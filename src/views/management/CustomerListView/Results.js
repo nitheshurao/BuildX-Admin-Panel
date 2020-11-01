@@ -417,7 +417,7 @@ function Results({ className, customers, ...rest }) {
                     <TableCell align="right">
                       <IconButton
                         component={RouterLink}
-                        to="/app/management/customers/1/edit"
+                        to="/app/management/customers/Id/edit"
                       >
                         <SvgIcon fontSize="small">
                           <EditIcon />
@@ -425,7 +425,7 @@ function Results({ className, customers, ...rest }) {
                       </IconButton>
                       <IconButton
                         component={RouterLink}
-                        to="/app/management/customers/1"
+                        to="/app/management/customers/{Id}"
                       >
                         <SvgIcon fontSize="small">
                           <ArrowRightIcon />

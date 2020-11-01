@@ -33,6 +33,7 @@ import {
 } from 'react-feather';
 import Label from 'src/components/Label';
 import { isDeleteExpression } from 'typescript';
+import { Category } from '@material-ui/icons';
 
 const categoryOptions = [
   {
@@ -91,30 +92,30 @@ const sortOptions = [
   }
 ];
 
-function getInventoryLabel(inventoryType) {
-  const map = {
-    in_stock: {
-      text: 'In Stock',
-      color: 'success'
-    },
-    out_of_stock: {
-      text: 'Out of Stock',
-      color: 'error'
-    },
-    limited: {
-      text: 'Limited',
-      color: 'warning'
-    }
-  };
+// function getInventoryLabel(inventoryType) {
+//   const map = {
+//     in_stock: {
+//       text: 'In Stock',
+//       color: 'success'
+//     },
+//     out_of_stock: {
+//       text: 'Out of Stock',
+//       color: 'error'
+//     },
+//     limited: {
+//       text: 'Limited',
+//       color: 'warning'
+//     }
+//   };
 
-  const { text, color } = map[inventoryType];
+//   const { text, color } = map[inventoryType];
 
-  return (
-    <Label color={color}>
-      {text}
-    </Label>
-  );
-}
+//   return (
+//     <Label color={color}>
+//       {text}
+//     </Label>
+//   );
+// }
 
 function applyFilters(products, query, filters) {
   return products.filter((products) => {
@@ -403,13 +404,14 @@ function Results({ className, products, ...rest }) {
           alignItems="center"
         >
           <TextField
-            className={classes.categoryField}
+            // className={classes.categoryField}
             label="Category"
             name="category"
             onChange={(e)=> handleCategoryChange(e)}
             select
             SelectProps={{ native: true }}
             value={filters.category || 'all'}
+            
             variant="outlined"
           >
             {categories.map((categoryOption) => (
@@ -421,7 +423,7 @@ function Results({ className, products, ...rest }) {
               </option>
             ))}
           </TextField>
-          <TextField
+          {/* <TextField
             className={classes.availabilityField}
             label="Availability"
             name="availability"
@@ -439,7 +441,7 @@ function Results({ className, products, ...rest }) {
                 {avalabilityOption.name}
               </option>
             ))}
-          </TextField>
+          </TextField> */}
           {/* <FormControlLabel
             className={classes.stockField}
             control={(
@@ -500,12 +502,13 @@ function Results({ className, products, ...rest }) {
                 <TableCell>
                   Name
                 </TableCell>
-                <TableCell>
-                  Invetory
-                </TableCell>
+            
                 <TableCell>
                   Details
                 </TableCell>
+                {/* <TableCell>
+                  Invetory
+                </TableCell> */}
                 {/* <TableCell>
                   Attributes
                 </TableCell> */}
@@ -583,7 +586,7 @@ function Results({ className, products, ...rest }) {
                     <TableCell>
                       {products.prices.final_value}
                       
-                      {products.total_amount}
+                      {products.base_price}
                     </TableCell>
                     <TableCell align="right">
                       <IconButton>
@@ -591,7 +594,9 @@ function Results({ className, products, ...rest }) {
                           <EditIcon />
                         </SvgIcon>
                       </IconButton>
-                      <IconButton>
+                      <IconButton  component={RouterLink}
+                        to="/app/management/customers/id"
+                      >
                         <SvgIcon fontSize="small">
                           <ArrowRightIcon />
                         </SvgIcon>
