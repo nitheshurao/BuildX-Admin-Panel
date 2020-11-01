@@ -119,12 +119,12 @@ const navConfig = [
             href: '/app/management/CategoryCreateView',
           },
           {
-            title: 'Brand',
-            href: '/app/management/SubCategories',
+            title: 'List Brands',
+            href: '/app/management/Brand',
           },
           {
-            title: 'Add Brand',
-            href: '/app/management/SubCategoryCreateView',
+            title: 'Add New Brand',
+            href: '/app/management/BrandCreateView',
           }
   
         ]

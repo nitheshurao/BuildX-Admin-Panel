@@ -123,12 +123,12 @@ function Routes() {
                   />
                   <Route
                     exact
-                    path="/app/management/SubCategoryCreateView"
+                    path="/app/management/CreateBrand"
                     component={lazy(() => import('src/views/management/Brand create'))}
                   />
                   <Route
                     exact
-                    path="/app/management/SubCategories"
+                    path="/app/management/Brands"
                     component={lazy(() => import('src/views/management/Bands'))}
                   />
 

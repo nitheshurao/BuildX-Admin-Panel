@@ -9,7 +9,7 @@ import { Formik } from 'formik';
 import { useSnackbar } from 'notistack';
 
 
-import { createCategory } from 'src/actions/categoryActions';
+// import { createCategory } from 'src/actions/categoryActions';
 import {
   Box,
   Button,
@@ -76,7 +76,7 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
         try {
 
 
-          console.log("inside createCategory ")
+          console.log("inside createBrand ")
           /*var category = {
             name: values.name,
             description: values.description
@@ -85,13 +85,13 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
           var category_items = [category]
           console.log("category_item", category_items)
           var category_items_data = category_items*/
-
           var config = {
             method: 'post',
-            url: 'http://15.207.7.54:8080/category/register',
+            url: 'http://15.207.7.54:8080/brands/register',
             data: {
               name: values.name,
               description: values.description.replace(/<[^>]+>/g, '')
+             
             },
             headers: {
               'Content-Type': 'application/json',
@@ -106,10 +106,10 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
           console.log(resp)
           setStatus({ success: true });
           setSubmitting(false);
-          enqueueSnackbar('Category Created', {
+          enqueueSnackbar('Brand Created', {
             variant: 'success'
           });
-
+          
         } catch (error) {
           console.log('----------------------resp==error---------------------')
           console.log(error)
@@ -117,8 +117,8 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
         }
 
 
-        //////delete
-
+//////delete
+  
 
 
         //   /////setStatus({ success: true });
@@ -165,15 +165,13 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
                       error={Boolean(touched.name && errors.name)}
                       fullWidth
                       helperText={touched.name && errors.name}
-                      label="category Name"
+                      label="Brand Name"
                       name="name"
                       onBlur={handleBlur}
                       onChange={handleChange}
                       value={values.name}
                       variant="outlined"
                     />
-
-
                     <Box mt={3} mb={1}>
                       <Typography variant="subtitle2" color="textSecondary">
                         Description
@@ -193,6 +191,7 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
                           {errors.description}
                         </FormHelperText>
                       </Box>
+
                     )}
                   </CardContent>
                 </Card>
@@ -219,7 +218,7 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
                 type="submit"
                 disabled={isSubmitting}
               >
-                Create Category
+                Create Brand
             </Button>
             </Box>
           </form>

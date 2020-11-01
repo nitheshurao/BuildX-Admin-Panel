@@ -74,43 +74,78 @@ function CustomerCreateForm({
         
       }) => {
         try {
-
+          console.log("inside createUser ")
           // Make API request
-          try {
+          var config = {
+            method: 'post',
+            url: 'http://15.207.7.54:8080/users/create-user',
+            data: {
+              name: values.fullName,
+              phone:values.phone,
+              
+              email:values.email,
+              state:values.state,
+              country:values.country,
+              address1:values.address1,
+              address2:values.address2,
+             
+            },
+            headers: {
+              'Content-Type': 'application/json',
+
+            },
+
+          };
+          console.log('------------------------config--------------------')
+          console.log(config)
+          const resp = await axios(config);
+          console.log('-----------------resp------------------')
+          console.log(resp)
+          setStatus({ success: true });
+          setSubmitting(false);
+          enqueueSnackbar('User Created', {
+            variant: 'success'
+          });
+          
+        } catch (error) {
+          console.log('----------------------resp==error---------------------')
+          console.log(error)
+          return error
+        }
 // <<<<<<< HEAD
        //     await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
       //      onSubmitSuccess();
 // =======
-console.log('....try...')
-            await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
-           onSubmitSuccess();
-           axios.push( 'http://15.207.7.54:8080/users/create-user').then(res => {
-             console.log
-             ('...res');
-             console.log(res.data);
-           });
-// >>>>>>> 36b9f4862fa64f7833f1ae5c03f93e6265ffce38
-          } catch (error) {
-            const message = (error.response && error.response.data.message) || 'Something went wrong';
+// console.log('....try...')
+//             await dispatch(registerUser(values.fullName, values.phone,false,false,values.address1,values.address2,values.state,values.email));
+//            onSubmitSuccess();
+//            axios.push( 'http://15.207.7.54:8080/users/create-user').then(res => {
+//              console.log
+//              ('...res');
+//              console.log(res.data);
+//            });
+// // >>>>>>> 36b9f4862fa64f7833f1ae5c03f93e6265ffce38
+//           } catch (error) {
+//             const message = (error.response && error.response.data.message) || 'Something went wrong';
   
-            setStatus({ success: false });
-            setErrors({ submit: message });
-            setSubmitting(false);
-          }
+//             setStatus({ success: false });
+//             setErrors({ submit: message });
+//             setSubmitting(false);
+//           }
 
-          await wait(500);
-          resetForm();
-          setStatus({ success: true });
-          setSubmitting(false);
-          enqueueSnackbar('User Added', {
-            variant: 'success',
-            action: <Button>See all</Button>
-          });
-        } catch (error) {
-          setStatus({ success: false });
-          setErrors({ submit: error.message });
-          setSubmitting(false);
-        }
+//           await wait(500);
+//           resetForm();
+//           setStatus({ success: true });
+//           setSubmitting(false);
+//           enqueueSnackbar('User Added', {
+//             variant: 'success',
+//             action: <Button>See all</Button>
+//           });
+//         } catch (error) {
+//           setStatus({ success: false });
+//           setErrors({ submit: error.message });
+//           setSubmitting(false);
+//         }
       }}
     >
       {({

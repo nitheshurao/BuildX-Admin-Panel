@@ -23,20 +23,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function SubCategories() {
+function Brands() {
   const classes = useStyles();
   const isMountedRef = useIsMountedRef();
-  const [subCategory, setsubCategory] = useState(null);
+  const [Brand, setBrand] = useState(null);
 
-  const getsubCategory = useCallback(() => {
+  const getBrand= useCallback(() => {
     axios
-      .get('http://15.207.7.54:8080/sub-category/fetch-by-filter')
+      .get('http://15.207.7.54:8080/brands/fetch-by-filter')
       .then((response) => {
         console.log('----------response-----------')
         console.log(response)
-        console.log(response.data.data.subCategory)
+        console.log(response.data.data.brands)
         if (isMountedRef.current) {
-          setsubCategory(response.data.data.subCategory);
+          setBrand(response.data.data.brands);
         }
       })
       .catch(err => {
@@ -45,10 +45,11 @@ function SubCategories() {
       })
   }, [isMountedRef]);
   useEffect(() => {
-    getsubCategory();
-  }, [getsubCategory]);
+    getBrand();
+  }, [getBrand]);
 
-  if (!subCategory) {
+
+  if (!Brand) {
     return null;
   }
 
@@ -58,13 +59,13 @@ function SubCategories() {
   return (
     <Page
       className={classes.root}
-      title="Product List"
+      title="Brand List"
     >
       <Container maxWidth={false}>
         <Header />
-        {subCategory && (
+        {Brand && (
           <Box mt={3}>
-            <Results products={subCategory} />
+            <Results Brand={Brand} />
 
 
           </Box>
@@ -74,4 +75,4 @@ function SubCategories() {
   );
 }
 
-export default SubCategories;
+export default Brands;

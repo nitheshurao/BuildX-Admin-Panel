@@ -107,7 +107,7 @@ const routesConfig = [
       },
       {
         exact: true,
-        path: '/app/management/SubCategoryCreateView',
+        path: '/app/management/BrandCreateView',
         component: lazy(() => import('src/views/management/Brand create'))
       },
       {
@@ -125,7 +125,7 @@ const routesConfig = [
       ///////////
       {
         exact: true,
-        path: '/app/management/SubCategories',
+        path: '/app/management/Brand',
         component: lazy(() => import('src/views/management/Bands'))
       },
       {

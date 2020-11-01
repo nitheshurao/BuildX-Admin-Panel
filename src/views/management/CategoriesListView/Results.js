@@ -75,6 +75,7 @@ const avalabilityOptions = [
 //   }
 // }
 //
+
 function applyFilters(categories, query) {
   return categories.filter(categories => {
     let matches = true;
@@ -178,19 +179,19 @@ function Results({ className, categories, ...rest }) {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox">
+                {/* <TableCell padding="checkbox">
                   <Checkbox
                     checked={selectedAllProducts}
                     indeterminate={selectedSomeProducts}
                     onChange={handleSelectAllProducts}
                   />
-                </TableCell>
+                </TableCell> */}
                 <TableCell />
-                <TableCell>Category</TableCell>
+                <TableCell>Category </TableCell>
 
                 <TableCell>Details</TableCell>
 
-                <TableCell align="right">Actions</TableCell>
+                <TableCell align="right">Actions </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -205,7 +206,7 @@ function Results({ className, categories, ...rest }) {
                     key={categories.id}
                     selected={isProductSelected}
                   >
-                    <TableCell padding="checkbox">
+                    {/* <TableCell padding="checkbox">
                       <Checkbox
                         checked={isProductSelected}
                         onChange={event =>
@@ -213,7 +214,7 @@ function Results({ className, categories, ...rest }) {
                         }
                         value={isProductSelected}
                       />
-                    </TableCell>
+                    </TableCell> */}
 
                     <TableCell className={classes.imageCell}>
                       {categories.image ? (

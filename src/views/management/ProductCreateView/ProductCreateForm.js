@@ -1,10 +1,11 @@
-import React from 'react';
+import React,{ useState,useEffect,useCallback } from 'react';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import useIsMountedRef from 'src/hooks/useIsMountedRef'
 import { useSnackbar } from 'notistack';
 import {
   Box,
@@ -53,6 +54,107 @@ function ProductCreateForm({ className, ...rest }) {
   const classes = useStyles();
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
+////
+const handleCategoryChange = (event) => {
+  event.persist();
+
+  let value = null;
+
+  if (event.target.value !== 'all') {
+    value = event.target.value;
+  }
+
+  // setFilters((prevFilters) => ({
+  //   ...prevFilters,
+  //   category: value
+  // }));
+};
+////brand
+const handleBrandChange = (event) => {
+  event.persist();
+
+  let value = null;
+
+  if (event.target.value !== 'all') {
+    value = event.target.value;
+  }
+
+  // setFilters((prevFilters) => ({
+  //   ...prevFilters,
+  //   category: value
+  // }));
+};
+
+///
+const isMountedRef = useIsMountedRef();
+
+
+const [categories, setcategories] = useState([]);
+const getcategories = useCallback(() => {
+  axios
+    .get(' http://15.207.7.54:8080/category/fetch-by-filter')
+    .then(response => {
+      console.log('----------response---------- crty-');
+      // console.log(response.data.categories)
+      console.log(response.data.data.categories);
+      if (isMountedRef.current) {
+        let frmtedctgory = response.data.data.categories.map(item => {
+          return ({
+            value: item.id,
+            label: item.name
+          })
+        })
+        console.log(frmtedctgory);
+        setcategories([...frmtedctgory]);
+      }
+    })
+
+    .catch(err => {
+      console.log('----------err-------cry----');
+      console.log(err);
+    });
+}, [isMountedRef]);
+
+
+useEffect(() => {
+  getcategories();
+}, [getcategories]);
+//// brand Api callint
+const [Brand, setBrand] = useState([]);
+
+const getBrand = useCallback(() => {
+  axios
+    .get('http://15.207.7.54:8080/brands/fetch-by-filter')
+    .then(response => {
+      console.log('----------response---------- crty-');
+      // console.log(response.data.categories)
+      console.log(response.data.data.brands);
+      if (isMountedRef.current) {
+        let frmtedctgory = response.data.data.brands.map(item => {
+          return ({
+            value: item.id,
+            label: item.name
+          })
+        })
+        console.log(frmtedctgory);
+        setBrand([...frmtedctgory]);
+      }
+    })
+
+    .catch(err => {
+      console.log('----------err-------cry----');
+      console.log(err);
+    });
+}, [isMountedRef]);
+
+
+useEffect(() => {
+  getBrand();
+}, [getBrand]);
+
+
+
+///
 
   return (
     <Formik
@@ -88,25 +190,71 @@ function ProductCreateForm({ className, ...rest }) {
         setSubmitting
       }) => {
         try {
-          // Do api call
-          console.log('------try-------------')
-          axios.post('http://15.207.7.54:8080/products/register',values.name,values.description,values.images,values.price,values.salePrice)
 
-    .then((response) => {
-      console.log('...response')
-      
-    })
+          console.log("inside createBrand ")
+          /*var category = {
+            name: values.name,
+            description: values.description
+
+          }
+          var category_items = [category]
+          console.log("category_item", category_items)
+          var category_items_data = category_items*/
+          var config = {
+            method: 'post',
+            url: 'http://15.207.7.54:8080/products/register',
+            data: {
+              name: values.name,
+              description: values.description.replace(/<[^>]+>/g, ''),
+              code:values.productCode,
+              group:values.group,
+              base_price:values.price,
+              category_id:categoryOption.value,
+              brand_id:BrandOption.value,
+             tax_type: "Gst",
+             tax_value:values.tax_value,
+            },
+            headers: {
+              'Content-Type': 'application/json',
+
+            },
+
+          };
+          console.log('------------------------config--------------------')
+          console.log(config)
+          const resp = await axios(config);
+          console.log('-----------------resp------------------')
+          console.log(resp)
           setStatus({ success: true });
           setSubmitting(false);
-          enqueueSnackbar('Product Created', {
+          enqueueSnackbar('Brand Created', {
             variant: 'success'
           });
-          //  history.push('  ');
-        } catch (err) {
-          setErrors({ submit: err.message });
-          setStatus({ success: false });
-          setSubmitting(false);
+          
+        } catch (error) {
+          console.log('----------------------resp==error---------------------')
+          console.log(error)
+          return error
         }
+          // Do api call
+    //       console.log('------try-------------')
+    //       axios.post('http://15.207.7.54:8080/products/register',values.name,values.description,values.images,values.price,values.salePrice)
+
+    // .then((response) => {
+    //   console.log('...response')
+      
+    // })
+    //       setStatus({ success: true });
+    //       setSubmitting(false);
+    //       enqueueSnackbar('Product Created', {
+    //         variant: 'success'
+    //       });
+    //       //  history.push('  ');
+    //     } catch (err) {
+    //       setErrors({ submit: err.message });
+    //       setStatus({ success: false });
+    //       setSubmitting(false);
+    //     }
       }}
     >
       {({
@@ -221,9 +369,23 @@ function ProductCreateForm({ className, ...rest }) {
                           variant="outlined"
                         />
                       </Grid>
+                      <Grid item xs={12} md={6}>
+                        <TextField
+                          error={Boolean(touched.salePrice && errors.salePrice)}
+                          fullWidth
+                          helperText={touched.salePrice && errors.salePrice}
+                          label=" Available Quantity"
+                          name="Available_quantity"
+                          type="number"
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          value={values.Stock}
+                          variant="outlined"
+                        />
+                      </Grid>
                     </Grid>
                     <Box mt={2}>
-                      <FormControlLabel
+                      {/* <FormControlLabel
                         control={(
                           <Checkbox
                             checked={values.isTaxable}
@@ -233,7 +395,7 @@ function ProductCreateForm({ className, ...rest }) {
                           />
                         )}
                         label="Product is taxable"
-                      />
+                      /> */}
                     </Box>
                     <Grid item xs={12} md={6}>
                         <TextField
@@ -245,11 +407,11 @@ function ProductCreateForm({ className, ...rest }) {
                           type="number"
                           onBlur={handleBlur}
                           onChange={handleChange}
-                          value={values.salePrice}
+                          value={values.tax_value}
                           variant="outlined"
                         />
                       </Grid>
-                    <Box mt={2}>
+                    {/* <Box mt={2}>
                       <FormControlLabel
                         control={(
                           <Checkbox
@@ -261,56 +423,57 @@ function ProductCreateForm({ className, ...rest }) {
                         )}
                         label="Price includes taxes"
                       />
-                    </Box>
+                    </Box> */}
                   </CardContent>
                 </Card>
               </Box>
             </Grid>
-            {/* <Grid
+            <Grid
               item
               xs={12}
               lg={4}
             >
               <Card>
-                <CardHeader title="Organize" />
+                <CardHeader  />
                 <Divider />
                 <CardContent>
                   <TextField
                     fullWidth
                     label="Category"
                     name="category"
-                    onChange={handleChange}
+                    onChange={(e) => handleCategoryChange(e)}
                     select
                     SelectProps={{ native: true }}
                     value={values.category}
                     variant="outlined"
                   >
-                    {categories.map((category) => (
+                    {categories.map((categoryOption) => (
                       <option
-                        key={category.id}
-                        value={category.id}
+                        setState()
+                        // {categoryOption.value}
+                        // set={categoryOption.value}
                       >
-                        {category.name}
+                        {categoryOption.label}
                       </option>
                     ))}
                   </TextField>
                   <Box mt={2}>
                   <TextField
                     fullWidth
-                    label="Subcategory"
-                    name="subcategory"
-                    onChange={handleChange}
+                    label="Brands"
+                    name="Brands"
+                    onChange={(e)=> handleBrandChange(e)}
                     select
                     SelectProps={{ native: true }}
-                    value={values.category}
+                    value={values.Brand}
                     variant="outlined"
                   >
-                    {categories.map((category) => (
+                    {Brand.map((BrandOption) => (
                       <option
-                        key={category.id}
-                        value={category.id}
+                        key={BrandOption.value}
+                        value={BrandOption.value}
                       >
-                        {category.name}
+                        {BrandOption.label}
                       </option>
                     ))}
                   </TextField>
@@ -333,17 +496,17 @@ function ProductCreateForm({ className, ...rest }) {
                       error={Boolean(touched.productSku && errors.productSku)}
                       fullWidth
                       helperText={touched.productSku && errors.productSku}
-                      label="Product Sku"
-                      name="productSku"
+                      label="Group"
+                      name="Group"
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      value={values.productSku}
+                      value={values.group}
                       variant="outlined"
                     />
                   </Box>
                 </CardContent>
-              </Card> */}
-            {/* </Grid> */}
+              </Card> 
+            </Grid>
           </Grid>
           {errors.submit && (
             <Box mt={3}>

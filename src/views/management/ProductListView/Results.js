@@ -91,30 +91,30 @@ const sortOptions = [
   }
 ];
 
-// function getInventoryLabel(inventoryType) {
-//   const map = {
-//     in_stock: {
-//       text: 'In Stock',
-//       color: 'success'
-//     },
-//     out_of_stock: {
-//       text: 'Out of Stock',
-//       color: 'error'
-//     },
-//     limited: {
-//       text: 'Limited',
-//       color: 'warning'
-//     }
-//   };
+function getInventoryLabel(inventoryType) {
+  const map = {
+    in_stock: {
+      text: 'In Stock',
+      color: 'success'
+    },
+    out_of_stock: {
+      text: 'Out of Stock',
+      color: 'error'
+    },
+    limited: {
+      text: 'Limited',
+      color: 'warning'
+    }
+  };
 
-//   const { text, color } = map[inventoryType];
+  const { text, color } = map[inventoryType];
 
-//   return (
-//     <Label color={color}>
-//       {text}
-//     </Label>
-//   );
-// }
+  return (
+    <Label color={color}>
+      {text}
+    </Label>
+  );
+}
 
 function applyFilters(products, query, filters) {
   return products.filter((products) => {
@@ -440,7 +440,7 @@ function Results({ className, products, ...rest }) {
               </option>
             ))}
           </TextField>
-          <FormControlLabel
+          {/* <FormControlLabel
             className={classes.stockField}
             control={(
               <Checkbox
@@ -461,7 +461,7 @@ function Results({ className, products, ...rest }) {
               />
             )}
             label="Shippable"
-          />
+          /> */}
         </Box>
       </Box>
       {enableBulkOperations && (
@@ -506,9 +506,9 @@ function Results({ className, products, ...rest }) {
                 <TableCell>
                   Details
                 </TableCell>
-                <TableCell>
+                {/* <TableCell>
                   Attributes
-                </TableCell>
+                </TableCell> */}
                 <TableCell>
                   Price
                 </TableCell>
@@ -564,14 +564,14 @@ function Results({ className, products, ...rest }) {
                       </Link>
                     </TableCell>
                     {/* <TableCell>
-                      {getInventoryLabel(product.inventoryType)}
+                      {getInventoryLabel(products.inventoryType)}
                     </TableCell> */}
-                    <TableCell>
+                    {/* <TableCell>
                       {products.available_quantity}
                       {' '}
                       in stock
                       {products.available_quantity > 1 && ` in ${products.available_quantity} variants`}
-                    </TableCell>
+                    </TableCell> */}
                     {/* <TableCell>
                       {products.attributes.map((attr) => attr)}
                     </TableCell> */}

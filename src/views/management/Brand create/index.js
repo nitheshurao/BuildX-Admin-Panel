@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Header from './Header';
-import SubCategoryCreateForm from './SubCategoryCreateForm';
+import CreateBrands from './CreateBrands';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,20 +13,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function SubCategoryCreateView() {
+function Brand_Create() {
   const classes = useStyles();
 
   return (
     <Page
       className={classes.root}
-      title="Create SubCategory"
+      title="Create Brand"
     >
       <Container maxWidth={false}>
         <Header />
-        <SubCategoryCreateForm />
+        <CreateBrands />
       </Container>
     </Page>
   );
 }
 
-export default SubCategoryCreateView;
+export default Brand_Create;

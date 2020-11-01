@@ -128,42 +128,42 @@ function getInventoryLabel(inventoryType) {
   );
 }
 
-function applyFilters(products, query, filters) {
-  return products.filter((product) => {
+function applyFilters(Brand, query, filters) {
+  return Brand.filter((Brand) => {
     let matches = true;
 
-    if (query && !product.name.toLowerCase().includes(query.toLowerCase())) {
+    if (query && !Brand.name.toLowerCase().includes(query.toLowerCase())) {
       matches = false;
     }
 
-    if (filters.category && product.category !== filters.category) {
+    if (filters.category &&Brand.category !== filters.category) {
       matches = false;
     }
 
     if (filters.availability) {
-      if (filters.availability === 'available' && !product.isAvailable) {
+      if (filters.availability === 'available' && !Brand.isAvailable) {
         matches = false;
       }
 
-      if (filters.availability === 'unavailable' && product.isAvailable) {
+      if (filters.availability === 'unavailable' &&Brand.isAvailable) {
         matches = false;
       }
     }
 
-    if (filters.inStock && !['in_stock', 'limited'].includes(product.inventoryType)) {
-      matches = false;
-    }
+    // if (filters.inStock && !['in_stock', 'limited'].includes(Brand.inventoryType)) {
+    //   matches = false;
+    // }
 
-    if (filters.isShippable && !product.isShippable) {
-      matches = false;
-    }
+    // if (filters.isShippable && !Brand.isShippable) {
+    //   matches = false;
+    // }
 
     return matches;
   });
 }
 
-function applyPagination(customers, page, limit) {
-  return customers.slice(page * limit, page * limit + limit);
+function applyPagination(Brand, page, limit) {
+  return Brand.slice(page * limit, page * limit + limit);
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -212,7 +212,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Results({ className, products, ...rest }) {
+function Results({ className, Brand, ...rest }) {
   const classes = useStyles();
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [page, setPage] = useState(0);
@@ -233,7 +233,7 @@ const isMountedRef = useIsMountedRef();
   const [categories, setcategories] = useState([]);
  const getcategories = useCallback(() => {
   axios
-    .get(' http://15.207.7.54:8080/category/fetch-by-filter')
+    .get('http://15.207.7.54:8080/brands/fetch-by-filter')
     .then(response => {
       console.log('----------response---------- crty-');
       // console.log(response.data.categories)
@@ -346,15 +346,15 @@ useEffect(() => {
 
   const handleSelectAllProducts = (event) => {
     setSelectedProducts(event.target.checked
-      ? products.map((product) => product.id)
+      ? Brand.map((Brand) => Brand.id)
       : []);
   };
 
-  const handleSelectOneProduct = (event, productId) => {
-    if (!selectedProducts.includes(productId)) {
-      setSelectedProducts((prevSelected) => [...prevSelected, productId]);
+  const handleSelectOneProduct = (event, BrandId) => {
+    if (!selectedProducts.includes(BrandId)) {
+      setSelectedProducts((prevSelected) => [...prevSelected, BrandId]);
     } else {
-      setSelectedProducts((prevSelected) => prevSelected.filter((id) => id !== productId));
+      setSelectedProducts((prevSelected) => prevSelected.filter((id) => id !== BrandId));
     }
   };
 
@@ -392,11 +392,11 @@ useEffect(() => {
   const store = createStore(reducer);
   //}
   // Usually query is done on backend with indexing solutions
-  const filteredProducts = applyFilters(products, query, filters);
+  const filteredProducts = applyFilters(Brand, query, filters);
   const paginatedProducts = applyPagination(filteredProducts, page, limit);
   const enableBulkOperations = selectedProducts.length > 0;
-  const selectedSomeProducts = selectedProducts.length > 0 && selectedProducts.length < products.length;
-  const selectedAllProducts = selectedProducts.length === products.length;
+  const selectedSomeProducts = selectedProducts.length > 0 && selectedProducts.length < Brand.length;
+  const selectedAllProducts = selectedProducts.length === Brand.length;
 
   return (
     <Card
@@ -471,9 +471,13 @@ useEffect(() => {
 
                   <TableCell />
                   <TableCell>
-                    Brand
+                    BRANDS
+                </TableCell>
+                <TableCell>
+                    Discription
                 </TableCell>
 
+                 
                  
 {/* 
                   <TableCell align="right">
@@ -482,16 +486,16 @@ useEffect(() => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {paginatedProducts.map((category) => {
+                {paginatedProducts.map((Brand) => {
                   const isProductSelected = selectedProducts.includes
 
 
-                    (category.id);
+                    (Brand.id);
 
                   return (
                     <TableRow
                       hover
-                      key={category.id}
+                      key={Brand.id}
                       selected={isProductSelected}
                     >
                       {/* <TableCell padding="checkbox">
@@ -503,10 +507,10 @@ useEffect(() => {
                       </TableCell> */}
 
                       <TableCell className={classes.imageCell}>
-                        {category.image ? (
+                        {Brand.image ? (
                           <img
                             alt="Product"
-                            src={category.image}
+                            src={Brand.image}
                             className={classes.image}
                           />
                         ) : (
@@ -528,11 +532,11 @@ useEffect(() => {
                           underline="none"
                           to="#"
                         >
-                          {category.name}
+                          {Brand.name}
                         </Link>
                       </TableCell>
 
-
+                      <TableCell>{Brand.description}</TableCell>
 
                       <TableCell align="right">
                         {/* <IconButton>
