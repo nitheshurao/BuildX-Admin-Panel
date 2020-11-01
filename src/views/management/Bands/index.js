@@ -30,7 +30,7 @@ function Brands() {
 
   const getBrand= useCallback(() => {
     axios
-      .get('http://15.207.7.54:8081/brands/fetch-by-filter')
+      .get('https://15.207.7.54:8081/brands/fetch-by-filter')
       .then((response) => {
         console.log('----------response-----------')
         console.log(response)

@@ -95,7 +95,7 @@ function ProductCreateForm({ className, ...rest }) {
   const [categories, setcategories] = useState([]);
   const getcategories = useCallback(() => {
     axios
-      .get(' http://15.207.7.54:8081/category/fetch-by-filter')
+      .get(' https://15.207.7.54:8081/category/fetch-by-filter')
       .then(response => {
         console.log('----------response---------- crty-');
         // console.log(response.data.categories)
@@ -127,7 +127,7 @@ function ProductCreateForm({ className, ...rest }) {
 
   const getBrand = useCallback(() => {
     axios
-      .get('http://15.207.7.54:8081/brands/fetch-by-filter')
+      .get('https://15.207.7.54:8081/brands/fetch-by-filter')
       .then(response => {
         console.log('----------response---------- crty-');
         // console.log(response.data.categories)
@@ -208,7 +208,7 @@ function ProductCreateForm({ className, ...rest }) {
           console.dir(values)
           var config = {
             method: 'post',
-            url: 'http://15.207.7.54:8081/products/register',
+            url: 'https://15.207.7.54:8081/products/register',
             data: {
               name: values.name,
               description: values.description.replace(/<[^>]+>/g, ''),

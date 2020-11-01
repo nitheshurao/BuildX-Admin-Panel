@@ -22,7 +22,7 @@ function ProductListView() {
 
   const getcategories = useCallback(() => {
     axios
-      .get(' http://15.207.7.54:8081/category/fetch-by-filter')
+      .get(' https://15.207.7.54:8081/category/fetch-by-filter')
       .then(response => {
         console.log('----------response-----------');
         // console.log(response.data.categories)

@@ -78,7 +78,7 @@ function CustomerCreateForm({
           // Make API request
           var config = {
             method: 'post',
-            url: 'http://15.207.7.54:8081/users/create-user',
+            url: 'https://15.207.7.54:8081/users/create-user',
             data: {
               name: values.fullName,
               phone:values.phone,

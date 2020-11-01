@@ -233,7 +233,7 @@ const isMountedRef = useIsMountedRef();
   const [categories, setcategories] = useState([]);
  const getcategories = useCallback(() => {
   axios
-    .get('http://15.207.7.54:8081/brands/fetch-by-filter')
+    .get('https://15.207.7.54:8081/brands/fetch-by-filter')
     .then(response => {
       console.log('----------response---------- crty-');
       // console.log(response.data.categories)
@@ -265,7 +265,7 @@ useEffect(() => {
 
  const deletecategory =(e)=>  {
 	e.preventDefault();
-	axios.delete('http://15.207.7.54:8081/products/register/delete/{this.state.id}')
+	axios.delete('https://15.207.7.54:8081/products/register/delete/{this.state.id}')
 	.then(res => console.log(res.data));
 }
 
