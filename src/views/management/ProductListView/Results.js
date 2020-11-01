@@ -600,12 +600,12 @@ function Results({ className, products, ...rest }) {
                     <TableCell>
                       {products.description}
 
-                      {products.total_amount}
+                     
                     </TableCell>
                     <TableCell>
-                      {products.prices.final_value}
+                    {products.total_amount}
 
-                      {products.base_price}
+                    
                     </TableCell>
                     <TableCell align="right">
                       <IconButton>
@@ -613,8 +613,7 @@ function Results({ className, products, ...rest }) {
                           <EditIcon />
                         </SvgIcon>
                       </IconButton>
-                      <IconButton component={RouterLink}
-                        to="/app/management/customers/id"
+                      <IconButton 
                       >
                         <SvgIcon fontSize="small">
                           <ArrowRightIcon />
