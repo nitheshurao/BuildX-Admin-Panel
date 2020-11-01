@@ -1,0 +1,2 @@
+(this["webpackJsonplego-ecom"]=this["webpackJsonplego-ecom"]||[]).push([[83],{2120:function(e,n,t){"use strict";t.r(n);var l=t(0),a=t.n(l),c=t(341),u=Object(l.lazy)((function(){return t.e(69).then(t.bind(null,2074))}));n.default=function(){return a.a.createElement(c.a,{title:"Welcome"},a.a.createElement(l.Suspense,{fallback:null},a.a.createElement(u,null)))}}}]);
+//# sourceMappingURL=83.8a725c36.chunk.js.map
