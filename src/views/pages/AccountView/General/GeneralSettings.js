@@ -216,7 +216,7 @@ function GeneralSettings({ user, className, ...rest }) {
                   md={6}
                   xs={12}
                 >
-                  <Typography
+                  {/* <Typography
                     variant="h6"
                     color="textPrimary"
                   >
@@ -234,14 +234,14 @@ function GeneralSettings({ user, className, ...rest }) {
                     edge="start"
                     name="isPublic"
                     onChange={handleChange}
-                  />
+                  /> */}
                 </Grid>
                 <Grid
                   item
                   md={6}
                   xs={12}
                 >
-                  <Typography
+                  {/* <Typography
                     variant="h6"
                     color="textPrimary"
                   >
@@ -259,7 +259,7 @@ function GeneralSettings({ user, className, ...rest }) {
                     edge="start"
                     name="canHire"
                     onChange={handleChange}
-                  />
+                  /> */}
                 </Grid>
               </Grid>
               {errors.submit && (
