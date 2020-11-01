@@ -282,7 +282,7 @@ function Results({ className, customers, ...rest }) {
             )
           }}
           onChange={handleQueryChange}
-          placeholder="Search customers"
+          placeholder="Search Customers"
           value={query}
           variant="outlined"
         />
@@ -416,16 +416,16 @@ function Results({ className, customers, ...rest }) {
                     </TableCell>
                     <TableCell align="right">
                       <IconButton
-                        component={RouterLink}
-                        to="/app/management/customers/Id/edit"
+                        // component={RouterLink}
+                        // to="/app/management/customers/Id/edit"
                       >
                         <SvgIcon fontSize="small">
                           <EditIcon />
                         </SvgIcon>
                       </IconButton>
                       <IconButton
-                        component={RouterLink}
-                        to="/app/management/customers/{Id}"
+                        // component={RouterLink}
+                        // to="/app/management/customers/{Id}"
                       >
                         <SvgIcon fontSize="small">
                           <ArrowRightIcon />

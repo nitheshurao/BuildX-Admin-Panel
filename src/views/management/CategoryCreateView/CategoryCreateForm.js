@@ -165,7 +165,7 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
                       error={Boolean(touched.name && errors.name)}
                       fullWidth
                       helperText={touched.name && errors.name}
-                      label="category Name"
+                      label="Category Name"
                       name="name"
                       onBlur={handleBlur}
                       onChange={handleChange}
