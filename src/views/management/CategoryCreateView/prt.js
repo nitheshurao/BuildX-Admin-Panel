@@ -24,7 +24,7 @@ export default class PersonList extends React.Component {
     };
   
 
-    axios.post(`http://15.207.7.54:8080/users/create-user`, { user })
+    axios.post(`http://15.207.7.54:8081/users/create-user`, { user })
       .then(res => {
         console.log(res);
         console.log(res.data);

@@ -30,7 +30,7 @@ function ProductListView() {
 
   const getProducts = useCallback(() => {
     axios
-      .get(' http://15.207.7.54:8080/products/fetch-by-filter')
+      .get(' http://15.207.7.54:8081/products/fetch-by-filter')
       .then((response) => {
 
         console.log('----------response-----------')

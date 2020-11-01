@@ -88,7 +88,7 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
 
           var config = {
             method: 'post',
-            url: 'http://15.207.7.54:8080/category/register',
+            url: 'http://15.207.7.54:8081/category/register',
             data: {
               name: values.name,
               description: values.description.replace(/<[^>]+>/g, '')
