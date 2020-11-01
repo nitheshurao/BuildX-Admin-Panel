@@ -118,6 +118,18 @@ const navConfig = [
             title: 'Add New Categories',
             href: '/app/management/CategoryCreateView',
           },
+        
+  
+        ]
+      },
+      ///
+      {
+        title: 'Brand',
+        icon: FolderIcon,
+         href: '/app/management/Brand',
+        //href: '/app/reports/dashboard',
+
+        items: [
           {
             title: 'List Brands',
             href: '/app/management/Brand',
@@ -129,6 +141,7 @@ const navConfig = [
   
         ]
       },
+      ///
       
       {
         title: 'Orders',
