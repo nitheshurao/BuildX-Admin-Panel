@@ -57,13 +57,14 @@ function ProductCreateForm({ className, ...rest }) {
 ////
 const handleCategoryChange = (event) => {
   event.persist();
-
+console.log('------event.target--------')
+console.dir(event.target)
   let value = null;
 
   if (event.target.value !== 'all') {
     value = event.target.value;
   }
-
+  return event.target.value;
   // setFilters((prevFilters) => ({
   //   ...prevFilters,
   //   category: value
@@ -71,6 +72,8 @@ const handleCategoryChange = (event) => {
 };
 ////brand
 const handleBrandChange = (event) => {
+  console.log('---------event------------')
+  console.log(event)
   event.persist();
 
   let value = null;
@@ -78,7 +81,7 @@ const handleBrandChange = (event) => {
   if (event.target.value !== 'all') {
     value = event.target.value;
   }
-
+return event.target.value;
   // setFilters((prevFilters) => ({
   //   ...prevFilters,
   //   category: value
@@ -100,7 +103,7 @@ const getcategories = useCallback(() => {
       if (isMountedRef.current) {
         let frmtedctgory = response.data.data.categories.map(item => {
           return ({
-            value: item.id,
+            category_id: item.id,
             label: item.name
           })
         })
@@ -200,6 +203,9 @@ useEffect(() => {
           var category_items = [category]
           console.log("category_item", category_items)
           var category_items_data = category_items*/
+          // const categoryOption = useState()
+          console.log('---categoryOption----')
+          console.dir(values)
           var config = {
             method: 'post',
             url: 'http://15.207.7.54:8080/products/register',
@@ -209,9 +215,9 @@ useEffect(() => {
               code:values.productCode,
               group:values.group,
               base_price:values.price,
-              category_id:categoryOption.value,
-              brand_id:BrandOption.value,
-             tax_type: "Gst",
+              category_id: values.category,
+              brand_id:values.brand_id,
+             tax_type: "tax_percentage",
              tax_value:values.tax_value,
             },
             headers: {
@@ -441,7 +447,7 @@ useEffect(() => {
                     fullWidth
                     label="Category"
                     name="category"
-                    onChange={(e) => handleCategoryChange(e)}
+                    onChange={(e) => (values.category = handleCategoryChange(e).split('|')[1])}
                     select
                     SelectProps={{ native: true }}
                     value={values.category}
@@ -449,11 +455,10 @@ useEffect(() => {
                   >
                     {categories.map((categoryOption) => (
                       <option
-                        setState()
-                        // {categoryOption.value}
-                        // set={categoryOption.value}
+                        // setState()
+                        // set={categoryOption.category_id}
                       >
-                        {categoryOption.label}
+                        {`${categoryOption.label}|${categoryOption.category_id}`}
                       </option>
                     ))}
                   </TextField>
@@ -462,7 +467,7 @@ useEffect(() => {
                     fullWidth
                     label="Brands"
                     name="Brands"
-                    onChange={(e)=> handleBrandChange(e)}
+                    onChange={(e)=> values.brand_id = handleBrandChange(e).split('|')[1]}
                     select
                     SelectProps={{ native: true }}
                     value={values.Brand}
@@ -473,7 +478,7 @@ useEffect(() => {
                         key={BrandOption.value}
                         value={BrandOption.value}
                       >
-                        {BrandOption.label}
+                        {`${BrandOption.label}|${BrandOption.value}`}
                       </option>
                     ))}
                   </TextField>
