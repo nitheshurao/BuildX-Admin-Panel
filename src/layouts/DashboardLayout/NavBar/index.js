@@ -154,11 +154,11 @@ const navConfig = [
             title: 'List Orders',
             href: '/app/management/orders',
           },
-           {
-             title: 'View Order',
-              href: '/app/management/orders/1'
+          //  {
+          //    title: 'View Order',
+          //     href: '/app/management/orders/1'
 
-           }
+          //  }
         ]
       },
       // {
