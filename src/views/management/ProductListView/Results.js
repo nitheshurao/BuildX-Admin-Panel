@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState, useEffect, useCallback  } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import axios from 'axios';
@@ -22,7 +22,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  TextField,
+  TextField, Typography,
   makeStyles
 } from '@material-ui/core';
 import {
@@ -152,13 +152,13 @@ function applyFilters(products, query, filters) {
 }
 
 function applyPagination(products, page, limit) {
-   return products.slice(page * limit, page * limit + limit);
- }
+  return products.slice(page * limit, page * limit + limit);
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   bulkOperations: {
-    position :'relative'
+    position: 'relative'
   },
   bulkActions: {
     paddingLeft: 4,
@@ -310,41 +310,41 @@ function Results({ className, products, ...rest }) {
   const isMountedRef = useIsMountedRef();
 
 
- const [categories, setcategories] = useState([]);
- const getcategories = useCallback(() => {
-   axios
-     .get(' http://15.207.7.54:8080/category/fetch-by-filter')
-     .then(response => {
-       console.log('----------response---------- crty-');
-       // console.log(response.data.categories)
-       console.log(response.data.data.categories);
-       if (isMountedRef.current) {
-         let frmtedctgory = response.data.data.categories.map(item => {
-           return ({
-             value: item.id,
-             label: item.name
-           })
-         })
-         console.log(frmtedctgory);
-         setcategories([...frmtedctgory]);
-       }
-     })
+  const [categories, setcategories] = useState([]);
+  const getcategories = useCallback(() => {
+    axios
+      .get(' http://15.207.7.54:8080/category/fetch-by-filter')
+      .then(response => {
+        console.log('----------response---------- crty-');
+        // console.log(response.data.categories)
+        console.log(response.data.data.categories);
+        if (isMountedRef.current) {
+          let frmtedctgory = response.data.data.categories.map(item => {
+            return ({
+              value: item.id,
+              label: item.name
+            })
+          })
+          console.log(frmtedctgory);
+          setcategories([...frmtedctgory]);
+        }
+      })
 
-     .catch(err => {
-       console.log('----------err-------cry----');
-       console.log(err);
-     });
- }, [isMountedRef]);
+      .catch(err => {
+        console.log('----------err-------cry----');
+        console.log(err);
+      });
+  }, [isMountedRef]);
 
 
- useEffect(() => {
-   getcategories();
- }, [getcategories]);
+  useEffect(() => {
+    getcategories();
+  }, [getcategories]);
   ///
 
   // Usually query is done on backend with indexing solutions
   const filteredProducts = applyFilters(products, query, filters);
-  const paginatedProducts = applyPagination(filteredProducts ,page, limit);
+  const paginatedProducts = applyPagination(filteredProducts, page, limit);
   const enableBulkOperations = selectedProducts.length > 0;
   const selectedSomeProducts = selectedProducts.length > 0 && selectedProducts.length < products.length;
   const selectedAllProducts = selectedProducts.length === products.length;
@@ -379,6 +379,7 @@ function Results({ className, products, ...rest }) {
             variant="outlined"
           />
           <Box flexGrow={1} />
+
           <TextField
             label="Sort By"
             name="sort"
@@ -398,20 +399,38 @@ function Results({ className, products, ...rest }) {
             ))}
           </TextField>
         </Box>
+
         <Box
           mt={3}
-          display="flex"
+          mb={1}
+        />
+
+        <Box
+          mt={4}
+          mb={1}
+       
           alignItems="center"
+
+
         >
+
+          <Typography
+            variant="subtitle2"
+            color="textSecondary"
+          >
+            Category
+                    </Typography>
+
           <TextField
+
             // className={classes.categoryField}
-            label="Category"
+            // label="Category"
             name="category"
-            onChange={(e)=> handleCategoryChange(e)}
+            onChange={(e) => handleCategoryChange(e)}
             select
             SelectProps={{ native: true }}
             value={filters.category || 'all'}
-            
+
             variant="outlined"
           >
             {categories.map((categoryOption) => (
@@ -478,11 +497,11 @@ function Results({ className, products, ...rest }) {
               variant="outlined"
               className={classes.bulkAction}
               type="delete"
-           
+
             >
               Delete
             </Button>
-            
+
           </div>
         </div>
       )}
@@ -502,7 +521,7 @@ function Results({ className, products, ...rest }) {
                 <TableCell>
                   Name
                 </TableCell>
-            
+
                 <TableCell>
                   Details
                 </TableCell>
@@ -545,15 +564,15 @@ function Results({ className, products, ...rest }) {
                           className={classes.image}
                         />
                       ) : (
-                        <Box
-                          p={2}
-                          bgcolor="background.dark"
-                        >
-                          <SvgIcon>
-                            <ImageIcon />
-                          </SvgIcon>
-                        </Box>
-                      )}
+                          <Box
+                            p={2}
+                            bgcolor="background.dark"
+                          >
+                            <SvgIcon>
+                              <ImageIcon />
+                            </SvgIcon>
+                          </Box>
+                        )}
                     </TableCell>
                     <TableCell>
                       <Link
@@ -578,14 +597,14 @@ function Results({ className, products, ...rest }) {
                     {/* <TableCell>
                       {products.attributes.map((attr) => attr)}
                     </TableCell> */}
-                      <TableCell>
+                    <TableCell>
                       {products.description}
-                      
+
                       {products.total_amount}
                     </TableCell>
                     <TableCell>
                       {products.prices.final_value}
-                      
+
                       {products.base_price}
                     </TableCell>
                     <TableCell align="right">
@@ -594,7 +613,7 @@ function Results({ className, products, ...rest }) {
                           <EditIcon />
                         </SvgIcon>
                       </IconButton>
-                      <IconButton  component={RouterLink}
+                      <IconButton component={RouterLink}
                         to="/app/management/customers/id"
                       >
                         <SvgIcon fontSize="small">
