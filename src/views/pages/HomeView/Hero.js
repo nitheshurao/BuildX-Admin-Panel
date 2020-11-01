@@ -83,10 +83,7 @@ function Hero({ className, ...rest }) {
                   variant="body1"
                   color="textSecondary"
                 >
-                  A professional kit that comes with ready-to-use Material-UI© components
-                  developed with one common goal in mind, help you build faster &amp; beautiful
-                  applications. Each component is fully customizable,
-                  responsive and easy to integrate.
+                  BuildX Admin Panel
                 </Typography>
               </Box>
               <Box mt={3}>
