@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import * as Yup from 'yup';
-import axios from 'axios';
+import axios from 'src/utils/axios';
 import { Formik } from 'formik';
 import { useSnackbar } from 'notistack';
 
@@ -87,11 +87,11 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
           var category_items_data = category_items*/
           var config = {
             method: 'post',
-            url: 'http://15.207.7.54:8080/brands/register',
+            url: '/brands/register',
             data: {
               name: values.name,
               description: values.description.replace(/<[^>]+>/g, '')
-             
+
             },
             headers: {
               'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
           enqueueSnackbar('Brand Created', {
             variant: 'success'
           });
-          
+
         } catch (error) {
           console.log('----------------------resp==error---------------------')
           console.log(error)
@@ -117,8 +117,8 @@ function ProductCreateForm({ className, onSubmitSuccess, ...rest }) {
         }
 
 
-//////delete
-  
+        //////delete
+
 
 
         //   /////setStatus({ success: true });

@@ -44,6 +44,13 @@ function Routes() {
           path="/register"
           component={lazy(() => import('src/views/auth/RegisterView'))}
         />
+{/*  */}
+<GuestRoute
+          exact
+          path="/registerotp"
+          component={lazy(() => import('src/views/auth/RegisterOTP'))}
+        />
+{/*  */}
         <Route
           exact
           path="/register-unprotected"

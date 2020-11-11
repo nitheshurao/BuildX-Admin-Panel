@@ -45,6 +45,14 @@ const routesConfig = [
     path: '/register',
     component: lazy(() => import('src/views/auth/RegisterView'))
   },
+  ////////
+  {
+    exact: true,
+    guard: GuestGuard,
+    path: '/registerotp',
+    component: lazy(() => import('src/views/auth/RegisterOTP'))
+  },
+  ///////
   {
     exact: true,
     path: '/register-unprotected',

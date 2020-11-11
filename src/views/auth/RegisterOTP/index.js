@@ -16,7 +16,7 @@ import {
 import Page from 'src/components/Page';
 import Logo from 'src/components/Logo';
 
-import RegisterForm from './RegisterForm';
+import Registerotp from './RegisterOTP';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,11 +74,12 @@ function RegisterView() {
               Sign up on the internal platform
             </Typography>
             <Box mt={3}>
-              <RegisterForm  />
+          
             </Box>
             <Box my={2}>
               <Divider />
             </Box>
+            <Registerotp/>
             <Link
               component={RouterLink}
               to="/login"

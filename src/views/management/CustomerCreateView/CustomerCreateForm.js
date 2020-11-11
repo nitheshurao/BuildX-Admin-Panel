@@ -75,37 +75,61 @@ function CustomerCreateForm({
       }) => {
         try {
           console.log("inside createUser ")
-          // Make API request
-          var config = {
-            method: 'post',
-            url: 'http://15.207.7.54:8080/users/create-user',
+
+          axios.post('http://15.207.7.54:8080/users/initiate-registration ', {
             data: {
-              name: values.fullName,
-              phone:values.phone,
-              
-              email:values.email,
-              state:values.state,
-              country:values.country,
-              address1:values.address1,
-              address2:values.address2,
+                  name: values.fullName,
+                  mobile_number:values.phone,
+                  is_admin: true,
+                  is_portal_user: true,
+                  primary_address: {
+                    address: values.address1,
+                    pincode: values.pincode,
+                    state: values.state,
+    
+                  },
+                  email: values.email,
+                 
+                },
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+
+          // Make API request
+          // var config = {
+          //   method: 'post',
+          //   url: 'http://15.207.7.54:8080/users/initiate-registration',
+          //   data: {
+          //     name: values.fullName,
+          //     mobile_number:values.phone,
+          //     is_admin: true,
+          //     is_portal_user: true,
+          //     primary_address: {
+          //       address: values.address1,
+          //       pincode: values.pincode,
+          //       state: values.state,
+
+          //     },
+          //     email: values.email,
              
-            },
-            headers: {
-              'Content-Type': 'application/json',
+          //   },
+          //   headers: {
+          //     'Content-Type': 'application/json',
 
-            },
+          //   },
 
-          };
-          console.log('------------------------config--------------------')
-          console.log(config)
-          const resp = await axios(config);
-          console.log('-----------------resp------------------')
-          console.log(resp)
-          setStatus({ success: true });
-          setSubmitting(false);
-          enqueueSnackbar('User Created', {
-            variant: 'success'
-          });
+          // };
+          // console.log('------------------------config--------------------')
+          // console.log(config)
+          // const resp = await axios(config);
+          // console.log('-----------------resp------------------')
+          // console.log(resp)
+          // setStatus({ success: true });
+          // setSubmitting(false);
+          // enqueueSnackbar('User Created', {
+          //   variant: 'success'
+          // });
           
         } catch (error) {
           console.log('----------------------resp==error---------------------')
@@ -189,8 +213,12 @@ function CustomerCreateForm({
                 <option
                   key={UserOptions.id}
                   value={UserOptions.id}
+                  onChange={handleChange}
+                  value={values.name}
                 >
+              
                   {UserOptions.name}
+                 
                 </option>
               ))}
             </TextField></Grid> 
@@ -222,7 +250,7 @@ function CustomerCreateForm({
                     error={Boolean(touched.fullName && errors.fullName)}
                     fullWidth
                     helperText={touched.fullName && errors.fullName}
-                    label="Full name"
+                    label="Fullname"
                     name="fullName"
                     onBlur={handleBlur}
                     onChange={handleChange}
@@ -271,107 +299,40 @@ function CustomerCreateForm({
                   md={6}
                   xs={12}
                 >
-                  <TextField
-                    error={Boolean(touched.country && errors.country)}
-                    fullWidth
-                    helperText={touched.country && errors.country}
-                    label="Country"
-                    name="country"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.country}
-                    variant="outlined"
-                  />
-                </Grid>
+              <TextField
+                error={Boolean(touched.pincode && errors.pincode)}
+                fullWidth
+                helperText={touched.pincode && errors.pincode}
+                label="Pin code"
+                name="pincode"
+                required
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.pincode}
+                variant="outlined"
+              /></Grid>
+               
                  <Grid
                   item
                   md={6}
                   xs={12}
                 >
                   <TextField
-                    error={Boolean(touched.address1 && errors.address1)}
+                    error={Boolean(touched.address && errors.address)}
                     fullWidth
-                    helperText={touched.address1 && errors.address1}
-                    label="Street Address"
-                    name="address1"
+                    helperText={touched.address && errors.address}
+                    label="Address"
+                    name="address"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.address1}
+                    value={values.address}
                     variant="outlined"
                   />
                 </Grid>
-                <Grid
-                  item
-                  md={6}
-                  xs={12}
-                >
-                  <TextField
-                    error={Boolean(touched.address2 && errors.address2)}
-                    fullWidth
-                    helperText={touched.address2 && errors.address2}
-                    label="Address 2"
-                    name="address2"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.address2}
-                    variant="outlined"
-                  />
-                </Grid>
+              
+            
                 <Grid item />
-               {/* <Grid
-                  item
-                  md={6}
-                  xs={12}
-                >
-                  
-                  <Typography
-                    variant="h5"
-                    color="textPrimary"
-                  >
-                    Admin user
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                  >
-
-                    Enabling this will make the user as Admin portal user
-                  </Typography>
-                  <Switch
-                    checked={values.verified}
-                    color="secondary"
-                    edge="start"
-                    name="verified"
-                    onChange={handleChange}
-                    value={values.verified}
-                  />
-                </Grid> */}
-                {/* <Grid
-                  item
-                  md={6}
-                  xs={12}
-                >
-                  <Typography
-                    variant="h5"
-                    color="textPrimary"
-                  >
-                    Discounted Prices
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                  >
-                    This will give the user discountedprices for all products
-                  </Typography>
-                  <Switch
-                    checked={values.discountedPrices}
-                    color="secondary"
-                    edge="start"
-                    name="discountedPrices"
-                    onChange={handleChange}
-                    value={values.discountedPrices}
-                  />
-                </Grid> */}
+             
               </Grid>
               <Box mt={2}>
                 <Button
