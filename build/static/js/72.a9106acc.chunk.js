@@ -1,0 +1,2 @@
+(this["webpackJsonplego-ecom"]=this["webpackJsonplego-ecom"]||[]).push([[72],{2124:function(e,n,t){"use strict";t.r(n);var l=t(0),a=t.n(l),c=t(341),u=Object(l.lazy)((function(){return t.e(58).then(t.bind(null,2078))}));n.default=function(){return a.a.createElement(c.a,{title:"Api Calls"},a.a.createElement(l.Suspense,{fallback:null},a.a.createElement(u,null)))}}}]);
+//# sourceMappingURL=72.a9106acc.chunk.js.map
