@@ -28,9 +28,9 @@ function Brands() {
   const isMountedRef = useIsMountedRef();
   const [Brand, setBrand] = useState(null);
 
-  const getBrand= useCallback(() => {
+  const getBrand = useCallback(() => {
     axios
-      .get('http://15.207.7.54:8080/brands/fetch-by-filter')
+      .get('http://15.207.7.54:8081/brands/fetch-by-filter')
       .then((response) => {
         console.log('----------response-----------')
         console.log(response)
